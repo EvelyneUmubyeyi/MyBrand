@@ -1,0 +1,295 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #2B2D3A;
+    color: #fff;
+    font-family: 'Poppins';
+}
+
+nav {
+    width: 100%;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    background-color: #2B2D3A;
+}
+
+.nav_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    /* border: 2px solid red; */
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.logo {
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 3.5rem;
+    color: #1DD882;
+    /* border: 2px solid red; */
+    padding: 0;
+    margin: 0;
+    line-height: 53px;
+    height: 37px;
+}
+
+.nav_menu {
+    list-style: none;
+    display: flex;
+    /* border: 2px solid red; */
+}
+
+.nav_menu li {
+    padding-right: 2rem;
+    /* font-weight: 600; */
+}
+
+.nav_buttons .login {
+    background-color: #2B2D3A;
+    /* font-weight: 600; */
+    border: 2px solid #1DD882;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.5rem 1.7rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    margin-right: 1.5rem;
+}
+
+.nav_buttons .contact {
+    background-color: #1DD882;
+    /* font-weight: 600; */
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    /* margin-right: 3rem; */
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* border: 1px solid pink; */
+}
+
+.hero_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    margin: 5rem auto;
+    min-height: 86vh;
+    /* border: 2px solid palegreen; */
+}
+
+.hero_section img {
+    width: 23rem;
+    height: 23rem;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.hero_section .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.hero_section .right {
+    width: 40%;
+}
+
+.hero_section .self_description {
+    text-align: left;
+    /* border:2px solid grey;  */
+}
+
+.hero_section .self_description .name {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero_section .self_description .role {
+    font-size: 2.5rem;
+    /* margin-bottom: 0.5rem; */
+}
+
+.hero_section .left button {
+    background-color: #1DD882;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    width: fit-content;
+    margin-top: 3rem;
+}
+
+.hero_section .self_description .description {
+    max-width: 28rem;
+    font-size: 1.2rem;
+}
+
+#about_me_text {
+    /* border: 1px solid gray; */
+    min-height: 86vh;
+    display: flex;
+    align-items: center;
+}
+
+#about_me_text .pictures img {
+    width: 14rem;
+    height: 14rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+#about_me_text .pictures {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 14rem));
+    width: 30rem;
+}
+
+#about_me_text .self_description {
+    display: flex;
+    /* border: 1px solid gray; */
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+}
+
+#about_me_text .self_description .text {
+    max-width: 50%;
+    /* border: 2px solid gray; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#about_me_text .self_description .text .title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    /* margin-top: 1rem; */
+}
+
+#about_me_text .self_description .text .title span {
+    color: #1DD882;
+}
+
+#about_me_text .self_description .text .longer_description {
+    width: 90%;
+    margin-bottom: 1.2rem;
+}
+
+#about_me_text .self_description .left {
+    /* border: 2px solid blue; */
+    min-width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+#about_me .background {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 4rem;
+    /* border: 2px solid lightcoral; */
+    margin-top: 2rem;
+}
+
+#about_me .background .academic, #about_me .background .work{
+    width: 47%;
+
+}
+
+.academic .title p, .work .title p{
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+}
+
+.academic .title, .work .title{
+    margin-bottom: 2rem;
+}
+
+.academic .title p span, .work .title p span{
+    color: #1DD882;
+}
+
+.hr {
+    display: inline-block;
+}
+
+.hr ::after {
+    content: '';
+    display: block;
+    border-top: 3px solid #1DD882;
+    width:7.8rem;
+}
+
+.work .hr ::after{
+    width: 3.8rem;
+}
+
+.timeline_item{
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline_item .degree{
+    font-weight: 700;
+}
+
+#about_me .background .timeline_items{
+    position: relative;
+    width: 93%;
+}
+
+.timeline_items {
+    padding-left: 2rem;
+}
+
+#about_me .background .timeline_items::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 80%;
+    background-color: #1DD882;
+    left: 0;
+
+}
+
+.timeline_item:last-child{
+    margin-bottom: 0;
+}
+
+.fa-graduation-cap, .fa-school,.fa-rectangle-code,.fa-layer-group{
+    font-size: 1.5rem;
+    background-color: #1DD882;
+    border-radius: 50%;
+    padding:0.7rem 0.5rem;
+}
+
+.timeline_icon{
+    left:-3.5rem;
+    position: absolute;
+}
+
+#about_me .background .body{
+    display: flex;
+    justify-content: center;
+}
