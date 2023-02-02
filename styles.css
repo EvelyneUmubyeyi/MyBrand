@@ -12,13 +12,17 @@ body {
 
 nav {
     width: 100%;
+    background-color: #2B2D3A;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
-.sticky {
+/* .sticky {
     position: fixed;
     top: 0;
     background-color: #2B2D3A;
-}
+} */
 
 .nav_content {
     display: flex;
@@ -78,7 +82,7 @@ nav {
 }
 
 .hero {
-    min-height: 100vh;
+    min-height: 86vh;
     display: flex;
     align-items: center;
     /* border: 1px solid pink; */
@@ -90,7 +94,7 @@ nav {
     align-items: center;
     width: 75%;
     margin: 5rem auto;
-    min-height: 86vh;
+    /* min-height: 86vh; */
     /* border: 2px solid palegreen; */
 }
 
@@ -292,4 +296,118 @@ nav {
 #about_me .background .body{
     display: flex;
     justify-content: center;
+}
+
+#skills{
+    min-height: 86vh;
+    /* border: 2px solid grey; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#skills .main .title{
+    font-size: 2.5rem;
+    margin-top: 2rem;
+}
+
+#skills .main .title span {
+    color: #1DD882;
+}
+
+#skills .main .short_description{
+    color: #D4D4D4;
+    font-size: 0.9rem;
+}
+
+#skills .main .cards{
+    display: flex;
+    width: 90%;
+    margin-top: 4rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#skills .main .cards .card{
+    background-color: #1E1F29;
+    margin-right: 2rem;
+    height: 17rem;
+    width: 19rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.fa-arrow-right{
+    font-size: 1.5rem;
+    background-color: #1DD882;
+    border-radius: 50%;
+    padding:0.7rem 0.7rem;
+}
+
+#skills .pop_up{
+    background-color: #1E1F29;
+    height:70vh;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* display: none; */
+    visibility: hidden;
+    position: fixed;
+    top: 20%;
+    /* right: 10%; */
+    /* z-index: 2; */
+}
+
+#skills .close{
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.fa-rectangle-xmark{
+    color:#1DD882;
+    font-size: 1.8rem;
+    padding:0;
+    background-size: 50%;
+    margin: 0;
+    background-color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+#skills .pop_up .title{
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+#skills .pop_up .cards{
+    width:60%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#skills .pop_up .card{
+    color: #fff;
+    background-color: #1DD882;
+    margin-right: 2rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+}
+
+.show_popup{
+    visibility:visible;
+}
+
+.pop_up::backdrop{
+    background-color: hsla(0, 0%, 0%, 0.3);
 }
