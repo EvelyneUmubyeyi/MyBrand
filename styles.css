@@ -323,7 +323,7 @@ nav {
 
 #skills .main .cards{
     display: flex;
-    width: 90%;
+    width: 100%;
     margin-top: 4rem;
     align-items: center;
     justify-content: center;
@@ -391,9 +391,10 @@ nav {
 }
 
 #skills .pop_up .cards{
-    width:60%;
+    width:80%;
     display: flex;
     flex-wrap: wrap;
+    /* border: 2px solid grey; */
 }
 
 #skills .pop_up .card{
