@@ -10,6 +10,14 @@ body {
     font-family: 'Poppins';
 }
 
+button{
+    cursor: pointer;
+}
+
+nav li{
+    cursor: pointer;
+}
+
 nav {
     width: 100%;
     background-color: #2B2D3A;
@@ -18,19 +26,12 @@ nav {
     z-index: 2;
 }
 
-/* .sticky {
-    position: fixed;
-    top: 0;
-    background-color: #2B2D3A;
-} */
-
 .nav_content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 90%;
     margin: auto;
-    /* border: 2px solid red; */
     padding-bottom: 1rem;
     padding-top: 1rem;
 }
@@ -39,7 +40,6 @@ nav {
     font-family: 'La Belle Aurore', cursive;
     font-size: 3.5rem;
     color: #1DD882;
-    /* border: 2px solid red; */
     padding: 0;
     margin: 0;
     line-height: 53px;
@@ -49,17 +49,14 @@ nav {
 .nav_menu {
     list-style: none;
     display: flex;
-    /* border: 2px solid red; */
 }
 
 .nav_menu li {
     padding-right: 2rem;
-    /* font-weight: 600; */
 }
 
 .nav_buttons .login {
     background-color: #2B2D3A;
-    /* font-weight: 600; */
     border: 2px solid #1DD882;
     border-radius: 10px;
     color: #fff;
@@ -71,21 +68,18 @@ nav {
 
 .nav_buttons .contact {
     background-color: #1DD882;
-    /* font-weight: 600; */
     border: none;
     border-radius: 10px;
     color: #fff;
     padding: 0.6rem 1.5rem;
     font-family: 'Poppins';
     font-size: 1rem;
-    /* margin-right: 3rem; */
 }
 
 .hero {
     min-height: 86vh;
     display: flex;
     align-items: center;
-    /* border: 1px solid pink; */
 }
 
 .hero_section {
@@ -94,8 +88,6 @@ nav {
     align-items: center;
     width: 75%;
     margin: 5rem auto;
-    /* min-height: 86vh; */
-    /* border: 2px solid palegreen; */
 }
 
 .hero_section img {
@@ -118,7 +110,6 @@ nav {
 
 .hero_section .self_description {
     text-align: left;
-    /* border:2px solid grey;  */
 }
 
 .hero_section .self_description .name {
@@ -128,7 +119,6 @@ nav {
 
 .hero_section .self_description .role {
     font-size: 2.5rem;
-    /* margin-bottom: 0.5rem; */
 }
 
 .hero_section .left button {
@@ -149,7 +139,6 @@ nav {
 }
 
 #about_me_text {
-    /* border: 1px solid gray; */
     min-height: 86vh;
     display: flex;
     align-items: center;
@@ -170,7 +159,6 @@ nav {
 
 #about_me_text .self_description {
     display: flex;
-    /* border: 1px solid gray; */
     width: 90%;
     margin: auto;
     justify-content: space-between;
@@ -178,7 +166,6 @@ nav {
 
 #about_me_text .self_description .text {
     max-width: 50%;
-    /* border: 2px solid gray; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -187,7 +174,6 @@ nav {
 #about_me_text .self_description .text .title {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    /* margin-top: 1rem; */
 }
 
 #about_me_text .self_description .text .title span {
@@ -200,7 +186,6 @@ nav {
 }
 
 #about_me_text .self_description .left {
-    /* border: 2px solid blue; */
     min-width: 50%;
     display: flex;
     justify-content: center;
@@ -212,7 +197,6 @@ nav {
     width: 80%;
     margin: auto;
     margin-bottom: 4rem;
-    /* border: 2px solid lightcoral; */
     margin-top: 2rem;
 }
 
@@ -300,7 +284,6 @@ nav {
 
 #skills{
     min-height: 86vh;
-    /* border: 2px solid grey; */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -357,12 +340,9 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* display: none; */
     visibility: hidden;
     position: fixed;
     top: 20%;
-    /* right: 10%; */
-    /* z-index: 2; */
 }
 
 #skills .close{
@@ -394,7 +374,6 @@ nav {
     width:80%;
     display: flex;
     flex-wrap: wrap;
-    /* border: 2px solid grey; */
 }
 
 #skills .pop_up .card{
