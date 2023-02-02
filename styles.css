@@ -381,6 +381,7 @@ nav {
     background-color: #fff;
     background-clip: text;
     -webkit-background-clip: text;
+    cursor: pointer;
 }
 
 #skills .pop_up .title{
