@@ -290,6 +290,24 @@ nav {
     align-items: center;
 }
 
+#skills .main{
+    max-width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#skills .cards_container{
+    max-width: 100%;
+    overflow: auto;
+    width:72.7%;
+    /* border: 1px solid grey; */
+}
+
+#skills .cards_container::-webkit-scrollbar{
+    display: none;
+}
+
 #skills .main .title{
     font-size: 2.5rem;
     margin-top: 2rem;
@@ -306,8 +324,8 @@ nav {
 
 #skills .main .cards{
     display: flex;
-    width: 100%;
-    margin-top: 4rem;
+    width: max-content;
+    margin-top: 3rem;
     align-items: center;
     justify-content: center;
 }
@@ -315,8 +333,8 @@ nav {
 #skills .main .cards .card{
     background-color: #1E1F29;
     margin-right: 2rem;
-    height: 17rem;
-    width: 19rem;
+    height: 15rem;
+    width: 17rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -326,11 +344,12 @@ nav {
     cursor: pointer;
 }
 
-.fa-arrow-right{
+.fa-arrow-right,.fa-arrow-left{
     font-size: 1.5rem;
     background-color: #1DD882;
     border-radius: 50%;
     padding:0.7rem 0.8rem;
+    cursor: pointer;
 }
 
 #skills .pop_up{
@@ -340,9 +359,9 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    visibility: hidden;
-    position: fixed;
-    top: 20%;
+    /* visibility: hidden; */
+    /* position: fixed; */
+    /* top: 20%; */
 }
 
 #skills .close{
@@ -362,6 +381,25 @@ nav {
     background-clip: text;
     -webkit-background-clip: text;
     cursor: pointer;
+}
+
+#popup_container{
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.616);
+    /* backdrop-filter: blur(2px); */
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
 }
 
 #skills .pop_up .title{
@@ -391,4 +429,121 @@ nav {
 
 .pop_up::backdrop{
     background-color: hsla(0, 0%, 0%, 0.3);
+}
+
+.main .navigations{
+    margin-top: 2rem;
+}
+
+.fa-arrow-left{
+    margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 1024px){
+    .card{
+        width: calc(33.3vw - 20px);
+    }
+    .main .navigations{
+        display: none;
+    }
+}
+@media screen and (max-width: 768px){
+    .card{
+        width: calc(50vw - 20px);
+    }
+    .main .navigations{
+        display: none;
+    }
+}
+
+.skill_category:last-child{
+    margin-right: 0;
+}
+
+#work{
+    min-height: 86vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#work .title{
+    font-size: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+#work .title span {
+    color: #1DD882;
+}
+
+#work .short_description{
+    color: #D4D4D4;
+    font-size: 0.9rem;
+}
+
+.work_card{
+    background-color: #1E1F29;
+    margin-right: 2rem;
+    height: 15rem;
+    width: 17rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+/* 
+#work_card .img_container{
+    height: 50%;
+} */
+
+.work_card img{
+    width: 14rem;
+    height: 9rem;
+    border-radius:  10px;
+    object-fit: cover;
+}
+
+#work .cards{
+    display: flex;
+    width:fit-content;
+    margin-top: 3rem;
+}
+
+#work .card{
+    padding-top: 0.5rem;
+    width: 15rem;
+    height: 17rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}    
+
+.work_card:last-child{
+    margin-right: 0;
+}
+
+#work .likes{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 88%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.fa-heart{
+    color: #1DD882;
+    margin-right: 0.5rem;
+}
+
+.work_card .project_name{
+    text-align: left;
+    width: 88%;
+}
+
+#work .navigations{
+    margin-top: 2rem;
 }
