@@ -22,10 +22,10 @@
                 <p>Eve.</p>
             </div>
             <ul class="nav_menu">
-                <li>About Me</li>
-                <li>Skills</li>
-                <li>My Work</li>
-                <li>Blogs</li>
+                <li class="about_me hr">About Me</li>
+                <li class="skills hr">Skills</li>
+                <li class="my_work hr">My Work</li>
+                <li class="blogs hr">Blogs</li>
             </ul>
             <div class="nav_buttons">
                 <button class="login">Login</button>
@@ -206,7 +206,7 @@
         <div class="cards">
             <div class="card work_card">
                 <!-- <div class="img_container"> -->
-                    <img src="images/ecommerce.jpg" alt="">
+                <img src="images/ecommerce.jpg" alt="">
                 <!-- </div> -->
                 <div class="likes">
                     <i class="fa-regular fa-heart"></i>
@@ -216,7 +216,7 @@
             </div>
             <div class="card work_card">
                 <!-- <div class="img_container"> -->
-                    <img src="images/elevator.jpg" alt="">
+                <img src="images/elevator.jpg" alt="">
                 <!-- </div> -->
                 <div class="likes">
                     <i class="fa-regular fa-heart"></i>
@@ -226,7 +226,7 @@
             </div>
             <div class="card work_card">
                 <!-- <div class="img_container"> -->
-                    <img src="images/reddit.jpg" alt="">
+                <img src="images/reddit.jpg" alt="">
                 <!-- </div> -->
                 <div class="likes">
                     <i class="fa-regular fa-heart"></i>
@@ -239,6 +239,86 @@
             <i id="prev" class="fa-solid fa-arrow-left"></i>
             <i id="next" class="fa-solid fa-arrow-right"></i>
         </div>
+    </div>
+    <div id="blogs">
+        <p class="title"><strong>My <span>Blogs</span></strong></p>
+        <p class="short_description">Me sharing what I know :)</p>
+        <div class="cards">
+            <div class="card blog_card">
+                <!-- <div class="img_container"> -->
+                <img src="images/clock.jpg" alt="">
+                <!-- </div> -->
+                <div class="blog_text">
+                    <p class="blog_title">Time management as Computer Science student</p>
+                    <p class="shrt_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit donec id massa
+                        odio.</p>
+                </div>
+                <button>Read</button>
+            </div>
+            <div class="card blog_card">
+                <!-- <div class="img_container"> -->
+                <img src="images/blog_elevator.jpg" alt="">
+                <!-- </div> -->
+                <div class="blog_text">
+                    <p class="blog_title">Elevator simulation program in C</p>
+                    <p class="shrt_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit donec id massa
+                        odio.</p>
+                </div>
+                <button>Read</button>
+            </div>
+            <div class="card blog_card">
+                <!-- <div class="img_container"> -->
+                <img src="images/algorithm.jpg" alt="">
+                <!-- </div> -->
+                <div class="blog_text">
+                    <p class="blog_title">DSA problems you should know</p>
+                    <p class="shrt_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit donec id massa
+                        odio.</p>
+                </div>
+                <button>Read</button>
+            </div>
+        </div>
+        <button class="view_all">View all</button>
+    </div>
+    <div id="contact">
+        <div class="container">
+            <div class="left">
+                <p class="title"><strong>Contact <span>Me</span></strong></p>
+                <p class="short_description">Feel free to contact me via my social links shared below, or fill this
+                    form.</p>
+                <div class="socials">
+                    <div class="email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="github">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <div class="linkedin">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="form_container">
+                    <form class="contact_form" action="">
+                        <label for="name">Name</label>
+                        <input type="text" id="name">
+                        <label for="name">Email</label>
+                        <input type="text" id="name">
+                        <label for="name">Phone number</label>
+                        <input type="text" id="name">
+                        <label for="name">Message</label>
+                        <input type="text" id="message">
+                        <div class="buttons">
+                            <button id="submit_message">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p>© Copyright 2023</p>
     </div>
     <script src="index.js"></script>
 </body>

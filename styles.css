@@ -55,6 +55,10 @@ nav {
     padding-right: 2rem;
 }
 
+.nav_menu li .about_me:hover .hr::after{
+
+}
+
 .nav_buttons .login {
     background-color: #2B2D3A;
     border: 2px solid #1DD882;
@@ -310,7 +314,7 @@ nav {
 
 #skills .main .title{
     font-size: 2.5rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 #skills .main .title span {
@@ -493,10 +497,6 @@ nav {
     align-items: center;
     border-radius: 10px;
 }
-/* 
-#work_card .img_container{
-    height: 50%;
-} */
 
 .work_card img{
     width: 14rem;
@@ -546,4 +546,241 @@ nav {
 
 #work .navigations{
     margin-top: 2rem;
+}
+
+#blogs{
+    min-height: 86vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#blogs .title{
+    font-size: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+#blogs .title span {
+    color: #1DD882;
+}
+
+#blogs .short_description{
+    color: #D4D4D4;
+    font-size: 0.9rem;
+}
+
+.blog_card{
+    background-color: #1E1F29;
+    margin-right: 2rem;
+    height: 13rem;
+    width: 17rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.blog_card img{
+    width: 16rem;
+    height: 10rem;
+    border-radius:  10px;
+    object-fit: cover;
+}
+
+#blogs .cards{
+    display: flex;
+    width:fit-content;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+#blogs .card{
+    padding-top: 0.5rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    width: 17rem;
+    height: 22.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}    
+
+.blog_card:last-child{
+    margin-right: 0;
+}
+
+.blog_card .blog_title{
+    text-align: center;
+    width: 100%;
+    font-weight: 700;
+    margin-top: 1rem;
+    line-height: 1.2rem;
+}
+
+.blog_card .shrt_description{
+    text-align: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+}
+
+#blogs .navigations{
+    margin-top: 2rem;
+}
+
+.blog_card button{
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1.5rem;
+    font-family: 'Poppins';
+    width: fit-content;
+    font-weight: 600;
+}
+
+#blogs .view_all{
+    background-color: #1DD882;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    width: fit-content;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#contact{
+    min-height: 86vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+#contact .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+#contact .left{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#contact .right{
+    width:50%;
+    display: flex;
+    justify-content: center;
+}
+
+.form_container{
+    width: 60%;
+    background-color: #1E1F29;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+#contact .left .title{
+    font-size: 2.5rem;
+}
+
+#contact .left .title span{
+    font-size: 3rem;
+    color: #1DD882;
+}
+#contact .left .short_description{
+    width: 60%;
+    text-align: center;
+    color: #D4D4D4;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+#contact .socials{
+    display: flex;
+}
+
+.fa-envelope, .fa-github, .fa-linkedin-in{
+    font-size: 1.5rem;
+}
+
+#contact .email, #contact .github, #contact .linkedin{
+    background-color: #1DD882;
+    height: 2.5rem;
+    width:2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+#contact .email, #contact .github{
+    margin-right: 1rem;
+}
+
+.contact_form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 75%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    /* border: 2px solid grey; */
+}
+
+.contact_form label{
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.contact_form input{
+    margin-bottom: 0.9rem;
+    border-radius: 10px;
+    background-color: #1E1F29;
+    height: 2rem;
+    border: 1px solid #fff;
+    width: 100%;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.contact_form button{
+    color: #fff;
+    background-color: #1DD882;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 3rem;
+    font-family: 'Poppins';
+    width: fit-content;
+}
+
+.contact_form #message{
+    height: 5rem;
+}
+
+#footer{
+    height: 3rem;
+    background-color: #1E1F29;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
