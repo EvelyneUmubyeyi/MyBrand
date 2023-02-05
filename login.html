@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/88276971a8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="CSS/dashboard.css">
+    <link rel="stylesheet" href="CSS/login.css">
     <title>Evelyne Umubyeyi</title>
 </head>
+
 <body>
     <nav id="navbar">
         <div class="nav_content">
@@ -23,23 +25,32 @@
                 <li class="skills hr">Skills</li>
                 <li class="my_work hr">My Work</li>
                 <li class="blogs hr">Blogs</li>
-                <li class="dashboard hr">Dashboard</li>
             </ul>
             <div class="nav_buttons">
-                <button class="login">Logout</button>
+                <button class="login">Login</button>
                 <button class="contact">Contact me</button>
             </div>
         </div>
         <hr>
     </nav>
-    <div class="main">
-        <p class="title"><Strong>Dashboard</Strong></p>
-        <div class="cards">
-            <div class="card">
-                <p>5 Blogs</p>
-            </div>
-            <div class="card">
-                <p>3 Queries</p>
+    <div class="body">
+        <div class="login_container">
+            <!-- <div class="pic"> -->
+                <img src="images/login.jpg" alt="login">
+            <!-- </div> -->
+            <div class="form_container">
+                <p class="title"><strong>Log <span>in</span></strong></p>
+                <form action="">
+                    <label for="email">Email</label>
+                    <input type="text" id="email">
+                    <label for="password">Password</label>
+                    <input type="text" id="password">
+                    <div class="buttons">
+                        <button id="submit_message">Submit</button>
+                    </div>
+                </form>
+                <p class="signup">Don’t have an account? <span>Sign up</span>
+                </p>
             </div>
         </div>
     </div>
@@ -47,4 +58,5 @@
         <p>© Copyright 2023</p>
     </div>
 </body>
+
 </html>

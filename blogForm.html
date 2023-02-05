@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/88276971a8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="CSS/dashboard.css">
+    <link rel="stylesheet" href="CSS/blogForm.css">
     <title>Evelyne Umubyeyi</title>
 </head>
+
 <body>
     <nav id="navbar">
         <div class="nav_content">
@@ -32,19 +34,36 @@
         </div>
         <hr>
     </nav>
-    <div class="main">
-        <p class="title"><Strong>Dashboard</Strong></p>
-        <div class="cards">
-            <div class="card">
-                <p>5 Blogs</p>
-            </div>
-            <div class="card">
-                <p>3 Queries</p>
-            </div>
+    <div class="body">
+        <div class="back">
+            <i id="prev" class="fa-solid fa-arrow-left"></i>
+        </div>
+        <p class="title"><strong>Add <span>Article</span></strong></p>
+        <div class="form_container">
+            <form action="">
+                <label for="title">Title</label>
+                <input type="text" id="title">
+                <label for="hook">Hook</label>
+                <textarea type="text" id="hook"></textarea>
+                <label>Cover image</label>
+                <div class="image">
+                    <div class="inner_text">
+                        <i class="fa-solid fa-image"></i>
+                        <p>Drag and drop or <span><label for="image" id="for_image">browse</label></span></p>
+                    </div>
+                    <input type="file" id="image">
+                </div>
+                <label for="content">Content</label>
+                <textarea type="text" id="content"></textarea>
+                <div class="buttons">
+                    <button id="submit_message">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
     <div id="footer">
         <p>© Copyright 2023</p>
     </div>
 </body>
+
 </html>

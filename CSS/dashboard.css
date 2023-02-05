@@ -1,0 +1,131 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #2B2D3A;
+    color: #fff;
+    font-family: 'Poppins';
+}
+
+button{
+    cursor: pointer;
+}
+
+nav li{
+    cursor: pointer;
+}
+
+nav {
+    width: 100%;
+    background-color: #2B2D3A;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.nav_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.logo {
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 3.5rem;
+    color: #1DD882;
+    padding: 0;
+    margin: 0;
+    line-height: 53px;
+    height: 37px;
+}
+
+.nav_menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav_menu li {
+    padding-right: 2rem;
+}
+
+.nav_menu li .about_me:hover .hr::after{
+
+}
+
+.nav_buttons .login {
+    background-color: #2B2D3A;
+    border: 2px solid #1DD882;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.5rem 1.7rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    margin-right: 1.5rem;
+}
+
+.nav_buttons .contact {
+    background-color: #1DD882;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+}
+
+.main{
+    text-align: center;
+    min-height: 86vh;
+}
+
+.main .title{
+    font-size: 2.5rem;
+    margin-top: 2.5rem;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.card{
+    background-color: #1DD882;
+    height: 15rem;
+    width: 17rem;
+    border-radius: 10px;
+    margin-right: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card:hover{
+    background-color: #34dc8f;
+}
+
+.card:last-child{
+    margin-right: 0;
+}
+
+.card p{
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+#footer{
+    height: 3rem;
+    background-color: #1E1F29;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

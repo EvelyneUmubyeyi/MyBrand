@@ -1,0 +1,198 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #2B2D3A;
+    color: #fff;
+    font-family: 'Poppins';
+}
+
+button {
+    cursor: pointer;
+}
+
+nav li {
+    cursor: pointer;
+}
+
+nav {
+    width: 100%;
+    background-color: #2B2D3A;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.nav_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.logo {
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 3.5rem;
+    color: #1DD882;
+    padding: 0;
+    margin: 0;
+    line-height: 53px;
+    height: 37px;
+}
+
+.nav_menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav_menu li {
+    padding-right: 2rem;
+}
+
+.nav_menu li .about_me:hover .hr::after {}
+
+.nav_buttons .login {
+    background-color: #2B2D3A;
+    border: 2px solid #1DD882;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.5rem 1.7rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    margin-right: 1.5rem;
+}
+
+.nav_buttons .contact {
+    background-color: #1DD882;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+}
+
+.body {
+    width: 80%;
+    margin: auto;
+    min-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.back {
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.fa-arrow-left {
+    font-size: 2rem;
+    color: #1DD882;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.title span {
+    color: #1DD882;
+}
+
+.create_new{
+    display: flex;
+    justify-content: flex-end;
+    width: 85%;
+    margin-bottom: 1.5rem;
+}
+
+.create_new button{
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    width: fit-content;
+}
+
+.fa-plus{
+    font-size: 1.2rem;
+}
+
+table{
+    background-color: #1E1F29;
+    width: 85%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+tr{
+    border-bottom: 1px solid #fff;
+}
+
+thead tr{
+    text-align: left;
+}
+
+th, td{
+    padding: 1rem 1rem;
+}
+
+tbody tr:last-of-type {
+    border-bottom: 0;
+}
+
+th{
+    padding-top: 1.5rem;
+}
+
+tbody tr:last-of-type td{
+    padding-bottom: 1.5rem;
+}
+
+.col_first{
+    padding-left: 1.5rem;
+}
+
+.likes, .comments{
+    text-align: center;
+}
+
+.edit,.delete{
+    background-color: #1DD882;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+}
+
+.edit{
+    margin-right: 0.5rem;
+}
+
+.icons{
+    display: flex;
+}
+
+#footer{
+    height: 3rem;
+    background-color: #1E1F29;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

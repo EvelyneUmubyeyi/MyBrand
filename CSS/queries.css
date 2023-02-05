@@ -1,0 +1,169 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #2B2D3A;
+    color: #fff;
+    font-family: 'Poppins';
+}
+
+button {
+    cursor: pointer;
+}
+
+nav li {
+    cursor: pointer;
+}
+
+nav {
+    width: 100%;
+    background-color: #2B2D3A;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.nav_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.logo {
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 3.5rem;
+    color: #1DD882;
+    padding: 0;
+    margin: 0;
+    line-height: 53px;
+    height: 37px;
+}
+
+.nav_menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav_menu li {
+    padding-right: 2rem;
+}
+
+.nav_menu li .about_me:hover .hr::after {}
+
+.nav_buttons .login {
+    background-color: #2B2D3A;
+    border: 2px solid #1DD882;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.5rem 1.7rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    margin-right: 1.5rem;
+}
+
+.nav_buttons .contact {
+    background-color: #1DD882;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+}
+
+.body {
+    width: 80%;
+    margin: auto;
+    min-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.back {
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.fa-arrow-left {
+    font-size: 2rem;
+    color: #1DD882;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.title span {
+    color: #1DD882;
+}
+
+.date {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.date span {
+    color: #d4d4d4;
+}
+
+.date:after {
+    content: "";
+    border-bottom: 1px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.date span {
+    padding: 0 8px;
+    position: relative;
+    z-index: 1;
+    background-color: #2B2D3A;
+}
+
+.card{
+    width: 100%;
+    background-color: #1E1F29;
+    padding: 3rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.name,.email,.phone,.message{
+    margin-bottom: 0.7rem;
+}
+
+.name_label,.email_label,.phone_label,.message_label{
+    font-weight: 600;
+}
+
+.name_val,.email_val,.phone_val,.message_val{
+    font-weight: 400;
+    color: #cccccc;
+}
+
+#footer{
+    height: 3rem;
+    background-color: #1E1F29;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
