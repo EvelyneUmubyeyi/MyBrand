@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/88276971a8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="CSS/blogForm.css">
+    <link rel="stylesheet" href="CSS/signup.css">
     <title>Evelyne Umubyeyi</title>
 </head>
 
@@ -25,45 +25,37 @@
                 <li class="skills hr">Skills</li>
                 <li class="my_work hr">My Work</li>
                 <li class="blogs hr">Blogs</li>
-                <li class="dashboard hr">Dashboard</li>
             </ul>
             <div class="nav_buttons">
-                <button class="login">Logout</button>
+                <button class="login">Login</button>
                 <button class="contact">Contact me</button>
             </div>
         </div>
         <hr>
     </nav>
     <div class="body">
-        <div class="back">
-            <a href="/dashboard.html"><i id="prev" class="fa-solid fa-arrow-left"></i></a>
-        </div>
-        <p class="title"><strong>Add <span>Article</span></strong></p>
-        <div class="form_container">
-            <form action="">
-                <label for="title">Title</label>
-                <input type="text" id="title">
-                <label for="hook">Hook</label>
-                <textarea type="text" id="hook"></textarea>
-                <label>Cover image</label>
-                <div class="image">
-                    <div class="inner_text">
-                        <i class="fa-solid fa-image"></i>
-                        <p>Drag and drop or <span><label for="image" id="for_image">browse</label></span></p>
+        <div class="login_container">
+            <div class="form_container">
+                <p class="title"><strong>Sign <span>up</span></strong></p>
+                <form action="">
+                    <label for="name">Name</label>
+                    <input type="text" id="name">
+                    <label for="email">Email</label>
+                    <input type="text" id="email">
+                    <label for="password">Password</label>
+                    <input type="text" id="password">
+                    <div class="buttons">
+                        <button id="submit_message">Submit</button>
                     </div>
-                    <input type="file" id="image">
-                </div>
-                <label for="content">Content</label>
-                <textarea type="text" id="content"></textarea>
-                <div class="buttons">
-                    <button id="submit_message">Submit</button>
-                </div>
-            </form>
+                </form>
+                <p class="signup">Already have an account? <span><a href="/login.html">Log in</a></span>
+                </p>
+            </div>
+            <img src="images/login.jpg" alt="signup">
         </div>
     </div>
     <div id="footer">
         <p>© Copyright 2023</p>
     </div>
 </body>
-
 </html>

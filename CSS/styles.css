@@ -70,6 +70,11 @@ nav {
     margin-right: 1.5rem;
 }
 
+.nav_buttons .login a{
+    text-decoration: none;
+    color: #fff;
+}
+
 .nav_buttons .contact {
     background-color: #1DD882;
     border: none;
@@ -641,6 +646,11 @@ nav {
     font-family: 'Poppins';
     width: fit-content;
     font-weight: 600;
+}
+
+.blog_card button a{
+    color: #000;
+    text-decoration: none;
 }
 
 #blogs .view_all{

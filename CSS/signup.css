@@ -109,8 +109,8 @@ img{
 
 .title {
     font-size: 2.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .title span {
@@ -139,7 +139,7 @@ label{
 }
 
 input{
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.6rem;
     border-radius: 10px;
     background-color: #1E1F29;
     height: 2rem;
@@ -151,8 +151,8 @@ input{
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
 }
 
 .buttons button{
