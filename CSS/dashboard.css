@@ -80,6 +80,10 @@ nav {
     font-size: 1rem;
 }
 
+.fa-bars{
+    display: none;
+}
+
 .main{
     text-align: center;
     min-height: 86vh;
