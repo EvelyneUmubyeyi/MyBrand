@@ -78,8 +78,57 @@ nav {
     font-size: 1rem;
 }
 
-.fa-bars{
+.fa-bars {
     display: none;
+}
+
+.responsive_nav {
+    background-color: #1E1F29;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    visibility: hidden;
+    position: fixed;
+    height: 87vh;
+    width: 100%;
+
+}
+
+.res_nav_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_menu {
+    list-style-type: none;
+}
+
+.res_nav_menu li {
+    margin-bottom: 2rem;
+    text-decoration: none;
+}
+
+.res_nav_menu a {
+    text-decoration: none;
+}
+
+.res_nav_buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_buttons .login {
+    margin-right: 0;
+}
+
+.res_nav_buttons .login,
+.res_nav_buttons .contact {
+    font-weight: 600;
+    margin-bottom: 2rem;
 }
 
 .body {
@@ -114,14 +163,14 @@ nav {
     color: #1DD882;
 }
 
-.create_new{
+.create_new {
     display: flex;
     justify-content: flex-end;
     width: 85%;
     margin-bottom: 1.5rem;
 }
 
-.create_new button{
+.create_new button {
     background-color: #fff;
     border: none;
     border-radius: 10px;
@@ -132,31 +181,32 @@ nav {
     width: fit-content;
 }
 
-.create_new button a{
+.create_new button a {
     text-decoration: none;
     color: black;
 }
 
-.fa-plus{
+.fa-plus {
     font-size: 1.2rem;
 }
 
-table{
+table {
     background-color: #1E1F29;
     width: 85%;
     border-collapse: collapse;
     margin-bottom: 2rem;
 }
 
-tr{
+tr {
     border-bottom: 1px solid #fff;
 }
 
-thead tr{
+thead tr {
     text-align: left;
 }
 
-th, td{
+th,
+td {
     padding: 1rem 1rem;
 }
 
@@ -164,23 +214,25 @@ tbody tr:last-of-type {
     border-bottom: 0;
 }
 
-th{
+th {
     padding-top: 1.5rem;
 }
 
-tbody tr:last-of-type td{
+tbody tr:last-of-type td {
     padding-bottom: 1.5rem;
 }
 
-.col_first{
+.col_first {
     padding-left: 1.5rem;
 }
 
-.likes, .comments{
+.likes,
+.comments {
     text-align: center;
 }
 
-.edit,.delete{
+.edit,
+.delete {
     background-color: #1DD882;
     border-radius: 5px;
     display: flex;
@@ -190,18 +242,207 @@ tbody tr:last-of-type td{
     width: 2rem;
 }
 
-.edit{
+.edit {
     margin-right: 0.5rem;
 }
 
-.icons{
+.icons {
     display: flex;
 }
 
-#footer{
+#footer {
     height: 3rem;
     background-color: #1E1F29;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Nav */
+@media screen and (max-width: 1144px) {
+    .nav_menu li {
+        padding-right: 1rem;
+    }
+
+    .nav_buttons .login {
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .nav_buttons .contact {
+        padding: 0.6rem 1rem;
+    }
+
+    .nav_buttons .login {
+        padding: 0.5rem 1.2rem;
+    }
+}
+
+@media screen and (max-width: 935px) {
+    .nav_buttons .contact {
+        font-size: 0.8rem;
+    }
+
+    .nav_buttons .login {
+        font-size: 0.8rem;
+    }
+
+    .nav_menu li {
+        font-size: 0.8rem;
+    }
+
+    th,
+    td {
+        font-size: 0.8rem;
+    }
+
+    .create_new button {
+        font-size: 0.8rem;
+    }
+
+    .fa-plus {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    .create_new {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .nav_buttons .login {
+        margin-right: 0.5rem;
+    }
+
+    .nav_menu li {
+        padding-right: 0.7rem;
+    }
+
+    .nav_buttons .login {
+        margin-right: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 770px) {
+
+    th,
+    td {
+        padding: 0.5rem 0.5rem;
+    }
+}
+
+@media screen and (max-width: 748px) {
+    .nav_buttons .contact {
+        padding: 0.6rem 0.6rem;
+    }
+
+    .nav_buttons .login {
+        padding: 0.5rem 0.6rem;
+    }
+}
+
+@media screen and (max-width: 696px) {
+
+    .nav_menu,
+    .nav_buttons {
+        display: none;
+    }
+
+    .fa-bars {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .body {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    table{
+        background-color: transparent;
+    }
+
+    .body {
+        width: 80%;
+    }
+
+    table {
+        border: 0;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        /* border-bottom: 3px solid #ddd; */
+        display: block;
+        margin-bottom: 3rem;
+        background-color: #1E1F29;
+    }
+
+    table td {
+        border-bottom: 1px solid #fff;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    .likes,
+    .comments {
+        text-align: right;
+    }
+
+    .icons {
+        display: block;
+        /* justify-content: space-between; */
+        border-bottom: 0;
+    }
+
+    .edit,
+    .delete {
+        display: inline-flex;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 700;
+    }
+
+    .col_first {
+        padding-left: 8px;
+    }
+
+    /* tr td:last-of-type {
+        border-bottom: 0;
+    } */
+
+    /* table .last_child{
+        border-bottom: 0;
+    } */
+
+    table tr td::nth-child(6){
+        border-bottom: 0;
+    }
+
+
 }

@@ -31,28 +31,43 @@
                 <button class="login">Logout</button>
                 <button class="contact">Contact me</button>
             </div>
-            <i class="fa-regular fa-bars"></i>
+            <i class="fa-solid fa-bars" id="fa-bars"></i>
         </div>
         <hr>
     </nav>
+    <div class="responsive_nav" id="responsive_nav">
+        <ul class="res_nav_menu">
+            <li class="about_me"><a>About Me</a></li>
+            <li class="skills"><a>Skills</a></li>
+            <li class="my_work"><a>My Work</a></li>
+            <li class="blogs"><a>Blogs</a></li>
+        </ul>
+        <div class="res_nav_buttons">
+            <button class="login"> <a href="/MyBrand/login.html">Login</a></button>
+            <button class="contact">Contact me</button>
+        </div>
+    </div>
     <div class="main">
         <p class="title"><Strong>Dashboard</Strong></p>
-        <div class="cards">
-            <a class="card" href="/MyBrand/blogsList.html">
-                <div>
-                    <p>5 Blogs</p>
-                </div>
-            </a>
-            <a class="card" href="/MyBrand/queries.html">
-                <div>
-                    <p>3 Queries</p>
-                </div>
-            </a>
+        <div class="cards_container">
+            <div class="cards">
+                <a class="card" href="/MyBrand/blogsList.html">
+                    <div>
+                        <p>5 Blogs</p>
+                    </div>
+                </a>
+                <a class="card" href="/MyBrand/queries.html">
+                    <div>
+                        <p>3 Queries</p>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
     <div id="footer">
         <p>© Copyright 2023</p>
     </div>
+    <script src="JS/dashboard.js"></script>
 </body>
 
 </html>
