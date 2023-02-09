@@ -10,6 +10,12 @@ body {
     font-family: 'Poppins';
 }
 
+a{
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
 .stop-scrolling {
     height: 100vh;
     overflow: hidden;
@@ -1019,14 +1025,6 @@ nav {
 
     #contact {
         margin-bottom: 4rem;
-    }
-
-    #contact .left {
-        /* border: 2px solid grey; */
-    }
-
-    #contact .right {
-        /* border: 2px solid palegoldenrod; */
     }
 
     .form_container {

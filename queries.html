@@ -17,27 +17,29 @@
 <body>
     <nav id="navbar">
         <div class="nav_content">
-            <div class="logo">
-                <p>Eve.</p>
-            </div>
+            <a href="/">
+                <div class="logo">
+                    <p>Eve.</p>
+                </div>
+            </a>
             <ul class="nav_menu">
-                <li class="about_me hr">About Me</li>
-                <li class="skills hr">Skills</li>
-                <li class="my_work hr">My Work</li>
-                <li class="blogs hr">Blogs</li>
-                <li class="dashboard hr">Dashboard</li>
+                <li class="about_me" id="about_me_li"><a href="/#about_me">About Me</a></li>
+                <li class="skills"><a href="/#skills">Skills</a></li>
+                <li class="my_work"><a href="/#work">My Work</a></li>
+                <li class="blogs"><a href="/#blogs">Blogs</a></li>
+                <li class="dashboard"><a href="/MyBrand/dashboard.html">Dashboard</a></li>
             </ul>
             <div class="nav_buttons">
-                <button class="login">Logout</button>
-                <button class="contact">Contact me</button>
+                <button class="login"> <a href="/MyBrand/login.html">Login</a></button>
+                <button class="contact"><a href="/#contact">Contact me</a></button>
             </div>
-            <i class="fa-regular fa-bars"></i>
+            <i class="fa-solid fa-bars" id="fa-bars"></i>
         </div>
         <hr>
     </nav>
     <div class="body">
         <div class="back">
-            <i id="prev" class="fa-solid fa-arrow-left"></i>
+            <a href="/MyBrand/dashboard.html"><i id="prev" class="fa-solid fa-arrow-left"></i></a>
         </div>
         <p class="title"><strong>Received <span>Queries</span></strong></p>
         <div class="date"><span>20 Jan 2023</span></div>
