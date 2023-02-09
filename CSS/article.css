@@ -1,3 +1,5 @@
+/* @import url("./CSS/styles.css"); */
+
 * {
     padding: 0;
     margin: 0;
@@ -10,11 +12,11 @@ body {
     font-family: 'Poppins';
 }
 
-button{
+button {
     cursor: pointer;
 }
 
-nav li{
+nav li {
     cursor: pointer;
 }
 
@@ -55,9 +57,7 @@ nav {
     padding-right: 2rem;
 }
 
-.nav_menu li .about_me:hover .hr::after{
-
-}
+.nav_menu li .about_me:hover .hr::after {}
 
 .nav_buttons .login {
     background-color: #2B2D3A;
@@ -80,12 +80,61 @@ nav {
     font-size: 1rem;
 }
 
-.fa-bars{
+.fa-bars {
     display: none;
 }
 
-.body{
-    width:75%;
+.responsive_nav {
+    background-color: #1E1F29;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    visibility: hidden;
+    position: fixed;
+    height: 87vh;
+    width: 100%;
+
+}
+
+.res_nav_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_menu {
+    list-style-type: none;
+}
+
+.res_nav_menu li {
+    margin-bottom: 2rem;
+    text-decoration: none;
+}
+
+.res_nav_menu a {
+    text-decoration: none;
+}
+
+.res_nav_buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_buttons .login {
+    margin-right: 0;
+}
+
+.res_nav_buttons .login,
+.res_nav_buttons .contact {
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.body {
+    width: 80%;
     margin: auto;
     min-height: 86vh;
     display: flex;
@@ -94,20 +143,21 @@ nav {
     margin-bottom: 3rem;
 }
 
-.back{
+.back {
     height: 4rem;
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.fa-arrow-left{
+.go_back {
     font-size: 2rem;
     color: #1DD882;
+    background-color: transparent;
     cursor: pointer;
 }
 
-.header{
+.header {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -115,106 +165,108 @@ nav {
     margin-bottom: 2rem;
 }
 
-.header .title{
+.header .title {
     color: #1DD882;
     font-size: 2.5rem;
     margin-top: 1rem;
     font-weight: 700;
 }
 
-.header .small_description{
+.header .small_description {
     text-align: center;
     color: #D4D4D4;
     font-size: 0.9rem;
 }
 
-.about_author{
+.about_author {
     margin-top: 2rem;
     display: flex;
 }
 
-.about_author img{
-    height:3.5rem;
-    width:3.5rem;
+.about_author img {
+    height: 3.5rem;
+    width: 3.5rem;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
     margin-right: 0.8rem;
 }
 
-.about_author .text .name{
+.about_author .text .name {
     font-weight: 700;
 }
 
-.cover_photo{
+.cover_photo {
     width: 100%;
     margin-top: 1rem;
     margin-bottom: 3rem;
 }
 
-.cover_photo img{
+.cover_photo img {
     width: 100%;
     height: 28rem;
     object-fit: cover;
 }
 
-.content p{
+.content p {
     margin-bottom: 1.5rem;
 }
 
-hr{
+hr {
     width: 100%;
 }
 
-.reactions{
+.reactions {
     margin-top: 1.5rem;
     display: flex;
     width: 100%;
     justify-content: flex-start;
 }
 
-.likes, .comments{
+.likes,
+.comments {
     display: flex;
     align-items: center;
     margin-right: 2rem;
 }
 
-.fa-heart{
+.fa-heart {
     color: #1DD882;
     font-size: 2rem;
     margin-right: 0.5rem;
 }
 
-.no_likes,.no_comments{
+.no_likes,
+.no_comments {
     font-weight: 700;
 }
 
-.fa-message{
+.fa-message {
     font-size: 1.7rem;
     margin-right: 0.5rem;
 }
 
-.fa-clone{
+.fa-clone {
     font-size: 1.7rem;
 }
 
-.add_comment{
+.add_comment {
     margin-top: 3rem;
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.add_comment img{
-    height:3rem;
-    width:3rem;
+.add_comment img {
+    height: 3rem;
+    width: 3rem;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
     margin-right: 1rem;
 }
 
-.add_comment input{
+.add_comment input {
     background-color: #2B2D3A;
     height: 3rem;
     border: 1px solid #fff;
@@ -222,32 +274,32 @@ hr{
     width: 70%;
 }
 
-.add_comment input::placeholder{
+.add_comment input::placeholder {
     padding-left: 1.5rem;
 }
 
-.comments_list{
+.comments_list {
     margin-top: 2rem;
 }
 
-.single_comment{
+.single_comment {
     display: flex;
     margin-bottom: 1rem;
 }
 
-.fa-user{
+.fa-user {
     font-size: 1.5rem;
     padding: 0.7rem;
 }
 
-.icon_container{
+.icon_container {
     border: 1px solid white;
     height: fit-content;
     border-radius: 50%;
     margin-right: 1rem;
 }
 
-.single_comment .text{
+.single_comment .text {
     border: 1px solid #fff;
     width: 70%;
     border-radius: 10px;
@@ -256,7 +308,7 @@ hr{
     align-items: center;
 }
 
-.comment_header{
+.comment_header {
     display: flex;
     justify-content: space-between;
     width: 95%;
@@ -264,26 +316,233 @@ hr{
     margin-bottom: 1rem;
 }
 
-.comment_header .name{
+.comment_header .name {
     color: #1DD882;
     font-weight: 700;
-}    
+}
 
-.comment_header .date{
+.comment_header .date {
     color: #D4D4D4;
     font-size: 0.8rem;
 }
 
-.single_comment .comment{
+.single_comment .comment {
     width: 95%;
     padding-bottom: 1rem;
     font-size: 0.8rem;
 }
 
-#footer{
+#footer {
     height: 3rem;
     background-color: #1E1F29;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Nav */
+
+@media screen and (max-width: 910px) {
+    .nav_menu li {
+        padding-right: 1rem;
+    }
+
+    .header {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .nav_buttons .contact {
+        font-size: 0.8rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .nav_buttons .login {
+        font-size: 0.8rem;
+        padding: 0.5rem 1.2rem;
+        margin-right: 1rem;
+    }
+
+    .nav_menu li {
+        font-size: 0.8rem;
+    }
+
+    .header .title {
+        font-size: 2rem;
+    }
+
+    .add_comment input {
+        width: 90%;
+    }
+
+    .single_comment .text {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 625px) {
+    .header .title {
+        font-size: 1.5rem;
+    }
+
+    .header .small_description {
+        font-size: 0.8rem;
+    }
+
+    .about_author .text .name,
+    .about_author .text .date {
+        font-size: 0.8rem;
+    }
+
+    .about_author {
+        display: flex;
+        align-items: center;
+    }
+
+    .about_author img {
+        height: 3rem;
+        width: 3rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .nav_buttons .login {
+        margin-right: 0.5rem;
+    }
+
+    .nav_menu li {
+        padding-right: 0.7rem;
+    }
+}
+
+/* small tablets */
+
+@media screen and (max-width: 595px) {
+
+    .nav_menu,
+    .nav_buttons {
+        display: none;
+    }
+
+    .fa-bars {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 595px) {
+    .header {
+        width: 95%;
+    }
+
+    .cover_photo {
+        margin-bottom: 2rem;
+    }
+
+    .cover_photo img {
+        width: 100%;
+        height: 17rem;
+    }
+}
+
+@media screen and (max-width: 395px) {
+    .header {
+        width: 100%;
+    }
+
+    .cover_photo img {
+        height: 15rem;
+    }
+
+    .content p {
+        font-size: 0.8rem;
+    }
+
+    .no_likes,
+    .no_comments {
+        font-size: 0.8rem;
+    }
+
+    .reactions {
+        margin-top: 1rem;
+    }
+
+    .fa-heart {
+        font-size: 1.5rem;
+    }
+
+    .fa-message,
+    .fa-clone {
+        font-size: 1.2rem;
+    }
+
+    .likes,
+    .comments {
+        margin-right: 1.5rem;
+    }
+
+    .comment_header {
+        width: 90%;
+        margin-bottom: 0.5rem;
+    }
+
+    .single_comment .comment {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .header .title {
+        text-align: center;
+    }
+
+    .back {
+        height: 3rem;
+    }
+
+    .go_back {
+        font-size: 1.5rem;
+        padding: 0;
+    }
+
+    .cover_photo img {
+        height: 12rem;
+    }
+
+    .fa-user {
+        font-size: 1rem;
+        padding: 0.7rem;
+    }
+
+    .icon_container {
+        margin-right: 0.5rem;
+    }
+
+    .add_comment img {
+        height: 2.5rem;
+        width: 2.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .add_comment input {
+        height: 2.5rem;
+    }
+
+    .single_comment .comment {
+        font-size: 0.6rem;
+    }
+
+    .comment_header .date {
+        font-size: 0.6rem;
+    }
+
+    .comment_header .name {
+        font-size: 0.8rem;
+    }
+
+    #footer p{
+        font-size: 0.8rem;
+    }
 }

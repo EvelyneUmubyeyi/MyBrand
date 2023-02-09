@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/88276971a8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/styles.css">
     <link rel="stylesheet" href="CSS/article.css">
     <title>Evelyne Umubyeyi</title>
 </head>
@@ -28,13 +29,25 @@
                 <button class="login">Login</button>
                 <button class="contact">Contact me</button>
             </div>
-            <i class="fa-regular fa-bars"></i>
+            <i class="fa-solid fa-bars" id="fa-bars"></i>
         </div>
         <hr>
     </nav>
+    <div class="responsive_nav" id="responsive_nav">
+        <ul class="res_nav_menu">
+            <li class="about_me"><a>About Me</a></li>
+            <li class="skills"><a>Skills</a></li>
+            <li class="my_work"><a>My Work</a></li>
+            <li class="blogs"><a>Blogs</a></li>
+        </ul>
+        <div class="res_nav_buttons">
+            <button class="login"> <a href="/MyBrand/login.html">Login</a></button>
+            <button class="contact">Contact me</button>
+        </div>
+    </div>
     <div class="body">
         <div class="back">
-            <a href="/"><i id="prev" class="fa-solid fa-arrow-left"></i></a>
+            <a href="/"><i id="prev" class="fa-solid fa-arrow-left go_back"></i></a>
         </div>
         <div class="header">
             <p class="title">UX review presentations</p>
@@ -102,5 +115,6 @@
     <div id="footer">
         <p>© Copyright 2023</p>
     </div>
+    <script src="JS/article.js"></script>
 </body>
 </html>

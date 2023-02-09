@@ -10,6 +10,11 @@ body {
     font-family: 'Poppins';
 }
 
+.stop-scrolling {
+    height: 100vh;
+    overflow: hidden;
+}
+
 button {
     cursor: pointer;
 }
@@ -59,9 +64,10 @@ nav {
     padding-right: 2rem;
 }
 
-.nav_menu li .about_me:hover .hr::after {}
+/* .nav_menu li .about_me:hover .hr::after {} */
 
-.nav_buttons .login {
+.nav_buttons .login,
+.res_nav_buttons .login {
     background-color: #2B2D3A;
     border: 2px solid #1DD882;
     border-radius: 10px;
@@ -72,12 +78,14 @@ nav {
     margin-right: 1.5rem;
 }
 
-.nav_buttons .login a {
+.nav_buttons .login a,
+.res_nav_buttons .login a {
     text-decoration: none;
     color: #fff;
 }
 
-.nav_buttons .contact {
+.nav_buttons .contact,
+.res_nav_buttons .contact {
     background-color: #1DD882;
     border: none;
     border-radius: 10px;
@@ -91,11 +99,62 @@ nav {
     display: none;
 }
 
+/* Start of mobile nav */
+.responsive_nav {
+    background-color: #1E1F29;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    visibility: hidden;
+    position: fixed;
+    height: 87vh;
+    width: 100%;
+    
+}
+
+.res_nav_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_menu {
+    list-style-type: none;
+}
+
+.res_nav_menu li {
+    margin-bottom: 2rem;
+    text-decoration: none;
+}
+
+.res_nav_menu a {
+    text-decoration: none;
+}
+
+.res_nav_buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_buttons .login {
+    margin-right: 0;
+}
+
+.res_nav_buttons .login,
+.res_nav_buttons .contact {
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+/* end of mobile nav */
+
 .hero {
     min-height: 86vh;
     display: flex;
     align-items: center;
-    /* justify-content: center; */
 }
 
 .hero_section {
@@ -327,7 +386,6 @@ nav {
     max-width: 100%;
     overflow: auto;
     width: 72.7%;
-    /* border: 1px solid grey; */
 }
 
 #skills .cards_container::-webkit-scrollbar {
@@ -386,9 +444,6 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* visibility: hidden; */
-    /* position: fixed; */
-    /* top: 20%; */
 }
 
 #skills .close {
@@ -399,15 +454,13 @@ nav {
     margin-bottom: 1.5rem;
 }
 
-.fa-rectangle-xmark {
-    color: #1DD882;
-    font-size: 1.8rem;
-    padding: 0;
-    background-size: 50%;
-    margin: 0;
-    background-color: #fff;
-    background-clip: text;
-    -webkit-background-clip: text;
+#skills .close .container{
+    background-color: #1DD882;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.fa-xmark {
     cursor: pointer;
 }
 
@@ -496,6 +549,16 @@ nav {
     align-items: center;
 }
 
+#work .cards_container {
+    max-width: 100%;
+    overflow: auto;
+    width: 59%;
+}
+
+#work .cards_container::-webkit-scrollbar {
+    display: none;
+}
+
 #work .title {
     font-size: 2.5rem;
     margin-top: 1.5rem;
@@ -514,7 +577,7 @@ nav {
     background-color: #1E1F29;
     margin-right: 2rem;
     height: 15rem;
-    width: 17rem;
+    width: 18rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -531,8 +594,10 @@ nav {
 
 #work .cards {
     display: flex;
-    width: fit-content;
+    width: max-content;
     margin-top: 3rem;
+    align-items: center;
+    justify-content: center;
 }
 
 #work .card {
@@ -824,6 +889,10 @@ nav {
     #skills .cards_container {
         width: 75%;
     }
+
+    #work .cards_container {
+        width: 65%;
+    }
 }
 
 @media screen and (max-width: 1174px) {
@@ -836,6 +905,10 @@ nav {
 @media screen and (max-width: 1173px) {
     #skills .cards_container {
         width: 77.5%;
+    }
+
+    #work .cards_container {
+        width: 68%;
     }
 }
 
@@ -859,6 +932,10 @@ nav {
     #skills .cards_container {
         width: 80%;
     }
+
+    #work .cards_container {
+        width: 70%;
+    }
 }
 
 @media screen and (max-width: 1098px) {
@@ -873,6 +950,18 @@ nav {
     #skills .cards_container .card:last-child {
         margin-right: 0;
     }
+
+    #work .cards_container {
+        width: 72%;
+    }
+
+    #work .navigations {
+        display: none;
+    }
+
+    #work .cards_container .card:last-child {
+        margin-right: 0;
+    }
 }
 
 @media screen and (max-width:1083px) {
@@ -884,11 +973,29 @@ nav {
         width: 20rem;
         height: 20rem;
     }
+
+    #skills .cards_container {
+        width: calc(90vw - 4rem);
+    }
+
+    #skills .main .short_description {
+        max-width: 80%;
+    }
+
+    #work .cards_container {
+        width: calc(81vw - 4rem);
+    }
+
+    #work .short_description {
+        max-width: 80%;
+    }
 }
 
-@media screen and (max-width: 910px) {
-    .nav_menu li {
-        padding-right: 1rem;
+@media screen and (max-width: 1051px) {
+    .blog_card {
+        height: 13rem;
+        width: 13rem;
+        margin-right: 1rem;
     }
 }
 
@@ -908,6 +1015,57 @@ nav {
     #about_me_text .self_description {
         margin-top: 1.5rem;
         margin-bottom: 1.5rem;
+    }
+
+    #contact {
+        margin-bottom: 4rem;
+    }
+
+    #contact .left {
+        /* border: 2px solid grey; */
+    }
+
+    #contact .right {
+        /* border: 2px solid palegoldenrod; */
+    }
+
+    .form_container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 965px) {
+    #blogs .cards {
+        overflow: auto;
+    }
+
+    #blogs .card {
+        width: 13rem;
+        height: 18.5rem;
+        margin-right: 1.5rem;
+    }
+
+    .blog_card img {
+        width: 12rem;
+        height: 6rem;
+    }
+
+    .blog_card .blog_title {
+        font-size: 0.8rem;
+    }
+
+    .blog_card button {
+        font-size: 0.8rem;
+    }
+
+    #blogs .card:last-child {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 910px) {
+    .nav_menu li {
+        padding-right: 1rem;
     }
 }
 
@@ -956,8 +1114,13 @@ nav {
     }
 }
 
-/* Change font size */
+@media screen and (max-width: 797px) {
+    #skills .pop_up {
+        width: 80%;
+    }
+}
 
+/* Change font size */
 @media screen and (max-width: 780px) {
     .nav_buttons .contact {
         font-size: 0.8rem;
@@ -999,6 +1162,112 @@ nav {
         width: 30%;
     }
 
+    #blogs .view_all {
+        font-size: 0.8rem;
+    }
+
+    #skills .main .short_description {
+        font-size: 0.7rem;
+    }
+
+    #skills .main .card p {
+        font-size: 1rem;
+    }
+
+    #work .short_description {
+        font-size: 0.7rem;
+        max-width: 60%;
+    }
+
+    .work_card .project_name {
+        font-size: 1rem;
+    }
+
+    #blogs {
+        margin-bottom: 0;
+    }
+
+    #blogs .short_description {
+        font-size: 0.7rem;
+    }
+
+    #footer p {
+        font-size: 0.8rem;
+    }
+
+    .form_container {
+        width: 100%;
+    }
+
+    #contact {
+        margin-bottom: 3rem;
+    }
+
+    #contact .left .title {
+        font-size: 1.5rem;
+    }
+
+    #contact .left .title span {
+        font-size: 2rem;
+    }
+
+    #contact .left .short_description {
+        font-size: 0.8rem;
+    }
+
+    .fa-envelope,
+    .fa-github,
+    .fa-linkedin-in {
+        font-size: 1rem;
+    }
+
+    #contact .email,
+    #contact .github,
+    #contact .linkedin {
+        height: 2rem;
+        width: 2rem;
+    }
+
+    #contact .email,
+    #contact .github {
+        margin-right: 0.5rem;
+    }
+
+    .contact_form label {
+        font-size: 0.8rem;
+    }
+
+    .contact_form button {
+        font-size: 0.8rem;
+    }
+
+    #skills .pop_up {
+        height: 72.5vh;
+    }
+
+    #skills .close {
+        margin-bottom: 1rem;
+    }
+    #skills .pop_up .title {
+        font-size: 2rem;
+        color: #1DD882;
+    }
+    #skills .pop_up .card {
+        padding: 0;
+        background-color: transparent;
+        border-radius: 0;
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 759px) {
+    #blogs .cards {
+        width: 80%;
+    }
+
+    #blogs .cards::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 740px) {
@@ -1047,6 +1316,7 @@ nav {
     .fa-bars {
         display: block;
         font-size: 2rem;
+        cursor: pointer;
     }
 
     .hero_section img {
@@ -1072,7 +1342,7 @@ nav {
     }
 
     .hero {
-        min-height: 70vh;
+        min-height: 65vh;
     }
 
     #about_me_text .self_description {
@@ -1128,6 +1398,10 @@ nav {
 
     #about_me .background .timeline_items {
         margin-left: 1rem;
+    }
+
+    #contact .left .short_description {
+        width: 80%;
     }
 }
 
@@ -1198,5 +1472,100 @@ nav {
 
     #about_me .background .content {
         font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 465px) {
+    #contact {
+        margin-top: 0;
+    }
+
+    #contact .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #contact .left {
+        margin-bottom: 2rem;
+        width: 80%;
+        text-align: center;
+    }
+
+    #contact .right {
+        width: 80%;
+    }
+
+    #contact .left .title {
+        font-size: 2rem;
+    }
+
+    #contact .left .title span {
+        font-size: 2.5rem;
+    }
+
+    #contact .left .short_description {
+        font-size: 0.9rem;
+        width: 90%;
+        margin-bottom: 1rem;
+    }
+
+    .fa-envelope,
+    .fa-github,
+    .fa-linkedin-in {
+        font-size: 1.5rem;
+    }
+
+    #contact .email,
+    #contact .github,
+    #contact .linkedin {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    .contact_form label,
+    .contact_form button {
+        font-size: 1rem;
+    }
+
+    #footer p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 390px) {
+
+    #skills .main #skills_cards_container {
+        min-width: 81vw;
+    }
+
+    #skills .main #skills_cards_container .cards {
+        min-width: 80vw;
+    }
+
+    #skills .main #skills_cards_container .card {
+        min-width: 78vw;
+        margin-right: 1rem;
+    }
+
+    #skills .main #skills_cards_container .card:last-child {
+        margin-right: 0;
+    }
+
+    #work #work_cards_container {
+        min-width: 81vw;
+    }
+}
+
+@media screen and (max-width: 260px) {
+    #blogs .cards {
+        width: 40vh;
+    }
+
+    #blogs .card {
+        margin-right: 2rem;
+    }
+
+    .blog_card img {
+        max-height: 6rem;
     }
 }

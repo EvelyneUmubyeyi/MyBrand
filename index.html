@@ -30,10 +30,22 @@
                 <button class="login"> <a href="/MyBrand/login.html">Login</a></button>
                 <button class="contact">Contact me</button>
             </div>
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars" id="fa-bars"></i>
         </div>
         <hr>
     </nav>
+    <div class="responsive_nav" id="responsive_nav">
+        <ul class="res_nav_menu">
+            <li class="about_me"><a>About Me</a></li>
+            <li class="skills"><a>Skills</a></li>
+            <li class="my_work"><a>My Work</a></li>
+            <li class="blogs"><a>Blogs</a></li>
+        </ul>
+        <div class="res_nav_buttons">
+            <button class="login"> <a href="/MyBrand/login.html">Login</a></button>
+            <button class="contact">Contact me</button>
+        </div>
+    </div>
     <div class="hero">
         <div class="hero_section">
             <div class="left">
@@ -151,7 +163,7 @@
             <div id="skills_popup" class="pop_up">
                 <div class="close">
                     <div class="container">
-                        <i id="close_popup" class="fa-sharp fa-solid fa-rectangle-xmark"></i>
+                        <i id="close_popup" class="fa-solid fa-xmark"></i>
                     </div>
                 </div>
                 <p class="title">Specific Skills</p>
@@ -203,41 +215,53 @@
         <p class="title"><strong>My <span>Work</span></strong></p>
         <p class="short_description">Here are all my latest projects. Click on the project card to visit the full
             project, like it if you find it interesting.</p>
-        <div class="cards">
-            <div class="card work_card">
-                <!-- <div class="img_container"> -->
-                <img src="images/ecommerce.jpg" alt="">
-                <!-- </div> -->
-                <div class="likes">
-                    <i class="fa-regular fa-heart"></i>
-                    <p>0</p>
+        <div class="cards_container" id="work_cards_container">
+            <div class="cards">
+                <div class="card work_card" id="work_category_card">
+                    <img src="images/ecommerce.jpg" alt="">
+                    <div class="likes">
+                        <i class="fa-regular fa-heart"></i>
+                        <p>0</p>
+                    </div>
+                    <p class="project_name">Market media~ Ecommerce web app</p>
                 </div>
-                <p class="project_name">Market media~ Ecommerce web app</p>
-            </div>
-            <div class="card work_card">
-                <!-- <div class="img_container"> -->
-                <img src="images/elevator.jpg" alt="">
-                <!-- </div> -->
-                <div class="likes">
-                    <i class="fa-regular fa-heart"></i>
-                    <p>0</p>
+                <div class="card work_card">
+                    <img src="images/elevator.jpg" alt="">
+                    <div class="likes">
+                        <i class="fa-regular fa-heart"></i>
+                        <p>0</p>
+                    </div>
+                    <p class="project_name">Elevator simulator~ C programming language</p>
                 </div>
-                <p class="project_name">Elevator simulator~ C programming language</p>
-            </div>
-            <div class="card work_card">
-                <!-- <div class="img_container"> -->
-                <img src="images/reddit.jpg" alt="">
-                <!-- </div> -->
-                <div class="likes">
-                    <i class="fa-regular fa-heart"></i>
-                    <p>0</p>
+                <div class="card work_card">
+                    <img src="images/reddit.jpg" alt="">
+                    <div class="likes">
+                        <i class="fa-regular fa-heart"></i>
+                        <p>0</p>
+                    </div>
+                    <p class="project_name">Reddit clone~MERN stack</p>
                 </div>
-                <p class="project_name">Reddit clone~MERN stack</p>
+                <div class="card work_card">
+                    <img src="images/ecommerce.jpg" alt="">
+                    <div class="likes">
+                        <i class="fa-regular fa-heart"></i>
+                        <p>0</p>
+                    </div>
+                    <p class="project_name">Market media~ Ecommerce web app</p>
+                </div>
+                <div class="card work_card">
+                    <img src="images/ecommerce.jpg" alt="">
+                    <div class="likes">
+                        <i class="fa-regular fa-heart"></i>
+                        <p>0</p>
+                    </div>
+                    <p class="project_name">Market media~ Ecommerce web app</p>
+                </div>
             </div>
         </div>
         <div class="navigations">
-            <i id="prev" class="fa-solid fa-arrow-left"></i>
-            <i id="next" class="fa-solid fa-arrow-right"></i>
+            <i id="prev_work" class="fa-solid fa-arrow-left"></i>
+            <i id="next_work" class="fa-solid fa-arrow-right"></i>
         </div>
     </div>
     <div id="blogs">
@@ -314,7 +338,7 @@
     <div id="footer">
         <p>© Copyright 2023</p>
     </div>
-    <script src="index.js"></script>
+    <script src="JS/index.js"></script>
 </body>
 
 </html>
