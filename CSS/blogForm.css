@@ -229,3 +229,91 @@ form button{
     justify-content: center;
     align-items: center;
 }
+
+/* Nav */
+@media screen and (max-width: 1144px) {
+    .nav_menu li {
+        padding-right: 1rem;
+    }
+
+    .nav_buttons .login {
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .nav_buttons .contact {
+        padding: 0.6rem 1rem;
+    }
+
+    .nav_buttons .login {
+        padding: 0.5rem 1.2rem;
+    }
+}
+
+@media screen and (max-width: 935px) {
+    .nav_buttons .contact {
+        font-size: 0.8rem;
+    }
+
+    .nav_buttons .login {
+        font-size: 0.8rem;
+    }
+
+    .nav_menu li {
+        font-size: 0.8rem;
+    }
+
+    form label{
+        font-size: 0.8rem;
+    }
+
+    .inner_text span{
+        width: fit-content;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .nav_buttons .login {
+        margin-right: 0.5rem;
+    }
+
+    .nav_menu li {
+        padding-right: 0.7rem;
+    }
+
+    .nav_buttons .login {
+        margin-right: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 748px) {
+    .nav_buttons .contact {
+        padding: 0.6rem 0.6rem;
+    }
+
+    .nav_buttons .login {
+        padding: 0.5rem 0.6rem;
+    }
+}
+
+@media screen and (max-width: 696px) {
+    .nav_content {
+        width: 80%;
+    }
+    .nav_menu,
+    .nav_buttons {
+        display: none;
+    }
+
+    .fa-bars {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    .form_container{
+        width: 100%;
+    }
+
+}
