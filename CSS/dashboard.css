@@ -10,6 +10,12 @@ body {
     font-family: 'Poppins';
 }
 
+a{
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
 .stop-scrolling {
     height: 100vh;
     overflow: hidden;
@@ -21,6 +27,10 @@ button {
 
 nav li {
     cursor: pointer;
+}
+
+nav li:last-child {
+    padding-right: 0;
 }
 
 nav {

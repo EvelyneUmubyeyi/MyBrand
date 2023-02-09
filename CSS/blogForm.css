@@ -10,12 +10,22 @@ body {
     font-family: 'Poppins';
 }
 
+a{
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
 button{
     cursor: pointer;
 }
 
 nav li{
     cursor: pointer;
+}
+
+nav li:last-child {
+    padding-right: 0;
 }
 
 nav {
@@ -59,7 +69,8 @@ nav {
 
 }
 
-.nav_buttons .login {
+.nav_buttons .login,
+.res_nav_buttons .login {
     background-color: #2B2D3A;
     border: 2px solid #1DD882;
     border-radius: 10px;
@@ -70,7 +81,14 @@ nav {
     margin-right: 1.5rem;
 }
 
-.nav_buttons .contact {
+.nav_buttons .login a,
+.res_nav_buttons .login a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav_buttons .contact,
+.res_nav_buttons .contact {
     background-color: #1DD882;
     border: none;
     border-radius: 10px;
@@ -79,7 +97,6 @@ nav {
     font-family: 'Poppins';
     font-size: 1rem;
 }
-
 .fa-bars{
     display: none;
 }

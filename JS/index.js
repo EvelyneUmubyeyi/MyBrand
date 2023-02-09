@@ -43,10 +43,7 @@ document.getElementById('prev_work').onclick = function(){
 let res_nav = document.getElementById("responsive_nav");
 let hum = document.getElementById("fa-bars");
 
-hum.addEventListener('click',()=>{
-
-    console.log('clicked')
-
+function toggleNavBar(){
     if(window.getComputedStyle(res_nav).visibility==="hidden"){
         res_nav.style.visibility = 'visible'
         document.body.classList.add('stop-scrolling')
@@ -54,5 +51,20 @@ hum.addEventListener('click',()=>{
         res_nav.style.visibility = 'hidden'
         document.body.classList.remove('stop-scrolling')
     }
-})
+}
 
+hum.addEventListener('click', toggleNavBar)
+
+let about_li = document.getElementById('about_me_li')
+let about = document.getElementById('about_me')
+
+// about_li.addEventListener('click',()=>{
+//     about.scrollIntoView({
+//         inline: 'nearest',
+//       });
+// })
+
+let resNavMenuItem = document.getElementsByClassName("res_menu_item")
+for (let i = 0; i < resNavMenuItem.length; i++) {
+    resNavMenuItem[i].addEventListener('click', toggleNavBar);
+}

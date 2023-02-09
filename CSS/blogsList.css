@@ -10,12 +10,27 @@ body {
     font-family: 'Poppins';
 }
 
+a{
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.stop-scrolling {
+    height: 100vh;
+    overflow: hidden;
+}
+
 button {
     cursor: pointer;
 }
 
 nav li {
     cursor: pointer;
+}
+
+nav li:last-child {
+    padding-right: 0;
 }
 
 nav {
@@ -57,7 +72,9 @@ nav {
 
 .nav_menu li .about_me:hover .hr::after {}
 
-.nav_buttons .login {
+
+.nav_buttons .login,
+.res_nav_buttons .login {
     background-color: #2B2D3A;
     border: 2px solid #1DD882;
     border-radius: 10px;
@@ -68,7 +85,14 @@ nav {
     margin-right: 1.5rem;
 }
 
-.nav_buttons .contact {
+.nav_buttons .login a,
+.res_nav_buttons .login a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav_buttons .contact,
+.res_nav_buttons .contact {
     background-color: #1DD882;
     border: none;
     border-radius: 10px;
@@ -439,4 +463,8 @@ tbody tr:last-of-type td {
     table tr{
         border-bottom: 0;
     }
+}
+
+@media screen and (max-width: 570px) {
+    
 }

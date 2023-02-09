@@ -13,3 +13,8 @@ hum.addEventListener('click',()=>{
         document.body.classList.remove('stop-scrolling')
     }
 })
+
+let resNavMenuItem = document.getElementsByClassName("res_menu_item")
+for (let i = 0; i < resNavMenuItem.length; i++) {
+    resNavMenuItem[i].addEventListener('click', toggleNavBar);
+}

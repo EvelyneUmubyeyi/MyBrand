@@ -17,18 +17,20 @@
 <body>
     <nav id="navbar">
         <div class="nav_content">
-            <div class="logo">
-                <p>Eve.</p>
-            </div>
+            <a href="/">
+                <div class="logo">
+                    <p>Eve.</p>
+                </div>
+            </a>
             <ul class="nav_menu">
-                <li class="about_me hr">About Me</li>
-                <li class="skills hr">Skills</li>
-                <li class="my_work hr">My Work</li>
-                <li class="blogs hr">Blogs</li>
+                <li class="about_me" id="about_me_li"><a href="/#about_me">About Me</a></li>
+                <li class="skills"><a href="/#skills">Skills</a></li>
+                <li class="my_work"><a href="/#work">My Work</a></li>
+                <li class="blogs"><a href="/#blogs">Blogs</a></li>
             </ul>
             <div class="nav_buttons">
-                <button class="login">Login</button>
-                <button class="contact">Contact me</button>
+                <button class="login"> <a href="/MyBrand/login.html">Login</a></button>
+                <button class="contact"><a href="/#contact">Contact me</a></button>
             </div>
             <i class="fa-regular fa-bars"></i>
         </div>
@@ -47,7 +49,7 @@
                     <label for="password">Password</label>
                     <input type="text" id="password">
                     <div class="buttons">
-                        <button id="submit_message">Submit</button>
+                        <button id="submit_message"><a href="/MyBrand/dashboard.html">Submit</a></button>
                     </div>
                 </form>
                 <p class="signup">Don’t have an account? <span><a  href="/MyBrand/signup.html">Sign up</a></span>
