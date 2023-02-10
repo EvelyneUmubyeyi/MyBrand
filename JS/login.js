@@ -15,6 +15,9 @@ hum.addEventListener('click',()=>{
 })
 
 function toggleNavBar(){
+
+    console.log('clicked');
+
     if(window.getComputedStyle(res_nav).visibility==="hidden"){
         res_nav.style.visibility = 'visible'
         document.body.classList.add('stop-scrolling')

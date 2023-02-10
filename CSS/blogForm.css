@@ -16,6 +16,11 @@ a{
     cursor: pointer;
 }
 
+.stop-scrolling {
+    height: 100vh;
+    overflow: hidden;
+}
+
 button{
     cursor: pointer;
 }
@@ -95,6 +100,56 @@ nav {
 }
 .fa-bars{
     display: none;
+}
+
+
+.responsive_nav {
+    background-color: #1E1F29;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    visibility: hidden;
+    position: fixed;
+    height: 87vh;
+    width: 100%;
+
+}
+
+.res_nav_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_menu {
+    list-style-type: none;
+}
+
+.res_nav_menu li {
+    margin-bottom: 2rem;
+    text-decoration: none;
+}
+
+.res_nav_menu a {
+    text-decoration: none;
+}
+
+.res_nav_buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_buttons .login {
+    margin-right: 0;
+}
+
+.res_nav_buttons .login,
+.res_nav_buttons .contact {
+    font-weight: 600;
+    margin-bottom: 2rem;
 }
 
 .body {

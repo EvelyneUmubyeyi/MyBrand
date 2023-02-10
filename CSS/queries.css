@@ -16,6 +16,11 @@ a{
     cursor: pointer;
 }
 
+.stop-scrolling {
+    height: 100vh;
+    overflow: hidden;
+}
+
 button {
     cursor: pointer;
 }
@@ -65,9 +70,8 @@ nav {
     padding-right: 2rem;
 }
 
-.nav_menu li .about_me:hover .hr::after {}
-
-.nav_buttons .login {
+.nav_buttons .login,
+.res_nav_buttons .login {
     background-color: #2B2D3A;
     border: 2px solid #1DD882;
     border-radius: 10px;
@@ -78,7 +82,14 @@ nav {
     margin-right: 1.5rem;
 }
 
-.nav_buttons .contact {
+.nav_buttons .login a,
+.res_nav_buttons .login a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav_buttons .contact,
+.res_nav_buttons .contact {
     background-color: #1DD882;
     border: none;
     border-radius: 10px;
@@ -90,6 +101,55 @@ nav {
 
 .fa-bars{
     display: none;
+}
+
+.responsive_nav {
+    background-color: #1E1F29;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    visibility: hidden;
+    position: fixed;
+    height: 87vh;
+    width: 100%;
+    z-index: 2;
+}
+
+.res_nav_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_menu {
+    list-style-type: none;
+}
+
+.res_nav_menu li {
+    margin-bottom: 2rem;
+    text-decoration: none;
+}
+
+.res_nav_menu a {
+    text-decoration: none;
+}
+
+.res_nav_buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_buttons .login {
+    margin-right: 0;
+}
+
+.res_nav_buttons .login,
+.res_nav_buttons .contact {
+    font-weight: 600;
+    margin-bottom: 2rem;
 }
 
 .body {
@@ -180,4 +240,109 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Nav */
+@media screen and (max-width: 1144px) {
+    .nav_menu li {
+        padding-right: 1rem;
+    }
+
+    .nav_buttons .login {
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .nav_buttons .contact {
+        padding: 0.6rem 1rem;
+    }
+
+    .nav_buttons .login {
+        padding: 0.5rem 1.2rem;
+    }
+}
+
+@media screen and (max-width: 935px) {
+    .nav_buttons .contact {
+        font-size: 0.8rem;
+    }
+
+    .nav_buttons .login {
+        font-size: 0.8rem;
+    }
+
+    .nav_menu li {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .nav_buttons .login {
+        margin-right: 0.5rem;
+    }
+
+    .nav_menu li {
+        padding-right: 0.7rem;
+    }
+
+    .nav_buttons .login {
+        margin-right: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 748px) {
+    .nav_buttons .contact {
+        padding: 0.6rem 0.6rem;
+    }
+
+    .nav_buttons .login {
+        padding: 0.5rem 0.6rem;
+    }
+}
+
+@media screen and (max-width: 696px) {
+
+    .nav_menu,
+    .nav_buttons {
+        display: none;
+    }
+
+    .fa-bars {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 696px) {
+    .title {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 696px) {
+    .date,.name,.email,.phone,.message{
+        font-size: 0.8rem;
+    }
+
+    .card{
+        padding: 1.5rem;
+    }
+
+    /* .name,.email,.phone,.message{
+        max-width:%;
+    } */
+
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .email{
+        /* border: 2px solid lightpink; */
+        word-break: break-word;
+    }
+
 }
