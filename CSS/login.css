@@ -17,7 +17,6 @@ a {
 }
 
 .stop-scrolling {
-    height: 100vh;
     overflow: hidden;
 }
 
@@ -179,12 +178,12 @@ nav {
 
 .res_nav_buttons .login {
     margin-right: 0;
+    margin-bottom: 2rem;
 }
 
 .res_nav_buttons .login,
 .res_nav_buttons .contact {
     font-weight: 600;
-    margin-bottom: 2rem;
 }
 
 .body {
