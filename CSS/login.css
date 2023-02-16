@@ -223,6 +223,16 @@ img {
     color: #1DD882;
 }
 
+#error_message{
+    color: #1DD882;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.edit_title{
+    margin-bottom: 1rem;
+}
+
 .form_container {
     display: flex;
     flex-direction: column;
@@ -251,6 +261,42 @@ input {
     height: 2rem;
     border: 1px solid #fff;
     width: 100%;
+    color: #fff;
+    caret-color: #fff;
+    padding-left: 1rem;
+    padding-top: 0;
+    font-size: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #1DD882;
+}
+
+.p-viewer {
+    margin-top: -42px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    float: right;
+    /* border:1px solid red;
+    width: 100%; */
+    margin-left: 90%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #fff;
 }
 
 .buttons {
@@ -288,6 +334,9 @@ input {
 
 /* Nav */
 
+@media screen and (max-width: 1075px) {
+}
+
 @media screen and (max-width: 1175px) {
     .signup {
         width: 80%;
@@ -304,6 +353,10 @@ input {
 @media screen and (max-width: 910px) {
     .nav_menu li {
         padding-right: 1rem;
+    }
+
+    .p-viewer {
+        margin-left: 87%;
     }
 }
 
@@ -400,15 +453,24 @@ input {
         width: 100%;
         font-size: 1rem;
     }
+
+    .p-viewer {
+        margin-top: -48px;
+        margin-left: 92%;
+    }
+}
+
+@media screen and (max-width: 465px) {
+    .p-viewer {
+        margin-left: 90%;
+    }
 }
 
 @media screen and (max-width: 374px) {
     .signup{
         width: 80%;
     }
-}
 
-@media screen and (max-width: 374px) {
     .title{
         font-size: 2rem;
     }
@@ -417,5 +479,21 @@ input {
     .buttons button,
     .signup {
         font-size: 0.8rem;
+    }
+
+    .p-viewer {
+        margin-left: 87%;
+    }
+}
+
+@media screen and (max-width: 285px) {
+    .p-viewer {
+        margin-left: 85%;
+    }
+}
+
+@media screen and (max-width: 240px) {
+    .p-viewer {
+        margin-left: 81%;
     }
 }

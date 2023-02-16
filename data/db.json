@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Evelyne Umubyeyi",
+      "email": "umubyeyi@gmail.com",
+      "password": "123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Nina Kat",
+      "email": "kat@gmail.com",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "name": "Ingabire Nelly",
+      "email": "ingabire@gmail.com",
+      "password": "123",
+      "role": "user",
+      "id": 4
+    }
+  ]
+}

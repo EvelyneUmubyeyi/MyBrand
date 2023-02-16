@@ -29,8 +29,13 @@ nav li {
     cursor: pointer;
 }
 
+.active{
+    padding-bottom: 0.2rem;
+    border-bottom: 3px solid #1DD882;
+}
+
 nav li:last-child {
-    padding-right: 0;
+    margin-right: 0;
 }
 
 nav {
@@ -67,7 +72,7 @@ nav {
 }
 
 .nav_menu li {
-    padding-right: 2rem;
+    margin-right: 2rem;
 }
 
 /* .nav_menu li .about_me:hover .hr::after {} */
@@ -1051,7 +1056,7 @@ nav {
 
 @media screen and (max-width: 910px) {
     .nav_menu li {
-        padding-right: 1rem;
+        margin-right: 1rem;
     }
 }
 
@@ -1280,7 +1285,7 @@ nav {
     }
 
     .nav_menu li {
-        padding-right: 0.7rem;
+        margin-right: 0.7rem;
     }
 
     .hero_section img {

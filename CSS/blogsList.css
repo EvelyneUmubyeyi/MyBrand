@@ -382,11 +382,11 @@ tbody tr:last-of-type td {
     }
 }
 
-@media screen and (max-width: 570px) {
+/* @media screen and (max-width: 570px) {
     .body {
         width: 85%;
     }
-}
+} */
 
 @media screen and (max-width: 570px) {
     table{

@@ -10,7 +10,7 @@ body {
     font-family: 'Poppins';
 }
 
-a{
+a {
     text-decoration: none;
     color: #fff;
     cursor: pointer;
@@ -20,11 +20,11 @@ a{
     overflow: hidden;
 }
 
-button{
+button {
     cursor: pointer;
 }
 
-nav li{
+nav li {
     cursor: pointer;
 }
 
@@ -65,10 +65,6 @@ nav {
     padding-right: 2rem;
 }
 
-.nav_menu li .about_me:hover .hr::after{
-
-}
-
 .nav_buttons .login,
 .res_nav_buttons .login {
     background-color: #2B2D3A;
@@ -98,7 +94,7 @@ nav {
     font-size: 1rem;
 }
 
-.fa-bars{
+.fa-bars {
     display: none;
 }
 
@@ -151,7 +147,7 @@ nav {
     font-weight: 600;
 }
 
-.body{
+.body {
     width: 80%;
     margin: auto;
     height: 86vh;
@@ -162,7 +158,7 @@ nav {
     margin-bottom: 1rem;
 }
 
-.login_container{
+.login_container {
     /* margin-top: 4rem; */
     display: flex;
     justify-content: center;
@@ -171,7 +167,7 @@ nav {
     height: 85%;
 }
 
-img{
+img {
     height: 100%;
     width: 50%;
     object-fit: cover;
@@ -188,37 +184,83 @@ img{
     color: #1DD882;
 }
 
-.form_container{
+#error_message{
+    color: #1DD882;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.edit_title{
+    margin-bottom: 0.5rem;
+}
+
+.form_container {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #1E1F29;
     height: 100%;
-    width:50%;
+    width: 50%;
 }
 
-form{
+form {
     width: 80%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-label{
+label {
     font-weight: 700;
     margin-bottom: 0.2rem;
 }
 
-input{
+input {
     margin-bottom: 0.6rem;
     border-radius: 10px;
     background-color: #1E1F29;
     height: 2rem;
     border: 1px solid #fff;
     width: 100%;
+    color: #fff;
+    caret-color: #fff;
+    padding-left: 1rem;
+    padding-top: 0;
+    font-size: 1rem;
+    position: relative;
+    display: inline-block;
 }
 
-.buttons{
+input:focus {
+    outline: none;
+    border: 2px solid #1DD882;
+}
+
+.p-viewer {
+    margin-top: -38px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    float: right;
+    /* border:1px solid red;
+    width: 100%; */
+    margin-left: 90%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #fff;
+}
+
+.buttons {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -226,7 +268,7 @@ input{
     margin-bottom: 1.2rem;
 }
 
-.buttons button{
+.buttons button {
     color: #fff;
     background-color: #1DD882;
     border: none;
@@ -237,13 +279,13 @@ input{
     width: 100%;
 }
 
-.signup span a{
+.signup span a {
     color: #1DD882;
     cursor: pointer;
     text-decoration: none;
 }
 
-#footer{
+#footer {
     height: 3rem;
     background-color: #1E1F29;
     display: flex;
@@ -269,6 +311,10 @@ input{
 @media screen and (max-width: 910px) {
     .nav_menu li {
         padding-right: 1rem;
+    }
+
+    .p-viewer {
+        margin-left: 87%;
     }
 }
 
@@ -320,6 +366,7 @@ input{
 /* small tablets */
 
 @media screen and (max-width: 595px) {
+
     .nav_menu,
     .nav_buttons {
         display: none;
@@ -331,11 +378,11 @@ input{
         cursor: pointer;
     }
 
-    .login_image{
+    .login_image {
         display: none;
     }
 
-    .form_container{
+    .form_container {
         width: 100%;
         border-radius: 10px;
     }
@@ -356,25 +403,48 @@ input{
         /* height: 2.5rem; */
     }
 
-    .login_container{
+    .login_container {
         /* height: 90%; */
     }
+
     .buttons button {
         font-size: 1rem;
     }
 
-    .signup{
+    .signup {
         width: 100%;
         font-size: 1rem;
+    }
+
+    .p-viewer {
+        margin-top: -45px;
+        margin-left: 92%;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .form_container {
+        height: fit-content;
+    }
+
+    .signup {
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 465px) {
+    .p-viewer {
+        margin-left: 90%;
     }
 }
 
 @media screen and (max-width: 374px) {
-    .signup{
+    .signup {
         width: 80%;
     }
 
-    .title{
+    .title {
         font-size: 2rem;
     }
 
@@ -382,5 +452,21 @@ input{
     .buttons button,
     .signup {
         font-size: 0.8rem;
+    }
+
+    .p-viewer {
+        margin-left: 87%;
+    }
+}
+
+@media screen and (max-width: 285px) {
+    .p-viewer {
+        margin-left: 85%;
+    }
+}
+
+@media screen and (max-width: 240px) {
+    .p-viewer {
+        margin-left: 81%;
     }
 }
