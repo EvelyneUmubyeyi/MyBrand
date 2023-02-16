@@ -17,7 +17,7 @@ a{
 }
 
 .stop-scrolling {
-    height: 100vh;
+    /* height: 100vh; */
     overflow: hidden;
 }
 
@@ -38,7 +38,7 @@ nav {
     background-color: #2B2D3A;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 100;
 }
 
 .nav_content {
@@ -117,6 +117,7 @@ nav {
     position: fixed;
     height: 87vh;
     width: 100%;
+    z-index: 100;
     
 }
 
@@ -147,12 +148,16 @@ nav {
 
 .res_nav_buttons .login {
     margin-right: 0;
+    margin-bottom: 2rem;
 }
 
 .res_nav_buttons .login,
 .res_nav_buttons .contact {
     font-weight: 600;
-    margin-bottom: 2rem;
+}
+
+.res_nav_buttons .contact {
+    margin-bottom: 0rem;
 }
 
 /* end of mobile nav */
@@ -525,23 +530,6 @@ nav {
 .fa-arrow-left {
     margin-right: 0.5rem;
 }
-
-/* @media screen and (max-width: 1209px){
-    .card{
-        width: calc(33.3vw - 2rem);
-    }
-    .main .navigations{
-        display: none;
-    }
-}
-@media screen and (max-width: 768px){
-    .card{
-        width: calc(50vw - 20px);
-    }
-    .main .navigations{
-        display: none;
-    }
-} */
 
 .skill_category:last-child {
     margin-right: 0;
@@ -1401,24 +1389,85 @@ nav {
     #contact .left .short_description {
         width: 80%;
     }
+
+    #about_me .background .timeline_items::before {
+        height:70%;
+    }
+
+    #about_me .background {
+        margin-bottom: 2rem;
+    }
+
+    #skills {
+        min-height: fit-content;
+    }
+
+    #skills .main .short_description {
+        font-size: 0.8rem;
+    }
+
+    #skills .main .cards {
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    #work .short_description {
+        font-size: 0.8rem;
+    }
+
+    #work {
+        min-height: fit-content;
+        /* border: 2px solid lightgreen; */
+    }
+
+    #work .cards {
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    #blogs {
+        min-height: fit-content; 
+    }
+    
+    #blogs .short_description {
+        color: #D4D4D4;
+        font-size: 0.8rem;
+    }
+
+    #blogs .view_all {
+        font-size: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    #blogs .cards {
+        margin-top: 2rem;
+    }
+
+    #contact {
+        margin-bottom: 1.5rem;
+    }
 }
 
 /* mobile */
 @media screen and (max-width: 530px) {
+    .hero{
+        min-height: fit-content;
+    }
+
     .hero_section {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        /* border:2px solid grey; */
-        margin-top: 4rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
     }
 
     .hero_section .left {
-        /* border:2px solid grey; */
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
 
     }
 
@@ -1453,6 +1502,10 @@ nav {
         /* border:2px solid grey; */
     }
 
+    #about_me_text {
+        min-height: fit-content;
+    }
+
     .hero_section img {
         width: 90%;
         height: auto;
@@ -1475,7 +1528,7 @@ nav {
 
 @media screen and (max-width: 465px) {
     #contact {
-        margin-top: 0;
+        margin-top: 2rem;
     }
 
     #contact .container {
