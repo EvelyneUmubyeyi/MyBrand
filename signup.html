@@ -51,14 +51,18 @@
     <div class="body">
         <div class="login_container">
             <div class="form_container">
-                <p class="title"><strong>Sign <span>up</span></strong></p>
-                <form action="">
+                <p class="title" id="form_title"><strong>Sign <span>up</span></strong></p>
+                <p id="error_message"></p>
+                <form action="" id="create_user">
                     <label for="name">Name</label>
-                    <input type="text" id="name">
+                    <input type="text" id="name" required>
                     <label for="email">Email</label>
-                    <input type="text" id="email">
+                    <input type="text" id="email" required>
                     <label for="password">Password</label>
-                    <input type="text" id="password">
+                    <input type="password" required id="password">
+                    <span class="p-viewer" id="p-viewer">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </span>
                     <div class="buttons">
                         <button id="submit_message">Submit</button>
                     </div>

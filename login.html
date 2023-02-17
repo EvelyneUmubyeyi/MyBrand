@@ -53,14 +53,18 @@
                 <img class="login_image" src="images/login.jpg" alt="login">
             <!-- </div> -->
             <div class="form_container">
-                <p class="title"><strong>Log <span>in</span></strong></p>
-                <form action="">
+                <p class="title" id="form_title"><strong>Log <span>in</span></strong></p>
+                <p id="error_message"></p>
+                <form action="" id="login_user">
                     <label for="email">Email</label>
-                    <input type="text" id="email">
+                    <input type="text" id="email" required>
                     <label for="password">Password</label>
-                    <input type="text" id="password">
+                    <input type="password" id="password" required>
+                    <span class="p-viewer" id="p-viewer">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </span>
                     <div class="buttons">
-                        <button id="submit_message"><a href="/MyBrand/dashboard.html">Submit</a></button>
+                        <button id="submit_message"><a>Submit</a></button>
                     </div>
                 </form>
                 <p class="signup">Don’t have an account? <span><a  href="/MyBrand/signup.html">Sign up</a></span>

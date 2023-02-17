@@ -58,13 +58,36 @@ hum.addEventListener('click', toggleNavBar)
 let about_li = document.getElementById('about_me_li')
 let about = document.getElementById('about_me')
 
-// about_li.addEventListener('click',()=>{
-//     about.scrollIntoView({
-//         inline: 'nearest',
-//       });
-// })
-
 let resNavMenuItem = document.getElementsByClassName("res_menu_item")
 for (let i = 0; i < resNavMenuItem.length; i++) {
     resNavMenuItem[i].addEventListener('click', toggleNavBar);
 }
+
+let sections = document.getElementsByClassName('section');
+let navLinks = document.querySelectorAll("nav .nav_content ul li");
+
+window.onscroll = () => {
+  let current = "";
+
+  for (let i = 0; i < sections.length; i++) {
+    let sectionTop = sections[i].offsetTop
+    let sectionHeight = sections[i].offsetHeight
+    if (pageYOffset >= (sectionTop-(sectionHeight/2))) {
+      console.log("I am here");
+      current = sections[i].getAttribute("id"); 
+    }
+    // else if(pageYOffset >sectionTop+sectionHeight) {
+    //     current= "null"
+    // }
+  }
+
+  for (let i = 0; i < navLinks.length; i++) {
+    navLinks[i].classList.remove("active");
+    if (navLinks[i].classList.contains(current)) {
+        navLinks[i].classList.add("active");
+    }
+  }
+
+};
+
+
