@@ -37,11 +37,13 @@ let emailExists = async (email)=>{
     uri += `${email}`
     const res = await fetch(uri)
     const user = await res.json();
-    if(user[0]){
-        return true
-    }else{
+    console.log(res)
+    console.log(user)
+
+    if(user.length === 0){
         return false
     }
+    return true
 }
 
 let error_message = document.getElementById('error_message')
@@ -52,7 +54,9 @@ const createUser = async (e) => {
     e.preventDefault();
     let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     if(form.email.value.match(validRegex)){
-        if (emailExists(form.email.value)){
+        let emExists = await emailExists(form.email.value)
+        console.log( 'Hey', emExists)
+        if (emExists){
             title.style.marginBottom = '0.5rem'
             error_message.innerText = 'Email already exists, log in'
         }else{
@@ -67,6 +71,8 @@ const createUser = async (e) => {
                 body: JSON.stringify(doc),
                 headers: { 'Content-Type': 'application/json' }
             });
+            user_details = {email: form.email.value, role: 'user'}
+            localStorage.setItem('user',JSON.stringify(user_details))
             window.location.replace('/index.html');
         }
     }else{

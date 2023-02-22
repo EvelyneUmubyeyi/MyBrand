@@ -12,6 +12,10 @@
     <script src="https://kit.fontawesome.com/88276971a8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/blogForm.css">
     <title>Evelyne Umubyeyi</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.core.css">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
 </head>
 
 <body>
@@ -56,21 +60,23 @@
         </div>
         <p class="title"><strong>Add <span>Article</span></strong></p>
         <div class="form_container">
-            <form action="">
+            <form action="" id="article_form">
                 <label for="title">Title</label>
                 <input type="text" id="title">
                 <label for="hook">Hook</label>
                 <textarea type="text" id="hook"></textarea>
                 <label>Cover image</label>
-                <div class="image">
-                    <div class="inner_text">
+                <div class="image" id="image_container">
+                    <div class="inner_text" id="inner_text">
                         <i class="fa-solid fa-image"></i>
                         <p>Drag and drop or <span><label for="image" id="for_image">browse</label></span></p>
                     </div>
-                    <input type="file" id="image">
+                    <input type="file" id="image" accept="image/*">
                 </div>
                 <label for="content">Content</label>
-                <textarea type="text" id="content"></textarea>
+                <textarea name="content" id="content"></textarea>
+                <!-- <input type="hidden" id="content" > -->
+                <!-- <div id="blog_content"></div> -->
                 <div class="buttons">
                     <button id="submit_message">Submit</button>
                 </div>

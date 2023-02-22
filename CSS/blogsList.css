@@ -270,6 +270,15 @@ tbody tr:last-of-type td {
     display: flex;
 }
 
+.blog_title_cell{
+    width:30%;
+    /* border:2px solid red; */
+}
+
+.article_row{
+    cursor:pointer;
+}
+
 #footer {
     height: 3rem;
     background-color: #1E1F29;

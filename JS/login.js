@@ -59,10 +59,12 @@ const loginUser = async (e) => {
 
         if(user[0]){
             if(user[0].password === form.password.value){
+                user_details = {email: user[0].email, role: user[0].role}
+                localStorage.setItem('user',JSON.stringify(user_details))
                 if(user[0].role === 'user'){
-                    window.location.replace('/MyBrand/index.html');
+                    window.location.replace('/index.html');
                 }else{
-                    window.location.replace('/MyBrand/dashboard.html');
+                    window.location.replace('/dashboard.html');
                 }
             }else{
                 title.classList.add('edit_title')
@@ -78,3 +80,5 @@ const loginUser = async (e) => {
     }
 }
 form.addEventListener('submit', loginUser);
+
+
