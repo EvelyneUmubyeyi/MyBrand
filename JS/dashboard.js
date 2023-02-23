@@ -29,4 +29,20 @@ for (let i = 0; i < resNavMenuItem.length; i++) {
     resNavMenuItem[i].addEventListener('click', toggleNavBar);
 }
 
+let login_res = document.getElementById('login_res')
+let login_des = document.getElementById('login_des')
 
+window.addEventListener('DOMContentLoaded', ()=>{
+    if (localStorage.getItem('user') != null){
+        login_res.innerText = 'Log out'
+        login_des.innerText = 'Log out'
+    }
+})
+
+function logout(){
+    localStorage.removeItem('user')
+    window.location.replace('./login.html')
+}
+
+login_des.addEventListener('click',logout)
+login_res.addEventListener('click',logout)

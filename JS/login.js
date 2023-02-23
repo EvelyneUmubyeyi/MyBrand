@@ -59,10 +59,11 @@ const loginUser = async (e) => {
 
         if(user[0]){
             if(user[0].password === form.password.value){
-                user_details = {email: user[0].email, role: user[0].role}
+                user_details = {name: user[0].name,email: user[0].email, role: user[0].role}
                 localStorage.setItem('user',JSON.stringify(user_details))
                 if(user[0].role === 'user'){
-                    window.location.replace('/index.html');
+                    // window.location.replace('/index.html');
+                    window.history.back()
                 }else{
                     window.location.replace('/dashboard.html');
                 }

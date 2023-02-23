@@ -109,6 +109,7 @@ form.addEventListener('submit',  async (e) =>{
             date_published: today_date,
             likes: 0,
             comments: 0,
+            comments_list: []
         }
         await fetch('http://localhost:3000/blogs',{
             method:'POST',

@@ -52,63 +52,68 @@
             <a href="/MyBrand#blogs"><i id="prev" class="fa-solid fa-arrow-left go_back"></i></a>
         </div>
         <div class="header">
-            <p class="title"></p>
-            <p class="small_description"></p>
+            <p class="title" id="article_title"></p>
+            <p class="small_description" id="small_description"></p>
             <div class="about_author">
-                <img src="images/author.jpg" alt="author_image">
+                <img  id="author_image" src="" alt="author_image">
                 <div class="text">
-                    <p class="name">Umubyeyi Evelyne</p>
-                    <P class="date">25 Jan 2023</P>
+                    <p class="name" id="author_name"></p>
+                    <P class="date" id="publish_date"></P>
                 </div>
             </div>
         </div>
         <div class="cover_photo">
-            <img src="images/cover_photo.jpg" alt="">
+            <img src="" alt="" id="cover_photo">
         </div>
         <div class="content">
-            <p></p>
+            <p id="article_body"></p>
         </div>
         <hr>
         <div class="reactions">
-            <div class="likes">
-                <i class="fa-regular fa-heart"></i>
-                <p class="no_likes"></p>
+            <div class="likes" id="likes_div">
+                <i class="fa-regular fa-heart" id="like_icon"></i>
+                <p class="no_likes" id="no_likes"></p>
             </div>
             <div class="comments">
                 <i class="fa-regular fa-message"></i>
-                <p class="no_comments"></p>
+                <p class="no_comments" id="no_comments"></p>
             </div>
             <i class="fa-regular fa-clone"></i>
         </div>
         <div class="add_comment">
-            <img src="images/author.jpg" alt="author_image">
-            <input type="text" placeholder="Add comment">
+            <div class="icon_container">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <form action="" id="comment_form">
+                <input type="text" placeholder="Add comment" oninput="showButton()" id="comment_content" name="comment_content">
+                <button id="send_comment">Send</button>
+            </form>
         </div>
-        <div class="comments_list">
+        <div class="comments_list" id="comments_list">
             <div class="single_comment">
                 <div class="icon_container">
                     <i class="fa-solid fa-user"></i>
                 </div>
                 <div class="text">
                     <div class="comment_header">
-                        <p class="name">John Doe</p>
-                        <p class="date">1 Jan 2023</p>
+                        <p class="name" id="commenter_name"></p>
+                        <p class="date" id="commenting_date"></p>
                     </div>
-                    <p class="comment">Donec tincidunt sapien ante, id aliquam sapien fermentum non. Suspendisse blandit ornare dui vel pretium. Cras tristique magna nisl, aliquam lacinia metus pharetra eu. Fusce efficitur tempor leo, quis hendrerit odio sodales eu.</p>
+                    <p class="comment" id="comment_body"></p>
                 </div>
             </div>
-            <div class="single_comment">
-                <div class="icon_container">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-                <div class="text">
-                    <div class="comment_header">
-                        <p class="name">Jane Doe</p>
-                        <p class="date">1 Jan 2023</p>
-                    </div>
-                    <p class="comment">Donec tincidunt sapien ante, id aliquam sapien fermentum non. Suspendisse blandit ornare dui vel pretium. Cras tristique magna nisl, aliquam lacinia metus pharetra eu. Fusce efficitur tempor leo, quis hendrerit odio sodales eu.</p>
+
+        </div>
+    </div>
+    <div id="popup_container">
+        <div id="login_popup" class="pop_up">
+            <div class="close">
+                <div class="container">
+                    <i id="close_popup" class="fa-solid fa-xmark"></i>
                 </div>
             </div>
+            <p class="title">You have to log in to continue</p>
+            <button> <a href="./login.html">Log in</a></button>
         </div>
     </div>
     <div id="footer">

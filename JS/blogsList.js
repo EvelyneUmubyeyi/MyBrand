@@ -28,6 +28,13 @@ function toggleNavBar(){
     }
 }
 
+async function deleteBlog(blogId){
+    await fetch(`http://localhost:3000/blogs/${blogId}`, {
+        method: 'DELETE'
+    });
+
+}
+
 let resNavMenuItem = document.getElementsByClassName("res_menu_item")
 for (let i = 0; i < resNavMenuItem.length; i++) {
     resNavMenuItem[i].addEventListener('click', toggleNavBar);
@@ -47,9 +54,9 @@ let renderBlogs = async()=>{
         for(let i = 0; i<blogs.length; i++){
             console.log(blogs[i])
             template +=`
-            <tr class="article_row" id="article_row" onclick="window.location = '/article.html?id=${blogs[i].id}'">
+            <tr class="article_row" id="article_row">
                     <td class="col_first" data-label="No">${i+1}</td>
-                    <td data-label="Name" class="blog_title_cell"><span class="blog_name">${blogs[i].title}</span></td>
+                    <td data-label="Name" class="blog_title_cell"><span class="blog_name" onclick="window.location = '/article.html?id=${blogs[i].id}'">${blogs[i].title}</span></td>
                     <td data-label="Date published">${blogs[i].date_published}</td>
                     <td data-label="Likes" class="likes">${blogs[i].likes}</td>
                     <td data-label="Comments" class="comments">${blogs[i].comments}</td>
@@ -57,7 +64,7 @@ let renderBlogs = async()=>{
                         <div class="edit">
                             <i class="fa-solid fa-pencil"></i>
                         </div>
-                        <div class="delete">
+                        <div class="delete" onclick = deleteBlog(${blogs[i].id})>
                             <i class="fa-solid fa-trash"></i>
                         </div>
                     </td>

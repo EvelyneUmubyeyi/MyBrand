@@ -251,9 +251,17 @@ tbody tr:last-of-type td {
     text-align: center;
 }
 
-.edit,
+.edit{
+    background-color: #1DD882;    
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+}
 .delete {
-    background-color: #1DD882;
+    background-color: #ff9494;
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -275,7 +283,7 @@ tbody tr:last-of-type td {
     /* border:2px solid red; */
 }
 
-.article_row{
+.article_row .blog_title_cell{
     cursor:pointer;
 }
 
