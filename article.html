@@ -16,20 +16,20 @@
 <body>
     <nav id="navbar">
         <div class="nav_content">
-            <a href="/MyBrand">
+            <a href="/">
                 <div class="logo">
                     <p>Eve.</p>
                 </div>
             </a>
             <ul class="nav_menu">
                 <li class="about_me" id="about_me_li"><a href="/#about_me">About Me</a></li>
-                <li class="skills"><a href="/MyBrand#skills">Skills</a></li>
-                <li class="my_work"><a href="/MyBrand#work">My Work</a></li>
-                <li class="blogs"><a href="/MyBrand#blogs">Blogs</a></li>
+                <li class="skills"><a href="/#skills">Skills</a></li>
+                <li class="my_work"><a href="/#work">My Work</a></li>
+                <li class="blogs"><a href="/#blogs">Blogs</a></li>
             </ul>
             <div class="nav_buttons">
-                <button class="login"> <a href="/MyBrand/login.html">Login</a></button>
-                <button class="contact"><a href="/MyBrand#contact">Contact me</a></button>
+                <button class="login"> <a href="/login.html">Login</a></button>
+                <button class="contact"><a href="/#contact">Contact me</a></button>
             </div>
             <i class="fa-solid fa-bars" id="fa-bars"></i>
         </div>
@@ -37,19 +37,19 @@
     </nav>
     <div class="responsive_nav" id="responsive_nav">
         <ul class="res_nav_menu">
-            <li class="about_me res_menu_item"><a href="/MyBrand#about_me">About Me</a></li>
-            <li class="skills res_menu_item"><a href="/MyBrand#skills">Skills</a></li>
-            <li class="my_work res_menu_item"><a href="/MyBrand#work">My Work</a></li>
-            <li class="blogs res_menu_item"><a href="/MyBrand#blogs">Blogs</a></li>
+            <li class="about_me res_menu_item"><a href="/#about_me">About Me</a></li>
+            <li class="skills res_menu_item"><a href="/#skills">Skills</a></li>
+            <li class="my_work res_menu_item"><a href="/#work">My Work</a></li>
+            <li class="blogs res_menu_item"><a href="/#blogs">Blogs</a></li>
         </ul>
         <div class="res_nav_buttons">
-            <button class="login res_menu_item"> <a href="/MyBrand/login.html">Login</a></button>
-            <button class="contact res_menu_item"><a href="/MyBrand#contact">Contact me</a></button>
+            <button class="login res_menu_item"> <a href="/login.html">Login</a></button>
+            <button class="contact res_menu_item"><a href="/#contact">Contact me</a></button>
         </div>
     </div>
     <div class="body">
         <div class="back">
-            <a href="/MyBrand#blogs"><i id="prev" class="fa-solid fa-arrow-left go_back"></i></a>
+            <a><i id="prev" class="fa-solid fa-arrow-left go_back"></i></a>
         </div>
         <div class="header">
             <p class="title" id="article_title"></p>
@@ -71,14 +71,20 @@
         <hr>
         <div class="reactions">
             <div class="likes" id="likes_div">
-                <i class="fa-regular fa-heart" id="like_icon"></i>
+                <div id="liking_icon">
+
+                </div>
+                <!-- <i class="fa-regular fa-heart" id="like_icon"></i> -->
                 <p class="no_likes" id="no_likes"></p>
             </div>
             <div class="comments">
                 <i class="fa-regular fa-message"></i>
                 <p class="no_comments" id="no_comments"></p>
             </div>
-            <i class="fa-regular fa-clone"></i>
+            <div class="copy">
+                <i class="fa-regular fa-clone" id="copy_url"></i>
+                <p id="copied"></p>
+            </div>
         </div>
         <div class="add_comment">
             <div class="icon_container">

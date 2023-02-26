@@ -61,7 +61,7 @@ let renderBlogs = async()=>{
                     <td data-label="Likes" class="likes">${blogs[i].likes}</td>
                     <td data-label="Comments" class="comments">${blogs[i].comments}</td>
                     <td data-label="Action" class="icons last_colmn">
-                        <div class="edit">
+                        <div class="edit" onclick="window.location = '/blogForm.html?id=${blogs[i].id}'">
                             <i class="fa-solid fa-pencil"></i>
                         </div>
                         <div class="delete" onclick = deleteBlog(${blogs[i].id})>

@@ -1,3 +1,37 @@
+let article_id = new URLSearchParams(window.location.search).get("id")
+let newItem = document.createElement("img");
+let imageInput = document.getElementById("image");
+newItem.style.cursor = 'pointer'
+newItem.addEventListener('click', (e) => {
+    e.preventDefault()
+    imageInput.click()
+})
+
+let inner_text = document.getElementById("inner_text")
+let imageContainer = document.getElementById("image_container");
+let form = document.getElementById('article_form')
+let article;
+let imageStored;
+
+async function renderArticle() {
+    let res = await fetch(`http://localhost:3000/blogs/${article_id}`)
+    article = await res.json()
+
+    form.title.value = article.title
+    form.hook.value = article.hook
+    newItem.src = article.image
+    imageStored = article.image
+    inner_text.classList.add("hide_element");
+    imageContainer.appendChild(newItem);
+    imageContainer.classList.add("preview-img-container")
+    newItem.classList.add("preview-img");
+    form.content.value = article.body
+}
+
+if (article_id !== null) {
+    renderArticle()
+}
+
 let res_nav = document.getElementById("responsive_nav");
 let hum = document.getElementById("fa-bars");
 
@@ -36,15 +70,14 @@ let toolbar_options = [
 
 ]
 
-// let quill = new Quill('#blog_content', {
-//     modules: {
-//         toolbar: toolbar_options,
-//     },
-//     theme: "snow",
-//     placeholder: 'Write the article body here ...',
-// })
+let quill = new Quill('#blog_content', {
+    modules: {
+        toolbar: toolbar_options,
+    },
+    theme: "snow",
+    placeholder: 'Write the article body here ...',
+})
 
-let imageStored;
 
 async function uploadProcess(imageToUpload) {
 
@@ -64,13 +97,9 @@ async function uploadProcess(imageToUpload) {
         console.log(res)
         console.log(res.url)
         imageStored = res.url;
+        console.log(imageStored)
     }
 }
-
-let inner_text = document.getElementById("inner_text")
-let imageInput = document.getElementById("image");
-let imageContainer = document.getElementById("image_container");
-let newItem = document.createElement("img");
 
 imageInput.onchange = event => {
     console.log(event.target.files);
@@ -78,45 +107,58 @@ imageInput.onchange = event => {
     let image = URL.createObjectURL(file);
 
     newItem.src = image;
-    newItem.style.cursor = 'pointer'
-    newItem.addEventListener('click',(e)=>{
-        e.preventDefault()
-        imageInput.click()
-    })
 
     inner_text.classList.add("hide_element");
     imageContainer.appendChild(newItem);
     imageContainer.classList.add("preview-img-container")
-    // imageContainer.style.backgroundImage = url(image);
     newItem.classList.add("preview-img");
     uploadProcess(file);
 }
 
-
-let form = document.getElementById('article_form')
-form.addEventListener('submit',  async (e) =>{
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (form.title.value.trim() !== '' && form.hook.value.trim() !== '' && form.content.value.trim() !== '' && imageStored!==''){
-        
-        let today = new Date()
-        let today_date = today.getDate() + " " + today.toLocaleString('default', { month: 'short' }) + " "+ today.getFullYear()
-        
-        const doc = {
-            title:form.title.value,
-            hook:form.hook.value,
-            image:imageStored,
-            body: form.content.value,
-            date_published: today_date,
-            likes: 0,
-            comments: 0,
-            comments_list: []
-        }
-        await fetch('http://localhost:3000/blogs',{
-            method:'POST',
-            body:JSON.stringify(doc),
-            headers: { 'Content-Type': 'application/json' }
-        })
+    if (form.title.value.trim() !== '' && form.hook.value.trim() !== '' && form.content.value.trim() !== '' && imageStored !== '') {
 
-        window.location.replace('./blogsList.html')
-    } 
+        let today = new Date()
+        let today_date = today.getDate() + " " + today.toLocaleString('default', { month: 'short' }) + " " + today.getFullYear()
+        if (article_id !== null) {
+            const doc = {
+                title: form.title.value,
+                hook: form.hook.value,
+                image: imageStored,
+                body: form.content.value,
+                date_published: article.date_published,
+                likes: article.likes,
+                author_name: article.author_name,
+                author_image: article.author_image,
+                comments: article.comments,
+                comments_list: article.comments_list
+            }
+            await fetch(`http://localhost:3000/blogs/${article_id}`, {
+                method: 'PUT',
+                body: JSON.stringify(doc),
+                headers: { 'Content-Type': 'application/json' }
+            })
+        } else {
+            const doc = {
+                title: form.title.value,
+                hook: form.hook.value,
+                image: imageStored,
+                body: form.content.value,
+                date_published: today_date,
+                likes: 0,
+                comments: 0,
+                author_name: "Umubyeyi Evelyne",
+                author_image: "https://res.cloudinary.com/doxc03jzw/image/upload/v1676989584/IMG-20210617-WA0028_2_mqc8ne.jpg",
+                comments_list: []
+            }
+            await fetch('http://localhost:3000/blogs', {
+                method: 'POST',
+                body: JSON.stringify(doc),
+                headers: { 'Content-Type': 'application/json' }
+            })
+        }
+
+        window.location.replace('/blogsList.html')
+    }
 })

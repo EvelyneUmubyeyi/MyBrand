@@ -1,4 +1,7 @@
 let article_id = new URLSearchParams(window.location.search).get("id")
+let user = localStorage.getItem('user')
+let user_parsed = JSON.parse(user)
+
 let article_title = document.getElementById('article_title')
 let small_description = document.getElementById('small_description')
 let author_name = document.getElementById('author_name')
@@ -9,6 +12,7 @@ let article_body = document.getElementById('article_body')
 let likes = document.getElementById('no_likes')
 let comments = document.getElementById('no_comments')
 let comments_list = document.getElementById('comments_list')
+let liking_icon = document.getElementById("liking_icon")
 let article;
 
 async function renderArticle() {
@@ -22,6 +26,12 @@ async function renderArticle() {
     publish_date.innerText = article.date_published
     cover_photo.src = article.image
     article_body.innerText = article.body
+    if(article.like_emails.includes(user_parsed.email)) {
+        liking_icon.innerHTML = '<i class="fa-solid fa-heart" id="like_icon"onclick="likefn()"></i>'
+    }else{
+        liking_icon.innerHTML = '<i class="fa-regular fa-heart" id="like_icon" onclick="likefn()"></i>'
+    }
+
     likes.innerText = article.likes
     comments.innerText = article.comments
     template = ''
@@ -51,39 +61,56 @@ let refresh_likes = async () => {
     likes.innerHTML = `<p class="no_likes" id="no_likes">${article.likes}</p>`
 }
 
-let like_icon = document.getElementById('like_icon')
+// let like_icon = document.getElementById('like_icon')
 let likes_div = document.getElementById('likes_div')
 
-like_icon.addEventListener('click', (e) => {
-    e.preventDefault()
-    if (localStorage.getItem('user') === null) {
+function likefn(){
+    // e.preventDefault()
+    // let stored_user = localStorage.getItem('user')
+    // let user_parsed = JSON.parse(stored_user)
+    if (user === null) {
         popup_container.style.visibility = 'visible'
     } else {
+        if (article.like_emails.includes(user_parsed.email) === false) {
+            // let liked = document.createElement('i')
+            // liked.innerHTML = '<i class="fa-solid fa-heart"></i>'
+            // likes_div.replaceChild(liked, like_icon)
+            article.likes += 1
+            article.like_emails.push(user_parsed.email)
 
-        let liked = document.createElement('i')
-        liked.innerHTML = '<i class="fa-solid fa-heart"></i>'
-        likes_div.replaceChild(liked, like_icon)
+            fetch(`http://localhost:3000/blogs/${article_id}`, {
+                method: 'PATCH',
+                body: JSON.stringify({ "likes": article.likes, "like_emails": article.like_emails }),
+                headers: { 'Content-Type': 'application/json' }
+            }).then(
+                response => response.json()
+            ).then(
+                json => likes.innerText = article.likes
+            )
+        } else {
+            article.likes -= 1
+            let index = article.like_emails.indexOf(user_parsed.email)
+            if (index > -1) {
+                article.like_emails.splice(index, 1)
+            }
+            fetch(`http://localhost:3000/blogs/${article_id}`, {
+                method: 'PATCH',
+                body: JSON.stringify({ "likes": article.likes, "like_emails": article.like_emails }),
+                headers: { 'Content-Type': 'application/json' }
+            }).then(
+                response => response.json()
+            ).then(
+                json => likes.innerText = article.likes
+            )
+        }
 
-        article.likes += 1
-        fetch(`http://localhost:3000/blogs/${article_id}`, {
-            method: 'PATCH',
-            body: JSON.stringify({ "likes": article.likes }),
-            headers: { 'Content-Type': 'application/json' }
-        }).then(
-            response => response.json()
-        ).then(
-            json => likes.innerText = article.likes
-        )
     }
-})
+}
 
 let res_nav = document.getElementById("responsive_nav");
 let hum = document.getElementById("fa-bars");
 
 hum.addEventListener('click', () => {
-
-    console.log('clicked')
-
     if (window.getComputedStyle(res_nav).visibility === "hidden") {
         res_nav.style.visibility = 'visible'
         document.body.classList.add('stop-scrolling')
@@ -128,12 +155,11 @@ comment_form.addEventListener('submit', async (e) => {
         popup_container.style.visibility = 'visible'
     }
     else if (comment_form.comment_content.value.trim() !== '') {
-        let user = localStorage.getItem('user')
-        let user_parsed = JSON.parse(user)
         let today = new Date()
         let today_date = today.getDate() + " " + today.toLocaleString('default', { month: 'short' }) + " " + today.getFullYear()
         let comment = { email: user_parsed.email, name: user_parsed.name, date: today_date, comment: comment_form.comment_content.value }
         article.comments_list.push(comment)
+        article.comments += 1
         await fetch(`http://localhost:3000/blogs/${article_id}`, {
             method: 'PUT',
             body: JSON.stringify(article),
@@ -142,4 +168,27 @@ comment_form.addEventListener('submit', async (e) => {
     }
 })
 
+let prev_icon = document.getElementById('prev')
+prev_icon.addEventListener('click', () => {
+    window.history.back()
+})
 
+let copy_url = document.getElementById("copy_url")
+let copied = document.getElementById('copied')
+
+function copiedFn(){
+    copied.innerText = ''
+    copy_url.style.color = '#ffffff'
+}
+
+copy_url.addEventListener('click',()=>{
+    let url = window.location.href
+    let url_input = document.createElement('input')
+    document.body.appendChild(url_input)
+    url_input.value = url
+    url_input.select()
+    document.execCommand("copy")
+    copied.innerText = 'Copied'
+    copy_url.style.color = '#1DD882'
+    setTimeout(copiedFn, 2500)
+})

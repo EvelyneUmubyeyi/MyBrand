@@ -123,7 +123,6 @@ nav {
     height: 87vh;
     width: 100%;
     z-index: 100;
-    
 }
 
 .res_nav_menu {
@@ -670,7 +669,7 @@ nav {
 }
 
 .blog_card img {
-    width: 16rem;
+    width: 100%;
     height: 10rem;
     border-radius: 10px;
     object-fit: cover;
@@ -679,16 +678,16 @@ nav {
 #blogs .cards {
     display: flex;
     width: fit-content;
-    margin-top: 3rem;
+    margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
 #blogs .card {
-    padding-top: 0.5rem;
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
-    width: 17rem;
-    height: 22.5rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 19rem;
+    height: 24.5rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
