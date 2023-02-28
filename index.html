@@ -170,22 +170,7 @@
                     </div>
                 </div>
                 <p class="title">Specific Skills</p>
-                <div class="cards">
-                    <div class="card">
-                        <p>React Js</p>
-                    </div>
-                    <div class="card">
-                        <p>Next Js</p>
-                    </div>
-                    <div class="card">
-                        <p>Angular Js</p>
-                    </div>
-                    <div class="card">
-                        <p>Bootstrap</p>
-                    </div>
-                    <div class="card">
-                        <p>Tailwind CSS</p>
-                    </div>
+                <div class="cards" id="specific_skills_container">
                 </div>
             </div>
         </div>
@@ -193,19 +178,7 @@
             <p class="title"><strong>My <span>Skills</span></strong></p>
             <p class="short_description">Click on a card to see a list of specific skills I have in that field</p>
             <div id="skills_cards_container" class="cards_container">
-                <div class="cards">
-                    <div id="skill_category_card" class="card skill_category">
-                        <p>Web Development</p>
-                    </div>
-                    <div class="card skill_category">
-                        <p>Mobile Development</p>
-                    </div>
-                    <div class="card skill_category ">
-                        <p>Machine Learning</p>
-                    </div>
-                    <div class="card skill_category ">
-                        <p>Cloud engineering</p>
-                    </div>
+                <div class="cards" id="skills_category_container">
                 </div>
             </div>
             <div class="navigations">
@@ -219,47 +192,7 @@
         <p class="short_description">Here are all my latest projects. Click on the project card to visit the full
             project, like it if you find it interesting.</p>
         <div class="cards_container" id="work_cards_container">
-            <div class="cards">
-                <div class="card work_card" id="work_category_card">
-                    <img src="images/ecommerce.jpg" alt="">
-                    <div class="likes">
-                        <i class="fa-regular fa-heart"></i>
-                        <p>0</p>
-                    </div>
-                    <p class="project_name">Market media~ Ecommerce web app</p>
-                </div>
-                <div class="card work_card">
-                    <img src="images/elevator.jpg" alt="">
-                    <div class="likes">
-                        <i class="fa-regular fa-heart"></i>
-                        <p>0</p>
-                    </div>
-                    <p class="project_name">Elevator simulator~ C programming language</p>
-                </div>
-                <div class="card work_card">
-                    <img src="images/reddit.jpg" alt="">
-                    <div class="likes">
-                        <i class="fa-regular fa-heart"></i>
-                        <p>0</p>
-                    </div>
-                    <p class="project_name">Reddit clone~MERN stack</p>
-                </div>
-                <div class="card work_card">
-                    <img src="images/ecommerce.jpg" alt="">
-                    <div class="likes">
-                        <i class="fa-regular fa-heart"></i>
-                        <p>0</p>
-                    </div>
-                    <p class="project_name">Market media~ Ecommerce web app</p>
-                </div>
-                <div class="card work_card">
-                    <img src="images/ecommerce.jpg" alt="">
-                    <div class="likes">
-                        <i class="fa-regular fa-heart"></i>
-                        <p>0</p>
-                    </div>
-                    <p class="project_name">Market media~ Ecommerce web app</p>
-                </div>
+            <div class="cards" id="projects_cards_container">
             </div>
         </div>
         <div class="navigations">
@@ -270,36 +203,10 @@
     <div id="blogs" class="section">
         <p class="title"><strong>My <span>Blogs</span></strong></p>
         <p class="short_description">Me sharing what I know :)</p>
-        <div class="cards" id="blogs_cards_container">
-            <!-- <div class="card blog_card">
-                <img src="images/clock.jpg" alt="">
-                <div class="blog_text">
-                    <p class="blog_title">Time management as Computer Science student</p>
-                    <p class="shrt_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit donec id massa
-                        odio.</p>
-                </div>
-                <button><a href="/article.html">Read</a></button>
-            </div> -->
-            <!-- <div class="card blog_card">
-                <img src="images/blog_elevator.jpg" alt="">
-                <div class="blog_text">
-                    <p class="blog_title">Elevator simulation program in C</p>
-                    <p class="shrt_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit donec id massa
-                        odio.</p>
-                </div>
-                <button><a href="/article.html">Read</a></button>
-            </div>
-            <div class="card blog_card">
-                <img src="images/algorithm.jpg" alt="">
-                <div class="blog_text">
-                    <p class="blog_title">DSA problems you should know</p>
-                    <p class="shrt_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit donec id massa
-                        odio.</p>
-                </div>
-                <button><a href="/article.html">Read</a></button>
-            </div> -->
+        <div class="blogs_container">
+            <div class="cards" id="blogs_cards_container"></div>
         </div>
-        <button class="view_all">View all</button>
+        <button class="view_all"><a href="./allBlogs.html">View all</a></button>
     </div>
     <div id="contact" class="section">
         <div class="container">
@@ -324,21 +231,32 @@
             </div>
             <div class="right">
                 <div class="form_container">
-                    <form class="contact_form" action="">
+                    <form class="contact_form" action="" id="contact_form">
                         <label for="name">Name</label>
                         <input type="text" id="name">
                         <label for="name">Email</label>
-                        <input type="text" id="name">
+                        <input type="text" id="email">
                         <label for="name">Phone number</label>
-                        <input type="text" id="name">
+                        <input type="text" id="phone">
                         <label for="name">Message</label>
-                        <input type="text" id="message">
+                        <textarea type="text" id="message"></textarea>
                         <div class="buttons">
                             <button id="submit_message">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="popupContainer">
+        <div id="login_popup" class="pop_up">
+            <div class="close">
+                <div class="container">
+                    <i id="close_popup" class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <p class="title">You have to log in to continue</p>
+            <button> <a href="./login.html">Log in</a></button>
         </div>
     </div>
     <div id="footer">

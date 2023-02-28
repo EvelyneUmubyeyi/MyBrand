@@ -46,3 +46,19 @@ function logout(){
 
 login_des.addEventListener('click',logout)
 login_res.addEventListener('click',logout)
+let queries_p = document.getElementById('queries_nbr')
+let blogs_p = document.getElementById('blogs_nbr')
+
+async function getStats(){
+    const blogs = await fetch('http://localhost:3000/blogs')
+    let blogs_res = await blogs.json()
+    let blogs_nbr = JSON.parse(JSON.stringify(blogs_res)).length
+
+    const queries = await fetch('http://localhost:3000/queries')
+    let queries_res = await queries.json()
+    let queries_nbr = JSON.parse(JSON.stringify(queries_res)).length
+    blogs_p.innerText = blogs_nbr
+    queries_p.innerText = queries_nbr
+}
+
+window.addEventListener('DOMContentLoaded', getStats())

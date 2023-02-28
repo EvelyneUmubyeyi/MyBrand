@@ -243,6 +243,13 @@ hr {
     margin-right: 2rem;
 }
 
+#like_button{
+    background-color: transparent;
+    /* border:none; */
+    padding: 0;
+    width: fit-content;
+}
+
 .copy{
     display: flex;
     align-items: center;
@@ -328,6 +335,7 @@ hr {
 
 .comments_list {
     margin-top: 2rem;
+    width: 100%;
 }
 
 .single_comment {

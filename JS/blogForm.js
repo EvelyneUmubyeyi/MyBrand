@@ -87,17 +87,13 @@ async function uploadProcess(imageToUpload) {
     data.append("cloud_name", "doxc03jzw");
 
     const Http = new XMLHttpRequest();
-    // Http.setRequestHeader("Content-Type", "application/xml");
     const url = "https://api.cloudinary.com/v1_1/doxc03jzw/image/upload";
     Http.open("POST", url);
     Http.send(data);
 
     Http.onreadystatechange = (e) => {
         let res = JSON.parse(Http.responseText);
-        console.log(res)
-        console.log(res.url)
         imageStored = res.url;
-        console.log(imageStored)
     }
 }
 
@@ -132,13 +128,15 @@ form.addEventListener('submit', async (e) => {
                 author_name: article.author_name,
                 author_image: article.author_image,
                 comments: article.comments,
-                comments_list: article.comments_list
+                comments_list: article.comments_list,
+                like_emails:article.like_emails
             }
             await fetch(`http://localhost:3000/blogs/${article_id}`, {
                 method: 'PUT',
                 body: JSON.stringify(doc),
                 headers: { 'Content-Type': 'application/json' }
             })
+            window.location.replace('/blogsList.html')
         } else {
             const doc = {
                 title: form.title.value,
@@ -150,15 +148,16 @@ form.addEventListener('submit', async (e) => {
                 comments: 0,
                 author_name: "Umubyeyi Evelyne",
                 author_image: "https://res.cloudinary.com/doxc03jzw/image/upload/v1676989584/IMG-20210617-WA0028_2_mqc8ne.jpg",
-                comments_list: []
+                comments_list: [],
+                like_emails:[]
             }
             await fetch('http://localhost:3000/blogs', {
                 method: 'POST',
                 body: JSON.stringify(doc),
                 headers: { 'Content-Type': 'application/json' }
             })
-        }
+            window.location.replace('/blogsList.html')
 
-        window.location.replace('/blogsList.html')
+        }
     }
 })
