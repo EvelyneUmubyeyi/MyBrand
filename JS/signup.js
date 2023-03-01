@@ -37,8 +37,6 @@ let emailExists = async (email)=>{
     uri += `${email}`
     const res = await fetch(uri)
     const user = await res.json();
-    console.log(res)
-    console.log(user)
 
     if(user.length === 0){
         return false

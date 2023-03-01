@@ -61,8 +61,6 @@ nav {
     padding-right: 2rem;
 }
 
-.nav_menu li .about_me:hover .hr::after {}
-
 .nav_buttons .login,
 .res_nav_buttons .login {
     background-color: #2B2D3A;

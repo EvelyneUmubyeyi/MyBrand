@@ -98,7 +98,6 @@ async function uploadProcess(imageToUpload) {
 }
 
 imageInput.onchange = event => {
-    console.log(event.target.files);
     const file = event.target.files[0];
     let image = URL.createObjectURL(file);
 

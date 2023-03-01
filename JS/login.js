@@ -15,9 +15,6 @@ hum.addEventListener('click',()=>{
 })
 
 function toggleNavBar(){
-
-    console.log('clicked');
-
     if(window.getComputedStyle(res_nav).visibility==="hidden"){
         res_nav.style.visibility = 'visible'
         document.body.classList.add('stop-scrolling')
@@ -62,7 +59,6 @@ const loginUser = async (e) => {
                 user_details = {name: user[0].name,email: user[0].email, role: user[0].role}
                 localStorage.setItem('user',JSON.stringify(user_details))
                 if(user[0].role === 'user'){
-                    // window.location.replace('/index.html');
                     window.history.back()
                 }else{
                     window.location.replace('/dashboard.html');
