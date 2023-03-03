@@ -74,8 +74,6 @@ nav {
     padding-right: 0;
 }
 
-.nav_menu li .about_me:hover .hr::after {}
-
 .nav_buttons .login,
 .res_nav_buttons .login {
     background-color: #2B2D3A;
@@ -120,7 +118,7 @@ nav {
     position: fixed;
     height: 87vh;
     width: 100%;
-
+    z-index: 100;
 }
 
 .res_nav_menu {
@@ -188,7 +186,9 @@ nav {
 }
 
 .card:hover {
-    background-color: #34dc8f;
+    /* background-color: #34dc8f; */
+    background: linear-gradient(286.17deg, #1AB65C 0%, #39E180 100%);
+
 }
 
 .card:last-child {

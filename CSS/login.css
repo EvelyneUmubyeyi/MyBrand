@@ -148,7 +148,7 @@ nav {
     position: fixed;
     height: 87vh;
     width: 100%;
-
+    z-index: 100;
 }
 
 .res_nav_menu {
@@ -224,7 +224,7 @@ img {
 }
 
 #error_message{
-    color: #1DD882;
+    color: #ff9494;
     font-size: 0.8rem;
     margin-bottom: 1rem;
 }
@@ -333,10 +333,6 @@ select:-webkit-autofill:focus {
 }
 
 /* Nav */
-
-@media screen and (max-width: 1075px) {
-}
-
 @media screen and (max-width: 1175px) {
     .signup {
         width: 80%;

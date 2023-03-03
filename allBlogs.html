@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/88276971a8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="CSS/blogsList.css">
-    <script src="JS/authorisation.js"></script>
+    <link rel="stylesheet" href="CSS/allBlogs.css">
     <title>Evelyne Umubyeyi</title>
 </head>
 
@@ -28,7 +26,6 @@
                 <li class="skills"><a href="/#skills">Skills</a></li>
                 <li class="my_work"><a href="/#work">My Work</a></li>
                 <li class="blogs"><a href="/#blogs">Blogs</a></li>
-                <li class="dashboard"><a href="/dashboard.html">Dashboard</a></li>
             </ul>
             <div class="nav_buttons">
                 <button class="login"> <a href="/login.html">Login</a></button>
@@ -44,7 +41,6 @@
             <li class="skills res_menu_item"><a href="/#skills">Skills</a></li>
             <li class="my_work res_menu_item"><a href="/#work">My Work</a></li>
             <li class="blogs res_menu_item"><a href="/#blogs">Blogs</a></li>
-            <li class="dashboard res_menu_item"><a href="/dashboard.html">Dashboard</a></li>
         </ul>
         <div class="res_nav_buttons">
             <button class="login res_menu_item"> <a href="/login.html">Login</a></button>
@@ -53,32 +49,18 @@
     </div>
     <div class="body">
         <div class="back">
-            <a href="/dashboard.html"><i id="prev" class="fa-solid fa-arrow-left"></i></a>
+            <a href="./index.html#blogs"><i id="prev" class="fa-solid fa-arrow-left go_back"></i></a>
         </div>
-        <p class="title"><strong>All <span>Blogs</span></strong></p>
-        <div class="create_new">
-            <button><a href="/blogForm.html">Create new <span><i class="fa-solid fa-plus"></i></span></a></button>
+        <div class="title">
+            <p class="title"><strong>All <span>Blogs</span></strong></p>
         </div>
-        <table>
-            <thead>
-                <tr class="header">
-                    <th class="col_first">No</th>
-                    <th>Name</th>
-                    <th>Date published</th>
-                    <th class="likes">Likes</th>
-                    <th class="comments">Comments</th>
-                    <th class="last_colmn"></th>
-                </tr>
-            </thead>
-            <tbody id="table_body">
-    
-            </tbody>
-        </table>
+        <div class="cards" id="cards">            
+        </div>
     </div>
     <div id="footer">
         <p>© Copyright 2023</p>
     </div>
-    <script src="JS/blogsList.js"></script>
+    <script src="js/allBlogs.js"></script>
 </body>
 
 </html>
