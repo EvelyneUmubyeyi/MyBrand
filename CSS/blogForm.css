@@ -319,6 +319,12 @@ textarea{
     padding-bottom: 1rem;
 }
 
+#quill_content{
+    height: 375px;
+    border-radius: 0;
+    background-color: aqua;
+}
+
 /* Nav */
 @media screen and (max-width: 1144px) {
     .nav_menu li {

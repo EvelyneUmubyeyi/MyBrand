@@ -70,7 +70,7 @@ let toolbar_options = [
 
 ]
 
-let quill = new Quill('#blog_content', {
+var quill = new Quill('#quill_content', {
     modules: {
         toolbar: toolbar_options,
     },

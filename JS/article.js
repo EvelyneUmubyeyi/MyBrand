@@ -66,15 +66,14 @@ async function renderArticle() {
             console.log('hereeee')
         }
     } else {
-        console.log("not found")
-        window.location.replace('./pageNotFound.html')
+        window.location.replace('./pageError.html?id=404')
     }
 }
 
 window.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault()
     if (article_id === null) {
-        window.location.replace('./pageNotFound.html')
+        window.location.replace('./pageError.html?id=404')
     } else {
         renderArticle()
     }

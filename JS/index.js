@@ -2,6 +2,8 @@ let user = localStorage.getItem('user')
 let user_parsed = JSON.parse(user)
 let projects;
 
+let login_text = document.getElementsByClassName("login_text")
+
 let popup = document.getElementById("popup_container")
 let closePopup = document.getElementById("close_popup")
 
@@ -223,6 +225,11 @@ async function loadProjects(){
 
 
 window.addEventListener('DOMContentLoaded', () => {
+    if(user_parsed !== null){
+        for(let i=0; i<login_text.length;i++){
+            login_text[i].innerText="Log out"
+        }
+    }
     loadSkills()
     loadProjects()
     loadBlogs()
