@@ -1,0 +1,414 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #2B2D3A;
+    color: #fff;
+    font-family: 'Poppins';
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.stop-scrolling {
+    overflow: hidden;
+}
+
+button {
+    cursor: pointer;
+}
+
+nav li {
+    cursor: pointer;
+}
+
+nav li:last-child {
+    padding-right: 0;
+}
+
+nav {
+    width: 100%;
+    background-color: #2B2D3A;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.nav_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.logo {
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 3.5rem;
+    color: #1DD882;
+    padding: 0;
+    margin: 0;
+    line-height: 53px;
+    height: 37px;
+}
+
+.nav_menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav_menu li {
+    padding-right: 2rem;
+}
+
+.nav_buttons .login,
+.res_nav_buttons .login {
+    background-color: #2B2D3A;
+    border: 2px solid #1DD882;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.5rem 1.7rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    margin-right: 1.5rem;
+}
+
+.nav_buttons .login a,
+.res_nav_buttons .login a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#blog_content {
+    height: 130px;
+    background-color: #fff;
+    color: black;
+}
+
+.nav_buttons .contact,
+.res_nav_buttons .contact {
+    background-color: #1DD882;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+}
+
+.fa-bars {
+    display: none;
+}
+
+
+.responsive_nav {
+    background-color: #1E1F29;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    visibility: hidden;
+    position: fixed;
+    height: 87vh;
+    width: 100%;
+
+}
+
+.res_nav_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_menu {
+    list-style-type: none;
+}
+
+.res_nav_menu li {
+    margin-bottom: 2rem;
+    text-decoration: none;
+}
+
+.res_nav_menu a {
+    text-decoration: none;
+}
+
+.res_nav_buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.res_nav_buttons .login {
+    margin-right: 0;
+    margin-bottom: 2rem;
+}
+
+.res_nav_buttons .login,
+.res_nav_buttons .contact {
+    font-weight: 600;
+}
+
+.body {
+    width: 80%;
+    margin: auto;
+    min-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.back {
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.fa-arrow-left {
+    font-size: 2rem;
+    color: #1DD882;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.title span {
+    color: #1DD882;
+}
+
+.form_container {
+    background-color: #1E1F29;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+form label {
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+form input,
+textarea {
+    margin-bottom: 0.9rem;
+    border-radius: 10px;
+    background-color: #1E1F29;
+    height: 2rem;
+    border: 1px solid #fff;
+    width: 100%;
+    color: #fff;
+    caret-color: #fff;
+    padding-left: 1rem;
+    padding-top: 0;
+    font-size: 1rem;
+    font-family: 'poppins';
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+#submit_message {
+    color: #fff;
+    background-color: #1DD882;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 3rem;
+    font-family: 'Poppins';
+    width: fit-content;
+}
+
+#hook {
+    height: 4rem
+}
+
+#image {
+    display: none;
+}
+
+#content {
+    height: 20rem;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dotted #fff;
+    height: 10rem;
+    border-radius: 10px;
+    margin-bottom: 0.9rem;
+}
+
+.inner_text span {
+    color: #1DD882;
+}
+
+.inner_text {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+}
+
+#for_image {
+    cursor: pointer;
+}
+
+#footer {
+    height: 3rem;
+    background-color: #1E1F29;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide_element {
+    display: none;
+}
+
+.preview-img {
+    height: 20rem;
+    width: 80%;
+    object-fit: cover;
+}
+
+.preview-img-container {
+    height: fit-content;
+    /* border: 1px solid; */
+    /* filter: blur(8px); */
+    /* -webkit-filter: blur(8px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+
+textarea{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#quill_content{
+    height: 375px;
+    border-radius: 0;
+}
+
+/* Nav */
+@media screen and (max-width: 1144px) {
+    .nav_menu li {
+        padding-right: 1rem;
+    }
+
+    .nav_buttons .login {
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .nav_buttons .contact {
+        padding: 0.6rem 1rem;
+    }
+
+    .nav_buttons .login {
+        padding: 0.5rem 1.2rem;
+    }
+}
+
+@media screen and (max-width: 935px) {
+    .nav_buttons .contact {
+        font-size: 0.8rem;
+    }
+
+    .nav_buttons .login {
+        font-size: 0.8rem;
+    }
+
+    .nav_menu li {
+        font-size: 0.8rem;
+    }
+
+    form label {
+        font-size: 0.8rem;
+    }
+
+    .inner_text span {
+        width: fit-content;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .nav_buttons .login {
+        margin-right: 0.5rem;
+    }
+
+    .nav_menu li {
+        padding-right: 0.7rem;
+    }
+
+    .nav_buttons .login {
+        margin-right: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 748px) {
+    .nav_buttons .contact {
+        padding: 0.6rem 0.6rem;
+    }
+
+    .nav_buttons .login {
+        padding: 0.5rem 0.6rem;
+    }
+}
+
+@media screen and (max-width: 696px) {
+    .nav_content {
+        width: 80%;
+    }
+
+    .nav_menu,
+    .nav_buttons {
+        display: none;
+    }
+
+    .fa-bars {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    .form_container {
+        width: 100%;
+    }
+
+}
