@@ -6,7 +6,10 @@ const app = express()
 //connect to mongo db
 const dbURI = 'mongodb+srv://evelyne:evelyne@cluster0.pfroeg1.mongodb.net/MyBrand?retryWrites=true&w=majority'
 mongoose.connect(dbURI,{useNewUrlParser:true,useUnifiedTopology:true})
-.then((result)=>app.listen(3000))
+.then((result)=>{
+    console.log('connected')
+    app.listen(3000)
+})
 .catch((err)=>console.log(err))
  
 
