@@ -1,19 +1,19 @@
 const Blog = require('./../models/blog')
 
 const createBlog = async (req, res) => {
-    const { title, hook, image, body, author_name, author_image } = req.body
-    const blog = new Blog({ title: title, hook: hook, image: image, body: body, author_name: author_name, author_image: author_image })
-    blog.save()
-
-        .then(result => {
-            res.status(201).json({
-                message: "Blog created successfully",
-                data: blog,
-            })
+    try {
+        const { title, hook, image, body, author_name, author_image } = req.body
+        const blog = await new Blog({ title: title, hook: hook, image: image, body: body, author_name: author_name, author_image: author_image })
+        const newBlog = await blog.save()
+        console.log('I reach here')
+        return res.status(201).json({
+            message: "Blog created successfully",
+            data: newBlog,
         })
-        .catch(err => {
-            res.status(500).json({ message: "Something went wrong", Error: err })
-        })
+    }
+    catch (err) {
+        return res.status(500).json({ message: "Something went wrong", Error: err.message })
+    }
 }
 
 const getAllBlogs = async (req, res) => {
@@ -22,7 +22,7 @@ const getAllBlogs = async (req, res) => {
             res.status(200).json({ message: "All blogs", data: result })
         })
         .catch(err => {
-            res.status(500).json({ message: "Something went wrong", Error: err })
+            res.status(500).json({ message: "Something went wrong", Error: err.message })
         })
 }
 
@@ -31,15 +31,12 @@ const getOneBlog = async (req, res) => {
         const blogId = req.params.id
         const blog = await Blog.findById(blogId)
         if (!blog) {
-            console.log(blog)
             return res.status(404).json({ message: "No blog with such ID" })
-        } else {
-            console.log(blog)
-            return res.status(200).json({ message: "Single blog", data: result })
         }
+        return res.status(200).json({ message: "Single blog", data: blog })
     }
     catch (err) {
-        return res.status(500).json({ message: "Something went wrong", Error: err })
+        return res.status(500).json({ message: "Something went wrong", Error: err.message })
     }
 }
 
@@ -73,12 +70,12 @@ const updateBlog = async (req, res) => {
                     res.status(200).json({ message: "blog updated successfully", data: result })
                 })
                 .catch(err => {
-                    res.status(500).json({ message: "Something went wrong, couldn't save", Error: err })
+                    res.status(500).json({ message: "Something went wrong, couldn't save", Error: err.message })
                 })
         })
 
         .catch(err => {
-            res.status(500).json({ message: "Something went wrong", Error: err })
+            res.status(500).json({ message: "Something went wrong", Error: err.message })
         })
 
 }
@@ -90,7 +87,7 @@ const deleteBlog = async (req, res) => {
             res.json({ message: "Blog deleted", data: result })
         })
         .catch(err => {
-            res.status(500).json({ message: "Something went wrong", Error: err })
+            res.status(500).json({ message: "Something went wrong", Error: err.message })
         })
 
 }
