@@ -14,6 +14,13 @@ hum.addEventListener('click', () => {
     }
 })
 
+let login_text = document.getElementsByClassName("login_text")
+for(let i=0; i<login_text.length;i++){
+    login_text[i].addEventListener('click',()=>{
+        localStorage.removeItem('user')
+    })
+}
+
 function toggleNavBar() {
     if (window.getComputedStyle(res_nav).visibility === "hidden") {
         res_nav.style.visibility = 'visible'

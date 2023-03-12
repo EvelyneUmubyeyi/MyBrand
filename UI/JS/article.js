@@ -1,6 +1,7 @@
 let article_id = new URLSearchParams(window.location.search).get("id")
 let user = localStorage.getItem('user')
 let user_parsed = JSON.parse(user)
+let login_text = document.getElementsByClassName("login_text")
 
 let article_title = document.getElementById('article_title')
 let small_description = document.getElementById('small_description')
@@ -70,11 +71,26 @@ async function renderArticle() {
     }
 }
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('load', (e) => {
     e.preventDefault()
     if (article_id === null) {
         window.location.replace('./pageError.html?id=404')
     } else {
+        if(user_parsed !== null){
+            for(let i=0; i<login_text.length;i++){
+                login_text[i].innerText="Log out"
+                login_text[i].addEventListener('click',()=>{
+                    localStorage.removeItem('user')
+                    window.location.replace('./login.html')
+                })
+            }
+        }else{
+            for(let i=0; i<login_text.length;i++){
+                login_text[i].addEventListener('click',()=>{
+                    window.location.replace('./login.html')
+                })
+            }
+        }
         renderArticle()
     }
 })
@@ -85,14 +101,12 @@ let refresh_likes = async () => {
 
 let likes_div = document.getElementById('likes_div')
 
-console.log(like_icon)
-
-like_icon.addEventListener('click',
-    async function (e) {
-        e.preventDefault()
-        await likefn()
-    })
-async function likefn() {
+// like_icon.addEventListener('click',
+//     async function (e) {
+//         e.preventDefault()
+//         await likefn()
+//     })
+function likefn() {
     if (user === null) {
         popup_container.style.visibility = 'visible'
     } else {
@@ -100,7 +114,7 @@ async function likefn() {
             article.likes += 1
             article.like_emails.push(user_parsed.email)
 
-            await fetch(`http://localhost:3000/blogs/${article_id}`, {
+            fetch(`http://localhost:3000/blogs/${article_id}`, {
                 method: 'PATCH',
                 body: JSON.stringify({ "likes": article.likes, "like_emails": article.like_emails }),
                 headers: { 'Content-Type': 'application/json' }
@@ -115,7 +129,7 @@ async function likefn() {
             if (index > -1) {
                 article.like_emails.splice(index, 1)
             }
-            await fetch(`http://localhost:3000/blogs/${article_id}`, {
+            fetch(`http://localhost:3000/blogs/${article_id}`, {
                 method: 'PATCH',
                 body: JSON.stringify({ "likes": article.likes, "like_emails": article.like_emails }),
                 headers: { 'Content-Type': 'application/json' }
@@ -123,7 +137,6 @@ async function likefn() {
                 response => response.json()
             ).then(
                 json => {
-                    console.log(json)
                     likes.innerText = article.likes
                 }
             )

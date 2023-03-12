@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/88276971a8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="CSS/blogsList.css">
+    <link rel="stylesheet" href="CSS/queries.css">
     <script src="JS/authorisation.js"></script>
     <title>Evelyne Umubyeyi</title>
 </head>
@@ -31,7 +31,7 @@
                 <li class="dashboard"><a href="/dashboard.html">Dashboard</a></li>
             </ul>
             <div class="nav_buttons">
-                <button class="login"> <a href="/login.html">Login</a></button>
+                <button class="login login_text"> <a href="./login.html">Log out</a></button>
                 <button class="contact"><a href="/#contact">Contact me</a></button>
             </div>
             <i class="fa-solid fa-bars" id="fa-bars"></i>
@@ -47,7 +47,7 @@
             <li class="dashboard res_menu_item"><a href="/dashboard.html">Dashboard</a></li>
         </ul>
         <div class="res_nav_buttons">
-            <button class="login res_menu_item"> <a href="/login.html">Login</a></button>
+            <button class="login res_menu_item login_text"> <a href="./login.html">Log out</a></button>
             <button class="contact res_menu_item"><a href="/#contact">Contact me</a></button>
         </div>
     </div>
@@ -55,30 +55,13 @@
         <div class="back">
             <a href="/dashboard.html"><i id="prev" class="fa-solid fa-arrow-left"></i></a>
         </div>
-        <p class="title"><strong>All <span>Blogs</span></strong></p>
-        <div class="create_new">
-            <button><a href="/blogForm.html">Create new <span><i class="fa-solid fa-plus"></i></span></a></button>
-        </div>
-        <table>
-            <thead>
-                <tr class="header">
-                    <th class="col_first">No</th>
-                    <th>Name</th>
-                    <th>Date published</th>
-                    <th class="likes">Likes</th>
-                    <th class="comments">Comments</th>
-                    <th class="last_colmn"></th>
-                </tr>
-            </thead>
-            <tbody id="table_body">
-    
-            </tbody>
-        </table>
+        <p class="title"><strong>Received <span>Queries</span></strong></p>
+        <div class="container" id="container"></div>
     </div>
     <div id="footer">
         <p>© Copyright 2023</p>
     </div>
-    <script src="JS/blogsList.js"></script>
+    <script src="JS/queries.js"></script>
 </body>
 
 </html>

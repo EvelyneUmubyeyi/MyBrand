@@ -32,6 +32,13 @@ if (article_id !== null) {
     renderArticle()
 }
 
+let login_text = document.getElementsByClassName("login_text")
+for(let i=0; i<login_text.length;i++){
+    login_text[i].addEventListener('click',()=>{
+        localStorage.removeItem('user')
+    })
+}
+
 let res_nav = document.getElementById("responsive_nav");
 let hum = document.getElementById("fa-bars");
 
