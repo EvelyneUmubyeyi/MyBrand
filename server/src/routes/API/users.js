@@ -7,6 +7,7 @@ const {
 const handleRefreshToken = require('./../../controllers/refreshTokenController')
 const handleLogout = require('./../../controllers/logoutController')
 const express = require('express')
+const { verifyAdminJWT } = require('../../middlewares/verifyJWT')
 const usersRouter = express.Router()
 
 /**
@@ -94,7 +95,10 @@ usersRouter.post('/', createUser)
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             type: object
+ *             example:
+ *              email: evelyne@gmail.com
+ *              password: password
  *     responses:
  *       200:
  *         description: The user was successfully logged in
@@ -155,6 +159,8 @@ usersRouter.get('/logout', handleLogout)
  * @swagger
  * /users:
  *      get:
+ *          security:
+ *              - bearerAuth: []
  *          tags: [Users]
  *          summary: Getting all the users
  *          responses:
@@ -167,6 +173,6 @@ usersRouter.get('/logout', handleLogout)
  *              500:
  *                  description: Some server error
  */
-usersRouter.get('/', getAllUsers)
+usersRouter.get('/', verifyAdminJWT, getAllUsers)
 
 module.exports = usersRouter; 

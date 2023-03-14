@@ -22,7 +22,8 @@ const createUser = async (req, res) => {
 
         await newUser.save()
             .then(result => {
-                res.status(201).json({ message: "New user created succesfully", data: result })
+                delete result.password
+                res.status(201).json({ status: 'success', message: "New user created succesfully", data: result })
             })
             .catch(err => {
                 res.status(500).json({ message: "Server error", Error: err.message })
@@ -71,6 +72,7 @@ const authorizeUser = async (req, res) => {
                 return res.status(500).json({ message: "Could not save token in dtabase, server error", Error: err.message })
             }
 
+            delete foundUser.password
             res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 })
             return res.status(200).header("authenticate", accessToken).json({ message: "successfully logged in", token: accessToken, data: foundUser })
         }
@@ -84,6 +86,15 @@ const authorizeUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
     try {
         const users = await User.find().sort({ createdAt: -1 })
+        console.log(users)
+
+        // const returnedUsers = users.map(({ password, ...user }) => user);
+        for (let i = 0; i < users.length; i++) {
+            // console.log(users[i].password);
+            delete users[i].password;
+          }
+        // console.log(users)
+
         return res.status(200).json({ message: "All users", data: users })
     }
     catch(err){

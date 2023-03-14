@@ -2,12 +2,10 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 const verifyUserJWT = async (req,res,next) =>{
-    console.log('verifying')
     const authHeader = req.headers.authorization
     if(!authHeader){
         return res.status(401).json({message:"Not logged in"})
     }     
-    console.log(authHeader) // Bearer token
     const token = await authHeader.split(' ')[1]
     jwt.verify(
         token,
