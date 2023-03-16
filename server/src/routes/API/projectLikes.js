@@ -1,7 +1,7 @@
-const {createProject, getAllProjects, likeAndUnlike} = require('./../../controllers/projectController')
-const {verifyAdminJWT, verifyUserJWT} = require('./../../middlewares/verifyJWT')
+const {likeAndUnlike} = require('./../../controllers/projectController')
+const {verifyUserJWT} = require('./../../middlewares/verifyJWT')
 const express = require('express')
-const projectsRouter = express.Router()
+const projectLikesRouter = express.Router()
 
 /**
  * @swagger
@@ -51,45 +51,6 @@ const projectsRouter = express.Router()
 
 /**
  * @swagger
- * /projects:
- *   get:
- *     summary: Returns the list of all the projects
- *     tags: [Projects]
- *     responses:
- *        200: 
- *          description: The list of all projects
- *          content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Project'
- *        500:
- *          description: server error
- *   post:
- *     security: 
- *        - bearerAuth: []
- *     summary: Create a new project
- *     tags: [Projects]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Project'
- *     responses:
- *       201:
- *         description: The project was successfully created
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Project'
- *       500:
- *         description: Some server error
- */
-
-/**
- * @swagger
  * /projects/{id}/likes:
  *  patch:
  *    security:
@@ -124,8 +85,6 @@ const projectsRouter = express.Router()
  *        description: Some error happened
  */
 
-projectsRouter.get('/', getAllProjects)
-projectsRouter.post('/', verifyAdminJWT, createProject)
-projectsRouter.patch('/:id/likes', verifyUserJWT, likeAndUnlike)
+projectLikesRouter.patch('/', verifyUserJWT, likeAndUnlike)
 
-module.exports = projectsRouter
+module.exports = projectLikesRouter

@@ -29,7 +29,7 @@ const getSingleSkill = async (req, res) => {
         if(!skill){
             return res.status(404).json({ status: 'failed', message: "No skill with such id"})
         }
-        return res.status(200).json({ status: 'success', message: "Single skill", data: skillId })
+        return res.status(200).json({ status: 'success', message: "Single skill", data: skill })
     }
     catch(err){
         return res.status(500).json({status: 'error', message:"server error", Error: err.message})

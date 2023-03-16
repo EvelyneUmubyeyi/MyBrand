@@ -28,7 +28,6 @@ const verifyAdminJWT = async (req,res,next) =>{
     if(!authHeader){
         return res.status(401).json({message:"Not logged in"})
     } 
-    console.log(authHeader) // Bearer token
     const token = await authHeader.split(' ')[1]
     jwt.verify(
         token,
