@@ -4,6 +4,8 @@ const router = require('./src/routes/routes')
 const swaggerUI = require('swagger-ui-express')
 const swaggerJsDoc = require('swagger-jsdoc')
 const cookieParser = require('cookie-parser')
+const connectDB = require('./src/configs/db.config')
+const dotenv = require('dotenv')
 
 const options = {
     definition: {
@@ -16,10 +18,10 @@ const options = {
                     bearerFormat: "JWT",
                 },
 
-                cookieAuth:{
+                cookieAuth: {
                     type: 'apiKey',
                     in: 'cookie',
-                    name:'jwt'
+                    name: 'jwt'
                 }
             },
         },
@@ -43,18 +45,18 @@ const app = express()
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs))
 
+const port = process.env.PORT
 //connect to mongo db
-const dbURI = 'mongodb+srv://evelyne:evelyne@cluster0.pfroeg1.mongodb.net/MyBrand?retryWrites=true&w=majority'
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+connectDB
     .then((result) => {
         console.log('connected')
-        app.listen(3000)
+        app.listen(port)
     })
     .catch((err) => console.log(err))
 
 
 app.get('/', (req, res) => {
-    res.send('API endpoints')
+    return res.status(200).json({status: 200, message: 'Welcome to Umubyeyi Evelyne portolio API'})
 })
 
 //parses request body
@@ -63,11 +65,12 @@ app.use(express.json())
 //middleware for cookies
 app.use(cookieParser())
 
-app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin','*')
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*')
     next()
 })
 
 app.use(router)
 
+module.exports = app
 // export default app;
