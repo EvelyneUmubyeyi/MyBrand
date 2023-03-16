@@ -228,6 +228,16 @@ window.addEventListener('DOMContentLoaded', () => {
     if(user_parsed !== null){
         for(let i=0; i<login_text.length;i++){
             login_text[i].innerText="Log out"
+            login_text[i].addEventListener('click',()=>{
+                localStorage.removeItem('user')
+                window.location.replace('./login.html')
+            })
+        }
+    }else{
+        for(let i=0; i<login_text.length;i++){
+            login_text[i].addEventListener('click',()=>{
+                window.location.replace('./login.html')
+            })
         }
     }
     loadSkills()

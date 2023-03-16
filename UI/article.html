@@ -28,7 +28,7 @@
                 <li class="blogs"><a href="/#blogs">Blogs</a></li>
             </ul>
             <div class="nav_buttons">
-                <button class="login"> <a href="/login.html">Login</a></button>
+                <button class="login login_text"> <a>Login</a></button>
                 <button class="contact"><a href="/#contact">Contact me</a></button>
             </div>
             <i class="fa-solid fa-bars" id="fa-bars"></i>
@@ -43,7 +43,7 @@
             <li class="blogs res_menu_item"><a href="/#blogs">Blogs</a></li>
         </ul>
         <div class="res_nav_buttons">
-            <button class="login res_menu_item"> <a href="/login.html">Login</a></button>
+            <button class="login res_menu_item login_text"> <a>Login</a></button>
             <button class="contact res_menu_item"><a href="/#contact">Contact me</a></button>
         </div>
     </div>
@@ -76,7 +76,7 @@
                 </div> -->
                 <form action="">
                     <!-- <button type="submit" id="like_button"></button> -->
-                    <i id="like_icon"></i>
+                    <i id="like_icon" onclick="likefn()"></i>
                 </form>
                 <p class="no_likes" id="no_likes"></p>
             </div>
@@ -99,18 +99,6 @@
             </form>
         </div>
         <div class="comments_list" id="comments_list">
-            <!-- <div class="single_comment">
-                <div class="icon_container">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-                <div class="text">
-                    <div class="comment_header">
-                        <p class="name" id="commenter_name"></p>
-                        <p class="date" id="commenting_date"></p>
-                    </div>
-                    <p class="comment" id="comment_body"></p>
-                </div>
-            </div> -->
 
         </div>
     </div>

@@ -1,6 +1,14 @@
 let res_nav = document.getElementById("responsive_nav");
 let hum = document.getElementById("fa-bars");
+let login_text = document.getElementsByClassName("login_text")
+let popup_container = document.getElementById('popup_container')
 
+for(let i=0; i<login_text.length;i++){
+    login_text[i].addEventListener('click',()=>{
+        localStorage.removeItem('user')
+        window.location.replace('./login.html')
+    })
+}
 hum.addEventListener('click',()=>{
 
     console.log('clicked')
@@ -35,6 +43,11 @@ async function deleteBlog(blogId){
 
 }
 
+
+function deleteBlogFn(blogId){
+    popup_container.style.visibility = 'visible'
+}
+
 let resNavMenuItem = document.getElementsByClassName("res_menu_item")
 for (let i = 0; i < resNavMenuItem.length; i++) {
     resNavMenuItem[i].addEventListener('click', toggleNavBar);
@@ -64,7 +77,7 @@ let renderBlogs = async()=>{
                         <div class="edit" onclick="window.location = '/blogForm.html?id=${blogs[i].id}'">
                             <i class="fa-solid fa-pencil"></i>
                         </div>
-                        <div class="delete" onclick = deleteBlog(${blogs[i].id})>
+                        <div class="delete" onclick = deleteBlogFn(${blogs[i].id})>
                             <i class="fa-solid fa-trash"></i>
                         </div>
                     </td>
@@ -78,7 +91,12 @@ let renderBlogs = async()=>{
 
 window.addEventListener('DOMContentLoaded', renderBlogs)
 
-// let article_row = document.getElementById("article_row")
-// article_row.addEventListener('click', async ()=>{
-//     windows.location.replace(`./article.html?id=${}`)
-// })
+let close_popup = document.getElementById('close_popup')
+close_popup.addEventListener('click',()=>{
+    popup_container.style.visibility = 'hidden'
+})
+
+let confirm_delete = document.getElementById('confirm_delete_button')
+confirm_delete.addEventListener('click',()=>{
+    deleteBlog()
+})
