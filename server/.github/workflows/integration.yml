@@ -12,10 +12,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults: 
-      run:
-        working-directory: ./server
-
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
@@ -28,6 +24,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: './server/package-lock.json'
-      run: npm i
-      run: npm test
+      - name: Running tests
+        working-directory: ./server
+        run: npm i
+        run: npm test
