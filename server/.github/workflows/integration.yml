@@ -12,7 +12,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    working-directory: server
+    defaults:
+      run:
+        working-directory: server
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
@@ -26,5 +28,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
       - name: Running tests
-        run: npm i
+        run: npm ci
         run: npm test
