@@ -6,6 +6,8 @@ const swaggerJsDoc = require('swagger-jsdoc')
 const cookieParser = require('cookie-parser')
 const connectDB = require('./src/configs/db.config')
 const dotenv = require('dotenv')
+const cors = require('cors')
+
 
 const options = {
     definition: {
@@ -42,6 +44,7 @@ const options = {
 const specs = swaggerJsDoc(options)
 
 const app = express()
+app.use(cors())
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs))
 
