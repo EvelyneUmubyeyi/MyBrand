@@ -32,7 +32,7 @@ jobs:
         cache: 'npm'
         cache-dependency-path: './server/package-lock.json'
     - name: Install dependencies
-      run: npm install
+      run: npm i
 
   test:
     name: run-unit test
@@ -56,6 +56,6 @@ jobs:
         cache: 'npm'
         cache-dependency-path: './server/package-lock.json'
     - name: Install dependencies
-      run: npm installg
+      run: npm i
     - name: test
       run: npm test
