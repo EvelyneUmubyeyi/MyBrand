@@ -27,7 +27,7 @@ jobs:
         ref: develop
         path: './server'
       - name: Running tests
-        run: cd ./server
-        run: npm ci
-        run: cd ./server
-        run: npm test
+        run: |
+          cd ./server
+          npm ci
+          npm test
