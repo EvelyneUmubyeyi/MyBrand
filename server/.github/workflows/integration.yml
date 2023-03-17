@@ -25,9 +25,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         ref: develop
-        path: ./server
+        path: './server'
       - name: Running tests
-        run: "cd ./server"
+        run: cd ./server
         run: npm ci
         run: npm test
-        
