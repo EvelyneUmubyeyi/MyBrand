@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-
+    name: build
     runs-on: ubuntu-latest
     defaults: 
       run:
@@ -23,12 +23,39 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
+    - name: checkout code
+      uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: './server/package-lock.json'
-    - run: npm ci
-    - run: npm test
+    - name: Install dependencies
+      run: npm install
+
+  test:
+    name: run-unit test
+    runs-on: ubuntu-latest
+    defaults: 
+      run:
+        working-directory: ./server/
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: './server/package-lock.json'
+    - name: Install dependencies
+      run: npm installg
+    - name: test
+      run: npm run test
