@@ -38,16 +38,16 @@ const authorizeUser = async (req, res) => {
     try {
         const { email, password } = req.body
         if (!email || !password) {
-            return res.status(400).json({ message: 'user email and password are required' }) //bad request
+            return res.status(400).json({ status: 400,message: 'user email and password are required' }) //bad request
         }
         let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
         if (!email.match(validRegex)) {
-            return res.status(400).json({ message: 'Invalid email' })
+            return res.status(400).json({status: 400, message: 'Invalid email' })
         }
 
         const foundUser = await User.findOne({ email: email })
         if (!foundUser) {
-            return res.status(401).json({ message: "User not registered" }) // unauthorized status
+            return res.status(401).json({ status: 401, message: "User not registered" }) // unauthorized status
         }
 
         const match = await bcrypt.compare(password, foundUser.password)
@@ -69,17 +69,17 @@ const authorizeUser = async (req, res) => {
                 await foundUser.save()
             }
             catch (err) {
-                return res.status(500).json({ message: "Could not save token in dtabase, server error", Error: err.message })
+                return res.status(500).json({ status: 500, message: "Could not save token in dtabase, server error", Error: err.message })
             }
 
             delete foundUser.password
             res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 })
-            return res.status(200).header("authenticate", accessToken).json({ message: "successfully logged in", token: accessToken, data: foundUser })
+            return res.status(200).header("authenticate", accessToken).json({ status: 200, message: "successfully logged in", token: accessToken, data: foundUser })
         }
-        return res.status(401).json({ message: "Incorrect password" }) // unauthorized status
+        return res.status(401).json({ status: 401,message: "Incorrect password" }) // unauthorized status
     }
     catch (err) {
-        return res.status(500).json({ message: "Server error", Error: err.message })
+        return res.status(500).json({ status: 500, message: "Server error", Error: err.message })
     }
 }
 
