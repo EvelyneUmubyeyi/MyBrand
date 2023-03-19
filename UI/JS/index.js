@@ -8,15 +8,17 @@ let popup = document.getElementById("popup_container")
 let closePopup = document.getElementById("close_popup")
 
 async function openSkillsPopup(skill_id) {
-    const res = await fetch(`http://localhost:3000/skills/${skill_id}`)
-    let skills = await res.json()
+    console.log(skill_id)
+    const res = await fetch(`https://evelyneportfolioapi.up.railway.app/skills/${skill_id}`)
+    let skill = await res.json()
     template_skills = ""
 
-    for (let j = 0; j < skills.specific_skills.length; j++) {
+    const single_skill = skill.data 
+    for (let j = 0; j < single_skill.specific_skills.length; j++) {
         template_skills +=
             `
             <div class="card">
-                <p>${skills.specific_skills[j]}</p>
+                <p>${single_skill.specific_skills[j]}</p>
             </div>
             `
     }
@@ -119,14 +121,14 @@ async function loadBlogs() {
 }
 
 async function loadSkills() {
-    const res = await fetch('http://localhost:3000/skills')
+    const res = await fetch('https://evelyneportfolioapi.up.railway.app/Skills/')
     let skills = await res.json()
-
+    const skill_set = skills.data
     template = ""
-    for (let i = 0; i < skills.length; i++) {
+    for (let i = 0; i < skill_set.length; i++) {
         template += `
-        <div id="skill_category_card" class="card skill_category" onclick="openSkillsPopup(${skills[i].id})">
-        <p>${skills[i].category}</p>
+        <div id="skill_category_card" class="card skill_category" onclick="openSkillsPopup('${skill_set[i]._id}')">
+        <p>${skill_set[i].category}</p>
         </div>
         `
 
@@ -179,41 +181,42 @@ async function likefn(project_id) {
 }
 
 async function loadProjects(){
-    const res = await fetch("http://localhost:3000/projects") 
+    const res = await fetch("https://evelyneportfolioapi.up.railway.app/projects") 
     projects = await res.json()
     let template = ""
 
-    for (let i=0; i<projects.length;i++){
-        if(user_parsed && projects[i].like_emails.includes(user_parsed.email)){
+    const projects_list = projects.data
+    for (let i=0; i<projects_list.length;i++){
+        if(user_parsed && projects_list[i].like_emails.includes(user_parsed.email)){
             console.log('here')
             template+=
             `
             <div class="card work_card" id="work_category_card">
-                        <img src=${projects[i].image} alt="project_image">
+                        <img src=${projects_list[i].image} alt="project_image">
                         <div class="links">
                             <div class="likes">
-                                <i class="fa-solid fa-heart" style="font-weight:700" onclick="likefn(${projects[i].id})"></i>
-                                <p id="project_likes">${projects[i].likes}</p>
+                                <i class="fa-solid fa-heart" style="font-weight:700" onclick="likefn('${projects_list[i].id}')"></i>
+                                <p id="project_likes">${projects_list[i].likes}</p>
                             </div>
-                            <a href=${projects[i].link} target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href=${projects_list[i].link} target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
-                        <p class="project_name">${projects[i].title}</p>
+                        <p class="project_name">${projects_list[i].title}</p>
                     </div>
             `
-        }else if(!user_parsed || !projects[i].like_emails.includes(user_parsed.email)){
+        }else if(!user_parsed || !projects_list[i].like_emails.includes(user_parsed.email)){
             console.log('here 2')
             template+=
             `
             <div class="card work_card" id="work_category_card">
-                        <img src=${projects[i].image} alt="project_image">
+                        <img src=${projects_list[i].image} alt="project_image">
                         <div class="links">
                             <div class="likes">
-                                <i class="fa-regular fa-heart" onclick="likefn(${projects[i].id})"></i>
-                                <p id="project_likes">${projects[i].likes}</p>
+                                <i class="fa-regular fa-heart" onclick="likefn('${projects_list[i].id}')"></i>
+                                <p id="project_likes">${projects_list[i].likes}</p>
                             </div>
-                            <a href=${projects[i].link} target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href=${projects_list[i].link} target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
-                        <p class="project_name">${projects[i].title}</p>
+                        <p class="project_name">${projects_list[i].title}</p>
                     </div>
             `
         }
