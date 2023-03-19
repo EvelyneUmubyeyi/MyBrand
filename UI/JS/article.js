@@ -20,15 +20,30 @@ let article;
 
 async function renderArticle() {
     console.log('called')
-    let res = await fetch(`http://localhost:3000/blogs/${article_id}`)
-    article = await res.json()
+    let res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`)
+    let article_res = await res.json()
+    article = article_res.data
+
+    let commentsRes = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/comments`)
+    let commentsResponse = await commentsRes.json()
+    comments_Array = commentsResponse.data 
+    console.log(comments_Array)
+
     if (JSON.stringify(article) !== '{}') {
         console.log(article)
         article_title.innerText = article.title
         small_description.innerText = article.hook
         author_name.innerText = article.author_name
         author_image.src = article.author_image
-        publish_date.innerText = article.date_published
+        // const dateObj = new Date('2023-03-14T05:39:11.157Z')
+        // let publish_date = `${dateObj.getDate()}-${dateObj.getMonth()+1}-${dateObj.getFullYear()}`
+
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        let date_array = '2023-03-14T05:39:11.157Z'.split('-')
+        let day_array = date_array[2].split('T')
+        let day = day_array[0]
+
+        publish_date.innerText = day+' '+ months[parseInt(date_array[1])-1]+' '+ date_array[0]
         cover_photo.src = article.image
         article_body.innerText = article.body
         if(user_parsed){
@@ -45,8 +60,9 @@ async function renderArticle() {
         likes.innerText = article.likes
         comments.innerText = article.comments
         template = ''
-        if (article.comments_list.length > 0) {
-            for (let i = 0; i < article.comments_list.length; i++) {
+        if (comments_Array.length > 0) {
+            for (let i = 0; i < comments_Array.length; i++) {
+                
                 template += `
             <div class="single_comment">
             <div class="icon_container">
@@ -54,10 +70,10 @@ async function renderArticle() {
             </div>
             <div class="text">
                 <div class="comment_header">
-                    <p class="name" id="commenter_name">${article.comments_list[i].name}</p>
-                    <p class="date" id="commenting_date">${article.comments_list[i].date}</p>
+                    <p class="name" id="commenter_name">${comments_Array[i].name}</p>
+                    <p class="date" id="commenting_date">${comments_Array[i].date}</p>
                 </div>
-                <p class="comment" id="comment_body">${article.comments_list[i].comment}</p>
+                <p class="comment" id="comment_body">${comments_Array[i].comment}</p>
             </div>
             </div>
             `
