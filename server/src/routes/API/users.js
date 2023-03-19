@@ -1,7 +1,8 @@
 const {
     createUser,
     authorizeUser,
-    getAllUsers
+    getAllUsers,
+    getSingleUser
 } = require('./../../controllers/userController')
 
 const handleRefreshToken = require('./../../controllers/refreshTokenController')
@@ -174,5 +175,33 @@ usersRouter.get('/logout', handleLogout)
  *                  description: Some server error
  */
 usersRouter.get('/', verifyAdminJWT, getAllUsers)
+
+/**
+ * @swagger
+ * /users/{id}:
+ *   get:
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Get the user by id
+ *     tags: [Users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The user id
+ *     responses:
+ *       200:
+ *         description: The user description by id
+ *         contens:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       500:
+ *         description: Some server error
+ */
+
+usersRouter.get('/:id', verifyAdminJWT, getSingleUser)
 
 module.exports = usersRouter; 

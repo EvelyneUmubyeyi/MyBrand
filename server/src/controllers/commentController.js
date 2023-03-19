@@ -37,8 +37,9 @@ const createComment = async (req, res) => {
         } else if (!user) {
             return res.status(404).json({ message: "No user with such ID" })
         }
-
+        blog.comments += 1
         await newComment.save()
+        await blog.save()
         return res.status(201).json({ message: "new comment added on blog", data: newComment })
     }
     catch(err){

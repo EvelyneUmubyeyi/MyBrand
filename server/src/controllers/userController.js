@@ -38,11 +38,11 @@ const authorizeUser = async (req, res) => {
     try {
         const { email, password } = req.body
         if (!email || !password) {
-            return res.status(400).json({ status: 400,message: 'user email and password are required' }) //bad request
+            return res.status(400).json({ status: 400, message: 'user email and password are required' }) //bad request
         }
         let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
         if (!email.match(validRegex)) {
-            return res.status(400).json({status: 400, message: 'Invalid email' })
+            return res.status(400).json({ status: 400, message: 'Invalid email' })
         }
 
         const foundUser = await User.findOne({ email: email })
@@ -76,7 +76,7 @@ const authorizeUser = async (req, res) => {
             res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 })
             return res.status(200).header("authenticate", accessToken).json({ status: 200, message: "successfully logged in", token: accessToken, data: foundUser })
         }
-        return res.status(401).json({ status: 401,message: "Incorrect password" }) // unauthorized status
+        return res.status(401).json({ status: 401, message: "Incorrect password" }) // unauthorized status
     }
     catch (err) {
         return res.status(500).json({ status: 500, message: "Server error", Error: err.message })
@@ -92,18 +92,32 @@ const getAllUsers = async (req, res) => {
         for (let i = 0; i < users.length; i++) {
             // console.log(users[i].password);
             delete users[i].password;
-          }
+        }
         // console.log(users)
 
         return res.status(200).json({ message: "All users", data: users })
     }
-    catch(err){
+    catch (err) {
         return res.status(500).json({ message: "Server error", Error: err.message })
+    }
+}
+
+const getSingleUser = async (req, res) => {
+    try {
+        const userId = req.params.id
+        const user = await User.findById(userId)
+
+        delete user.password;
+        return res.status(200).json({ status: 200, message: "Single user", data: user })
+    }
+    catch (err) {
+        return res.status(500).json({ status: 500, message: "Server error", Error: err.message })
     }
 }
 
 module.exports = {
     createUser,
     authorizeUser,
-    getAllUsers
+    getAllUsers,
+    getSingleUser
 }

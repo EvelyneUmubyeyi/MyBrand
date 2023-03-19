@@ -47,7 +47,6 @@ let title = document.getElementById('form_title')
 const form = document.getElementById('login_user');
 const loginUser = async (e) => {
     e.preventDefault();
-    // if(form.email.value.match(validRegex)){
     const doc = {
         email: form.email.value,
         password: form.password.value,
@@ -60,14 +59,13 @@ const loginUser = async (e) => {
     })
 
     let loggedUser = await user.json()
-    console.log(loggedUser)
 
     if (loggedUser.status === 200){
         localStorage.setItem('token', JSON.stringify(loggedUser.token))
         if (loggedUser.data.role === 'user') {
             window.history.back()
         } else {
-            window.location.replace('/dashboard.html');
+            window.location.replace('/UI/dashboard.html');
         }
     }
 
@@ -83,28 +81,6 @@ const loginUser = async (e) => {
             background: "#ff9494",
         },
     }).showToast();
-
-    // if (user[0]) {
-    //     if (user[0].password === form.password.value) {
-    //         user_details = { name: user[0].name, email: user[0].email, role: user[0].role }
-    //         localStorage.setItem('user', JSON.stringify(user_details))
-    //         if (user[0].role === 'user') {
-    //             window.history.back()
-    //         } else {
-    //             window.location.replace('/dashboard.html');
-    //         }
-    //     } else {
-    //         title.classList.add('edit_title')
-    //         error_message.innerText = 'Password incorrect'
-    //     }
-    // } else {
-    //     title.classList.add('edit_title')
-    //     error_message.innerText = 'User not registered'
-    // }
-    // }else{
-    //     title.classList.add('edit_title')
-    //     error_message.innerText = 'Invalid email'
-    // }
 }
 form.addEventListener('submit', loginUser);
 

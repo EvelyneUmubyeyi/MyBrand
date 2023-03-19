@@ -100,19 +100,19 @@ window.onscroll = () => {
 
 let blogs_container = document.getElementById('blogs_cards_container')
 async function loadBlogs() {
-    const res = await fetch('http://localhost:3000/blogs?_sort=date_published&_order=desc')
+    const res = await fetch('https://evelyneportfolioapi.up.railway.app/blogs')
     let blogs = await res.json()
     let template = ''
 
     for (let i = 0; i <= 2; i++) {
         template += `
         <div class="card blog_card">
-        <img src=${blogs[i].image} alt="">
+        <img src=${blogs.data[i].image} alt="">
         <div class="blog_text">
-            <p class="blog_title">${blogs[i].title}</p>
-            <p class="shrt_description">${blogs[i].hook}</p>
+            <p class="blog_title">${blogs.data[i].title}</p>
+            <p class="shrt_description">${blogs.data[i].hook}</p>
         </div>
-        <button onclick="window.location = '/article.html?id=${blogs[i].id}'"><a>Read</a></button>
+        <button onclick="window.location = '/UI/article.html?id=${blogs.data[i]._id}'"><a>Read</a></button>
     </div>
         `
     }
