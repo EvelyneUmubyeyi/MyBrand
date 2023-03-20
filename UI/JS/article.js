@@ -1,5 +1,5 @@
 let article_id = new URLSearchParams(window.location.search).get("id")
-let user = localStorage.getItem('user')
+let user_token = localStorage.getItem('token')
 let user_parsed = JSON.parse(user)
 let login_text = document.getElementsByClassName("login_text")
 
@@ -26,7 +26,7 @@ async function renderArticle() {
 
     let commentsRes = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/comments`)
     let commentsResponse = await commentsRes.json()
-    comments_Array = commentsResponse.data 
+    comments_Array = commentsResponse.data
     console.log(comments_Array)
 
     if (JSON.stringify(article) !== '{}') {
@@ -39,30 +39,42 @@ async function renderArticle() {
         // let publish_date = `${dateObj.getDate()}-${dateObj.getMonth()+1}-${dateObj.getFullYear()}`
 
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        let date_array = '2023-03-14T05:39:11.157Z'.split('-')
+        let date_array = article.createdAt.split('-')
         let day_array = date_array[2].split('T')
         let day = day_array[0]
 
-        publish_date.innerText = day+' '+ months[parseInt(date_array[1])-1]+' '+ date_array[0]
+        publish_date.innerText = day + ' ' + months[parseInt(date_array[1]) - 1] + ' ' + date_array[0]
         cover_photo.src = article.image
         article_body.innerText = article.body
-        if(user_parsed){
+        if (user_parsed) {
             if (article.like_emails.includes(user_parsed.email)) {
                 like_icon.classList.add('fa-solid', 'fa-heart')
             } else {
                 like_icon.classList.add('fa-regular', 'fa-heart')
             }
-        }else{
+        } else {
             like_icon.classList.add('fa-regular', 'fa-heart')
         }
-        
+
 
         likes.innerText = article.likes
         comments.innerText = article.comments
         template = ''
         if (comments_Array.length > 0) {
             for (let i = 0; i < comments_Array.length; i++) {
+                let res = await fetch(`https://evelyneportfolioapi.up.railway.app/users/${comments_Array[i].userId}`,{
+                    method: 'GET',
+                    headers: {Authorization: `Bearer ${user_token}`},
+                })
+                let response = await res.json()
+                console.log('response', response)
                 
+                let date_array = comments_Array[i].createdAt.split('-')
+                let day_array = date_array[2].split('T')
+                let day = day_array[0]
+                let comment_date = day + ' ' + months[parseInt(date_array[1]) - 1] + ' ' + date_array[0]
+                console.log('date', comment_date)
+
                 template += `
             <div class="single_comment">
             <div class="icon_container">
@@ -70,8 +82,8 @@ async function renderArticle() {
             </div>
             <div class="text">
                 <div class="comment_header">
-                    <p class="name" id="commenter_name">${comments_Array[i].name}</p>
-                    <p class="date" id="commenting_date">${comments_Array[i].date}</p>
+                    <p class="name" id="commenter_name">${response.data.name}</p>
+                    <p class="date" id="commenting_date">${comment_date}</p>
                 </div>
                 <p class="comment" id="comment_body">${comments_Array[i].comment}</p>
             </div>
@@ -92,17 +104,17 @@ window.addEventListener('load', (e) => {
     if (article_id === null) {
         window.location.replace('./pageError.html?id=404')
     } else {
-        if(user_parsed !== null){
-            for(let i=0; i<login_text.length;i++){
-                login_text[i].innerText="Log out"
-                login_text[i].addEventListener('click',()=>{
+        if (user_parsed !== null) {
+            for (let i = 0; i < login_text.length; i++) {
+                login_text[i].innerText = "Log out"
+                login_text[i].addEventListener('click', () => {
                     localStorage.removeItem('user')
                     window.location.replace('./login.html')
                 })
             }
-        }else{
-            for(let i=0; i<login_text.length;i++){
-                login_text[i].addEventListener('click',()=>{
+        } else {
+            for (let i = 0; i < login_text.length; i++) {
+                login_text[i].addEventListener('click', () => {
                     window.location.replace('./login.html')
                 })
             }
