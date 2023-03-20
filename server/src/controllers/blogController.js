@@ -41,7 +41,7 @@ const getOneBlog = async (req, res) => {
 }
 
 const updateBlog = async (req, res) => {
-    const { title, hook, image, body, author_name, author_image } = req.body
+    const { title, hook, image, body, likes, comments, author_name, author_image, like_emails } = req.body
     const blogId = req.params.id
     const blog = Blog.findById(blogId)
         .then(result => {
@@ -58,11 +58,20 @@ const updateBlog = async (req, res) => {
             if (body) {
                 result.body = body
             }
+            if (likes) {
+                result.likes = likes
+            }
+            if (comments) {
+                result.comments = comments
+            }
             if (author_name) {
                 result.author_name = author_name
             }
             if (author_image) {
                 result.author_image = author_image
+            }
+            if (like_emails) {
+                result.like_emails = like_emails
             }
 
             result.save()

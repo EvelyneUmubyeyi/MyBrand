@@ -212,6 +212,10 @@ nav {
     background-color: #2B2D3A;
 }
 
+#container{
+    width: 80%;
+}
+
 .card{
     width: 100%;
     background-color: #1E1F29;
