@@ -141,33 +141,32 @@ async function likefn() {
             article.likes += 1
             article.like_emails.push(user_details.email)
 
-            console.log(article.likes, article.like_emails)
-            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`, {
+            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/likes`, {
                 method: 'PATCH',
-                body: JSON.stringify({ "likes": article.likes, "like_emails": article.like_emails }),
+                body: JSON.stringify({ "id": user_details.id }),
                 headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
             })
 
             const blog_res = await res.json()
-            console.log(blog_res)
+            console.log('like', blog_res)
             likes.innerText = article.likes
 
         } else {
             article.likes -= 1
-            let index = article.like_emails.indexOf(user_parsed.email)
+            let index = article.like_emails.indexOf(user_details.email)
             if (index > -1) {
                 article.like_emails.splice(index, 1)
             }
-            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`, {
+            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/likes`, {
                 method: 'PATCH',
-                body: JSON.stringify({ "likes": article.likes, "like_emails": article.like_emails }),
+                body: JSON.stringify({ "id": user_details.id }),
                 headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
             })
+            
             const blog_res = await res.json()
-            console.log(blog_res)
+            console.log('unlike', blog_res)
             likes.innerText = article.likes
         }
-
     }
 }
 
