@@ -252,22 +252,20 @@ let form = document.getElementById("contact_form")
 form.addEventListener('submit', async (e) => {
     e.preventDefault()
     if (form.name.value.trim() !== '' && form.email.value.trim() !== '' && form.phone.value.trim() !== '' && form.message.value.trim() !== '') {
-        let today = new Date()
-        let today_date = today.getDate() + " " + today.toLocaleString('default', { month: 'short' }) + " " + today.getFullYear()
         const doc = {
             name: form.name.value,
             email: form.email.value,
-            phone: form.phone.value,
+            phone_number: form.phone.value,
             message: form.message.value,
-            date: today_date
         }
-        await fetch('https://evelyneportfolioapi.up.railway.app/queries', {
+        
+        const query = await fetch('https://evelyneportfolioapi.up.railway.app/queries', {
             method: 'POST',
             body: JSON.stringify(doc),
             headers: { 'Content-Type': 'application/json' }
         })
 
-        let newQuery = await user.json()
+        let newQuery = await query.json()
 
         if (newQuery.status === 201) {
             Toastify({
@@ -282,19 +280,21 @@ form.addEventListener('submit', async (e) => {
                     background: "#1dd882",
                 },
             }).showToast();
-        }
+            form.reset()
+        } else {
 
-        Toastify({
-            text: newQuery.message,
-            duration: 3000,
-            newWindow: true,
-            close: true,
-            gravity: "top",
-            position: "right",
-            stopOnFocus: true,
-            style: {
-                background: "#ff9494",
-            },
-        }).showToast();
+            Toastify({
+                text: newQuery.message,
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "#ff9494",
+                },
+            }).showToast();
+        }
     }
 })

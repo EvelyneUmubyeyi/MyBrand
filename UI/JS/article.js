@@ -1,6 +1,6 @@
 let article_id = new URLSearchParams(window.location.search).get("id")
-let user_token = localStorage.getItem('token')
-let user_parsed = JSON.parse(user_token)
+let token = localStorage.getItem('token')
+let token_parsed = JSON.parse(token)
 let login_text = document.getElementsByClassName("login_text")
 
 let article_title = document.getElementById('article_title')
@@ -18,8 +18,14 @@ let like_icon = document.getElementById('like_icon')
 let like_button = document.getElementById('like_button')
 let article;
 
+function decodeJWT(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const payload = JSON.parse(atob(base64));
+    return payload;
+}
+
 async function renderArticle() {
-    console.log('called')
     let res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`)
     let article_res = await res.json()
     article = article_res.data
@@ -27,7 +33,6 @@ async function renderArticle() {
     let commentsRes = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/comments`)
     let commentsResponse = await commentsRes.json()
     comments_Array = commentsResponse.data
-    console.log(comments_Array)
 
     if (JSON.stringify(article) !== '{}') {
         console.log(article)
@@ -35,8 +40,6 @@ async function renderArticle() {
         small_description.innerText = article.hook
         author_name.innerText = article.author_name
         author_image.src = article.author_image
-        // const dateObj = new Date('2023-03-14T05:39:11.157Z')
-        // let publish_date = `${dateObj.getDate()}-${dateObj.getMonth()+1}-${dateObj.getFullYear()}`
 
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         let date_array = article.createdAt.split('-')
@@ -46,8 +49,9 @@ async function renderArticle() {
         publish_date.innerText = day + ' ' + months[parseInt(date_array[1]) - 1] + ' ' + date_array[0]
         cover_photo.src = article.image
         article_body.innerText = article.body
-        if (user_parsed) {
-            if (article.like_emails.includes(user_parsed.email)) {
+        if (token_parsed) {
+            let user_details = decodeJWT(token_parsed)
+            if (article.like_emails.includes(user_details.email)) {
                 like_icon.classList.add('fa-solid', 'fa-heart')
             } else {
                 like_icon.classList.add('fa-regular', 'fa-heart')
@@ -65,7 +69,7 @@ async function renderArticle() {
                 let res = await fetch(`https://evelyneportfolioapi.up.railway.app/users/${comments_Array[i].userId}`)
                 let response = await res.json()
                 console.log('response', response)
-                
+
                 let date_array = comments_Array[i].createdAt.split('-')
                 let day_array = date_array[2].split('T')
                 let day = day_array[0]
@@ -101,7 +105,7 @@ window.addEventListener('load', (e) => {
     if (article_id === null) {
         window.location.replace('./pageError.html?id=404')
     } else {
-        if (user_parsed !== null) {
+        if (token_parsed !== null) {
             for (let i = 0; i < login_text.length; i++) {
                 login_text[i].innerText = "Log out"
                 login_text[i].addEventListener('click', () => {
@@ -126,45 +130,42 @@ let refresh_likes = async () => {
 
 let likes_div = document.getElementById('likes_div')
 
-// like_icon.addEventListener('click',
-//     async function (e) {
-//         e.preventDefault()
-//         await likefn()
-//     })
-function likefn() {
-    if (user === null) {
+async function likefn() {
+    if (token_parsed === null) {
         popup_container.style.visibility = 'visible'
     } else {
-        if (article.like_emails.includes(user_parsed.email) === false) {
+        let user_details = decodeJWT(token_parsed)
+        // console.log(user_details)
+        // console.log(user_details.email)
+        if (article.like_emails.includes(user_details.email) === false) {
             article.likes += 1
-            article.like_emails.push(user_parsed.email)
+            article.like_emails.push(user_details.email)
 
-            fetch(`http://localhost:3000/blogs/${article_id}`, {
+            console.log(article.likes, article.like_emails)
+            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`, {
                 method: 'PATCH',
                 body: JSON.stringify({ "likes": article.likes, "like_emails": article.like_emails }),
-                headers: { 'Content-Type': 'application/json' }
-            }).then(
-                response => response.json()
-            ).then(
-                json => likes.innerText = article.likes
-            )
+                headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
+            })
+
+            const blog_res = await res.json()
+            console.log(blog_res)
+            likes.innerText = article.likes
+
         } else {
             article.likes -= 1
             let index = article.like_emails.indexOf(user_parsed.email)
             if (index > -1) {
                 article.like_emails.splice(index, 1)
             }
-            fetch(`http://localhost:3000/blogs/${article_id}`, {
+            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`, {
                 method: 'PATCH',
                 body: JSON.stringify({ "likes": article.likes, "like_emails": article.like_emails }),
-                headers: { 'Content-Type': 'application/json' }
-            }).then(
-                response => response.json()
-            ).then(
-                json => {
-                    likes.innerText = article.likes
-                }
-            )
+                headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
+            })
+            const blog_res = await res.json()
+            console.log(blog_res)
+            likes.innerText = article.likes
         }
 
     }
