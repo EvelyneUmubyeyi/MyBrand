@@ -180,8 +180,6 @@ usersRouter.get('/', verifyAdminJWT, getAllUsers)
  * @swagger
  * /users/{id}:
  *   get:
- *     security:
- *       - bearerAuth: []
  *     summary: Get the user by id
  *     tags: [Users]
  *     parameters:
@@ -202,6 +200,6 @@ usersRouter.get('/', verifyAdminJWT, getAllUsers)
  *         description: Some server error
  */
 
-usersRouter.get('/:id', verifyAdminJWT, getSingleUser)
+usersRouter.get('/:id', getSingleUser)
 
 module.exports = usersRouter; 
