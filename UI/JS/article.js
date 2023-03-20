@@ -1,6 +1,6 @@
 let article_id = new URLSearchParams(window.location.search).get("id")
 let user_token = localStorage.getItem('token')
-let user_parsed = JSON.parse(user)
+let user_parsed = JSON.parse(user_token)
 let login_text = document.getElementsByClassName("login_text")
 
 let article_title = document.getElementById('article_title')
@@ -62,10 +62,7 @@ async function renderArticle() {
         template = ''
         if (comments_Array.length > 0) {
             for (let i = 0; i < comments_Array.length; i++) {
-                let res = await fetch(`https://evelyneportfolioapi.up.railway.app/users/${comments_Array[i].userId}`,{
-                    method: 'GET',
-                    headers: {Authorization: `Bearer ${user_token}`},
-                })
+                let res = await fetch(`https://evelyneportfolioapi.up.railway.app/users/${comments_Array[i].userId}`)
                 let response = await res.json()
                 console.log('response', response)
                 

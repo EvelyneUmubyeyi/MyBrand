@@ -156,6 +156,34 @@ usersRouter.get('/refresh', handleRefreshToken)
  *                  description: Some server error
  */
 usersRouter.get('/logout', handleLogout)
+
+/**
+ * @swagger
+ * /users/verify:
+ *      get:
+ *          security:
+ *              - bearerAuth: []
+ *          tags: [Users]
+ *          summary: Verifying if admin is authenticated 
+ *          responses:
+ *              200:
+ *                  description: User authenticated
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: string   
+ *              500:
+ *                  description: Some server error
+ */
+usersRouter.get('/verify', verifyAdminJWT, (req,res)=>{
+    try{
+        return res.status(200).json({status:200, message:'User authenticated'})
+    }catch(err){
+        res.status(500).json({ message: "Something went wrong, couldn't save", Error: err.message })
+    }
+    
+})
+
 /**
  * @swagger
  * /users:

@@ -1,10 +1,26 @@
 let article_id = new URLSearchParams(window.location.search).get("id")
 let newItem = document.createElement("img");
 let imageInput = document.getElementById("image");
+// let quill_content = document.getElementById('quill_content')
 newItem.style.cursor = 'pointer'
 newItem.addEventListener('click', (e) => {
     e.preventDefault()
     imageInput.click()
+})
+
+let toolbar_options = [
+    ['bold', 'italic', 'underline', 'strike'],
+    ['link', 'blockquote', 'code-block', 'image'],
+    [{ list: 'ordered' }, { list: 'bullet' }]
+
+]
+
+var editor = new Quill('#quill_content', {
+    modules: {
+        toolbar: toolbar_options,
+    },
+    theme: "snow",
+    placeholder: 'Write the article body here ...',
 })
 
 let inner_text = document.getElementById("inner_text")
@@ -14,8 +30,9 @@ let article;
 let imageStored;
 
 async function renderArticle() {
-    let res = await fetch(`http://localhost:3000/blogs/${article_id}`)
-    article = await res.json()
+    let res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`)
+    let article_res = await res.json()
+    article = article_res.data
 
     form.title.value = article.title
     form.hook.value = article.hook
@@ -25,7 +42,7 @@ async function renderArticle() {
     imageContainer.appendChild(newItem);
     imageContainer.classList.add("preview-img-container")
     newItem.classList.add("preview-img");
-    form.content.value = article.body
+    editor.setText(article.body)
 }
 
 if (article_id !== null) {
@@ -70,21 +87,15 @@ for (let i = 0; i < resNavMenuItem.length; i++) {
     resNavMenuItem[i].addEventListener('click', toggleNavBar);
 }
 
-let toolbar_options = [
-    ['bold', 'italic', 'underline', 'strike'],
-    ['link', 'blockquote', 'code-block', 'image'],
-    [{ list: 'ordered' }, { list: 'bullet' }]
-
-]
-
-var quill = new Quill('#quill_content', {
-    modules: {
-        toolbar: toolbar_options,
-    },
-    theme: "snow",
-    placeholder: 'Write the article body here ...',
-})
-
+// editor.on('text-change', function() {
+//     var delta = editor.getContents();
+//     var text = editor.getText();
+//     var justHtml = editor.root.innerHTML;
+//     preciousContent.innerHTML = JSON.stringify(delta);
+//     justTextContent.innerHTML = text;
+//     justHtmlContent.innerHTML = justHtml;
+//   });
+  
 
 async function uploadProcess(imageToUpload) {
 
@@ -119,16 +130,18 @@ imageInput.onchange = event => {
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (form.title.value.trim() !== '' && form.hook.value.trim() !== '' && form.content.value.trim() !== '' && imageStored !== '') {
+    let quill_content = editor.getText()
+    if (form.title.value.trim() !== '' && form.hook.value.trim() !== '' && quill_content.trim() !== '' && imageStored !== '') {
 
         let today = new Date()
         let today_date = today.getDate() + " " + today.toLocaleString('default', { month: 'short' }) + " " + today.getFullYear()
         if (article_id !== null) {
+            console.log('edit blog', article_id)
             const doc = {
                 title: form.title.value,
                 hook: form.hook.value,
                 image: imageStored,
-                body: form.content.value,
+                body: quill_content,
                 date_published: article.date_published,
                 likes: article.likes,
                 author_name: article.author_name,
@@ -137,18 +150,18 @@ form.addEventListener('submit', async (e) => {
                 comments_list: article.comments_list,
                 like_emails:article.like_emails
             }
-            await fetch(`http://localhost:3000/blogs/${article_id}`, {
-                method: 'PUT',
+            await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`, {
+                method: 'PATCH',
                 body: JSON.stringify(doc),
-                headers: { 'Content-Type': 'application/json' }
+                headers: { Authorization: `Bearer ${token_parsed}`,'Content-Type': 'application/json' }
             })
-            window.location.replace('/blogsList.html')
+            window.location.replace('/UI/blogsList.html')
         } else {
             const doc = {
                 title: form.title.value,
                 hook: form.hook.value,
                 image: imageStored,
-                body: form.content.value,
+                body: quill_content,
                 date_published: today_date,
                 likes: 0,
                 comments: 0,
@@ -157,12 +170,12 @@ form.addEventListener('submit', async (e) => {
                 comments_list: [],
                 like_emails:[]
             }
-            await fetch('http://localhost:3000/blogs', {
+            await fetch(`https://evelyneportfolioapi.up.railway.app/blogs`, {
                 method: 'POST',
                 body: JSON.stringify(doc),
-                headers: { 'Content-Type': 'application/json' }
+                headers: { Authorization: `Bearer ${token_parsed}`,'Content-Type': 'application/json' }
             })
-            window.location.replace('/blogsList.html')
+            window.location.replace('/UI/blogsList.html')
 
         }
     }
