@@ -13,7 +13,7 @@ async function openSkillsPopup(skill_id) {
     let skill = await res.json()
     template_skills = ""
 
-    const single_skill = skill.data 
+    const single_skill = skill.data
     for (let j = 0; j < single_skill.specific_skills.length; j++) {
         template_skills +=
             `
@@ -173,24 +173,24 @@ async function likefn(project_id) {
             }).then(
                 response => response.json()
             ).then(
-                    json => likes.innerText = project.likes
+                json => likes.innerText = project.likes
             )
         }
 
     }
 }
 
-async function loadProjects(){
-    const res = await fetch("https://evelyneportfolioapi.up.railway.app/projects") 
+async function loadProjects() {
+    const res = await fetch("https://evelyneportfolioapi.up.railway.app/projects")
     projects = await res.json()
     let template = ""
 
     const projects_list = projects.data
-    for (let i=0; i<projects_list.length;i++){
-        if(user_parsed && projects_list[i].like_emails.includes(user_parsed.email)){
+    for (let i = 0; i < projects_list.length; i++) {
+        if (user_parsed && projects_list[i].like_emails.includes(user_parsed.email)) {
             console.log('here')
-            template+=
-            `
+            template +=
+                `
             <div class="card work_card" id="work_category_card">
                         <img src=${projects_list[i].image} alt="project_image">
                         <div class="links">
@@ -203,10 +203,10 @@ async function loadProjects(){
                         <p class="project_name">${projects_list[i].title}</p>
                     </div>
             `
-        }else if(!user_parsed || !projects_list[i].like_emails.includes(user_parsed.email)){
+        } else if (!user_parsed || !projects_list[i].like_emails.includes(user_parsed.email)) {
             console.log('here 2')
-            template+=
-            `
+            template +=
+                `
             <div class="card work_card" id="work_category_card">
                         <img src=${projects_list[i].image} alt="project_image">
                         <div class="links">
@@ -223,22 +223,22 @@ async function loadProjects(){
     }
 
     let container = document.getElementById('projects_cards_container')
-    container.innerHTML+=template
+    container.innerHTML += template
 }
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    if(user_parsed !== null){
-        for(let i=0; i<login_text.length;i++){
-            login_text[i].innerText="Log out"
-            login_text[i].addEventListener('click',()=>{
+    if (user_parsed !== null) {
+        for (let i = 0; i < login_text.length; i++) {
+            login_text[i].innerText = "Log out"
+            login_text[i].addEventListener('click', () => {
                 localStorage.removeItem('user')
                 window.location.replace('./login.html')
             })
         }
-    }else{
-        for(let i=0; i<login_text.length;i++){
-            login_text[i].addEventListener('click',()=>{
+    } else {
+        for (let i = 0; i < login_text.length; i++) {
+            login_text[i].addEventListener('click', () => {
                 window.location.replace('./login.html')
             })
         }
@@ -261,10 +261,40 @@ form.addEventListener('submit', async (e) => {
             message: form.message.value,
             date: today_date
         }
-        await fetch('http://localhost:3000/queries', {
+        await fetch('https://evelyneportfolioapi.up.railway.app/queries', {
             method: 'POST',
             body: JSON.stringify(doc),
             headers: { 'Content-Type': 'application/json' }
         })
+
+        let newQuery = await user.json()
+
+        if (newQuery.status === 201) {
+            Toastify({
+                text: 'Message sent!',
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "#1dd882",
+                },
+            }).showToast();
+        }
+
+        Toastify({
+            text: newQuery.message,
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+                background: "#ff9494",
+            },
+        }).showToast();
     }
 })

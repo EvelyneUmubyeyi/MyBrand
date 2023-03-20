@@ -1,3 +1,6 @@
+// let token = localStorage.getItem('token')
+// let token_parsed = JSON.parse(token)
+
 let res_nav = document.getElementById("responsive_nav");
 let hum = document.getElementById("fa-bars");
 
@@ -33,14 +36,14 @@ let login_res = document.getElementById('login_res')
 let login_des = document.getElementById('login_des')
 
 window.addEventListener('DOMContentLoaded', ()=>{
-    if (localStorage.getItem('user') != null){
+    if (token_parsed){
         login_res.innerText = 'Log out'
         login_des.innerText = 'Log out'
     }
 })
 
 function logout(){
-    localStorage.removeItem('user')
+    localStorage.removeItem('token')
     window.location.replace('./login.html')
 }
 
@@ -50,13 +53,21 @@ let queries_p = document.getElementById('queries_nbr')
 let blogs_p = document.getElementById('blogs_nbr')
 
 async function getStats(){
-    const blogs = await fetch('http://localhost:3000/blogs')
+    const blogs = await fetch('https://evelyneportfolioapi.up.railway.app/blogs')
     let blogs_res = await blogs.json()
-    let blogs_nbr = JSON.parse(JSON.stringify(blogs_res)).length
+    console.log(blogs_res)
+    let blogs_nbr = JSON.parse(JSON.stringify(blogs_res.data)).length
 
-    const queries = await fetch('http://localhost:3000/queries')
+    let queries = await fetch('https://evelyneportfolioapi.up.railway.app/queries', {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token_parsed}`,
+        },
+    })
+
     let queries_res = await queries.json()
-    let queries_nbr = JSON.parse(JSON.stringify(queries_res)).length
+    console.log(queries_res)
+    let queries_nbr = JSON.parse(JSON.stringify(queries_res.data)).length
     blogs_p.innerText = blogs_nbr
     queries_p.innerText = queries_nbr
 }

@@ -16,15 +16,15 @@ const postQuerie = async (req, res) => {
 
         let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
         if (!email.match(validRegex)){
-            return res.status(400).json({ status: "failed", message: 'Invalid email' })
+            return res.status(400).json({ status: 400, message: 'Invalid email' })
         } 
 
         const newQuery = new Query({name: name, email:email, phone_number: phone_number, message: message})
         await newQuery.save()
-        return res.status(201).json({ status: 'success', message: "Created a querie", data: newQuery })
+        return res.status(201).json({ status: 201, message: "Created a querie", data: newQuery })
     }    
     catch(err){
-        return res.status(500).json({status: 'error', message:"server error", Error: err.message})
+        return res.status(500).json({status: 500, message:"server error", Error: err.message})
     }
 }
 
