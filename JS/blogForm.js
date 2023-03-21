@@ -155,7 +155,7 @@ form.addEventListener('submit', async (e) => {
                 body: JSON.stringify(doc),
                 headers: { Authorization: `Bearer ${token_parsed}`,'Content-Type': 'application/json' }
             })
-            window.location.replace('/UI/blogsList.html')
+            window.location.replace('/blogsList.html')
         } else {
             const doc = {
                 title: form.title.value,
@@ -175,7 +175,7 @@ form.addEventListener('submit', async (e) => {
                 body: JSON.stringify(doc),
                 headers: { Authorization: `Bearer ${token_parsed}`,'Content-Type': 'application/json' }
             })
-            window.location.replace('/UI/blogsList.html')
+            window.location.replace('/blogsList.html')
 
         }
     }

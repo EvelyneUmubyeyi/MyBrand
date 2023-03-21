@@ -17,13 +17,51 @@ let liking_icon = document.getElementById("liking_icon")
 let like_icon = document.getElementById('like_icon')
 let like_button = document.getElementById('like_button')
 let article;
-
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 function decodeJWT(token) {
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const payload = JSON.parse(atob(base64));
     return payload;
 }
+
+let user_details = decodeJWT(token_parsed)
+
+async function renderComments() {
+    const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/comments`)
+    let comment_list = await res.json()
+    let comments = comment_list.data
+    template = ''
+
+    if (comments.length > 0) {
+        for (let i = 0; i < comments.length; i++) {
+            let res = await fetch(`https://evelyneportfolioapi.up.railway.app/users/${comments[i].userId}`)
+            let response = await res.json()
+
+            let date_array = comments[i].createdAt.split('-')
+            let day_array = date_array[2].split('T')
+            let day = day_array[0]
+            let comment_date = day + ' ' + months[parseInt(date_array[1]) - 1] + ' ' + date_array[0]
+
+            template += `
+        <div class="single_comment">
+        <div class="icon_container">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="text">
+            <div class="comment_header">
+                <p class="name" id="commenter_name">${response.data.name}</p>
+                <p class="date" id="commenting_date">${comment_date}</p>
+            </div>
+            <p class="comment" id="comment_body">${comments[i].comment}</p>
+        </div>
+        </div>
+        `
+        }
+        comments_list.innerHTML = template
+    }
+}
+
 
 async function renderArticle() {
     let res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`)
@@ -35,13 +73,11 @@ async function renderArticle() {
     comments_Array = commentsResponse.data
 
     if (JSON.stringify(article) !== '{}') {
-        console.log(article)
         article_title.innerText = article.title
         small_description.innerText = article.hook
         author_name.innerText = article.author_name
         author_image.src = article.author_image
 
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         let date_array = article.createdAt.split('-')
         let day_array = date_array[2].split('T')
         let day = day_array[0]
@@ -50,7 +86,6 @@ async function renderArticle() {
         cover_photo.src = article.image
         article_body.innerText = article.body
         if (token_parsed) {
-            let user_details = decodeJWT(token_parsed)
             if (article.like_emails.includes(user_details.email)) {
                 like_icon.classList.add('fa-solid', 'fa-heart')
             } else {
@@ -59,42 +94,38 @@ async function renderArticle() {
         } else {
             like_icon.classList.add('fa-regular', 'fa-heart')
         }
-
-
         likes.innerText = article.likes
         comments.innerText = article.comments
         template = ''
+
         if (comments_Array.length > 0) {
             for (let i = 0; i < comments_Array.length; i++) {
                 let res = await fetch(`https://evelyneportfolioapi.up.railway.app/users/${comments_Array[i].userId}`)
                 let response = await res.json()
-                console.log('response', response)
 
                 let date_array = comments_Array[i].createdAt.split('-')
                 let day_array = date_array[2].split('T')
                 let day = day_array[0]
                 let comment_date = day + ' ' + months[parseInt(date_array[1]) - 1] + ' ' + date_array[0]
-                console.log('date', comment_date)
 
                 template += `
-            <div class="single_comment">
-            <div class="icon_container">
-                <i class="fa-solid fa-user"></i>
+        <div class="single_comment">
+        <div class="icon_container">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="text">
+            <div class="comment_header">
+                <p class="name" id="commenter_name">${response.data.name}</p>
+                <p class="date" id="commenting_date">${comment_date}</p>
             </div>
-            <div class="text">
-                <div class="comment_header">
-                    <p class="name" id="commenter_name">${response.data.name}</p>
-                    <p class="date" id="commenting_date">${comment_date}</p>
-                </div>
-                <p class="comment" id="comment_body">${comments_Array[i].comment}</p>
-            </div>
-            </div>
-            `
+            <p class="comment" id="comment_body">${comments_Array[i].comment}</p>
+        </div>
+        </div>
+        `
             }
             comments_list.innerHTML = template
-        } else {
-            console.log('hereeee')
         }
+
     } else {
         window.location.replace('./pageError.html?id=404')
     }
@@ -134,40 +165,31 @@ async function likefn() {
     if (token_parsed === null) {
         popup_container.style.visibility = 'visible'
     } else {
-        let user_details = decodeJWT(token_parsed)
-        // console.log(user_details)
-        // console.log(user_details.email)
         if (article.like_emails.includes(user_details.email) === false) {
             article.likes += 1
             article.like_emails.push(user_details.email)
 
-            console.log(article.likes, article.like_emails)
-            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`, {
+            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/likes`, {
                 method: 'PATCH',
-                body: JSON.stringify({ "likes": article.likes, "like_emails": article.like_emails }),
+                body: JSON.stringify({ "id": user_details.id }),
                 headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
             })
 
-            const blog_res = await res.json()
-            console.log(blog_res)
             likes.innerText = article.likes
 
         } else {
             article.likes -= 1
-            let index = article.like_emails.indexOf(user_parsed.email)
+            let index = article.like_emails.indexOf(user_details.email)
             if (index > -1) {
                 article.like_emails.splice(index, 1)
             }
-            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`, {
+            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/likes`, {
                 method: 'PATCH',
-                body: JSON.stringify({ "likes": article.likes, "like_emails": article.like_emails }),
+                body: JSON.stringify({ "id": user_details.id }),
                 headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
             })
-            const blog_res = await res.json()
-            console.log(blog_res)
             likes.innerText = article.likes
         }
-
     }
 }
 
@@ -215,21 +237,47 @@ closePopup.addEventListener('click', closePopupFn)
 let comment_form = document.getElementById('comment_form')
 comment_form.addEventListener('submit', async (e) => {
     e.preventDefault()
-    if (localStorage.getItem('user') === null) {
+    if (token_parsed === null) {
         popup_container.style.visibility = 'visible'
     }
     else if (comment_form.comment_content.value.trim() !== '') {
-        let today = new Date()
-        let today_date = today.getDate() + " " + today.toLocaleString('default', { month: 'short' }) + " " + today.getFullYear()
-        let comment = { email: user_parsed.email, name: user_parsed.name, date: today_date, comment: comment_form.comment_content.value }
-        article.comments_list.push(comment)
+        let comment_val = comment_form.comment_content.value
+        let comment = { userId: user_details.id, blogId: article_id, comment: comment_val }
+        // article.comments_list.push(comment)
         article.comments += 1
-        await fetch(`http://localhost:3000/blogs/${article_id}`, {
-            method: 'PUT',
-            body: JSON.stringify(article),
-            headers: { 'Content-Type': 'application/json' }
+
+        const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/comments`, {
+            method: 'POST',
+            body: JSON.stringify(comment),
+            headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
         })
+
+        const commentRes = await res.json()
+        let date_array = commentRes.data.createdAt.split('-')
+        let day_array = date_array[2].split('T')
+        let day = day_array[0]
+
+        comment_date = day + ' ' + months[parseInt(date_array[1]) - 1] + ' ' + date_array[0]
+        // comments.innerText = article.comments
+        comment_form.reset()
+        sendButton.style.display = 'none'
+        template += `
+        <div class="single_comment">
+        <div class="icon_container">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="text">
+            <div class="comment_header">
+                <p class="name" id="commenter_name">${user_details.name}</p>
+                <p class="date" id="commenting_date">${comment_date}</p>
+            </div>
+            <p class="comment" id="comment_body">${commentRes.data.comment}</p>
+        </div>
+        </div>
+        `
     }
+    comments.innerText = article.comments
+    comments_list.innerHTML += template
 })
 
 let prev_icon = document.getElementById('prev')

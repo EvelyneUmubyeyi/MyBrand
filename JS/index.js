@@ -1,5 +1,15 @@
-let user = localStorage.getItem('user')
-let user_parsed = JSON.parse(user)
+let token = localStorage.getItem('token')
+let token_parsed = JSON.parse(token)
+
+function decodeJWT(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const payload = JSON.parse(atob(base64));
+    return payload;
+}
+
+let user_details = decodeJWT(token_parsed)
+
 let projects;
 
 let login_text = document.getElementsByClassName("login_text")
@@ -8,7 +18,6 @@ let popup = document.getElementById("popup_container")
 let closePopup = document.getElementById("close_popup")
 
 async function openSkillsPopup(skill_id) {
-    console.log(skill_id)
     const res = await fetch(`https://evelyneportfolioapi.up.railway.app/skills/${skill_id}`)
     let skill = await res.json()
     template_skills = ""
@@ -112,7 +121,7 @@ async function loadBlogs() {
             <p class="blog_title">${blogs.data[i].title}</p>
             <p class="shrt_description">${blogs.data[i].hook}</p>
         </div>
-        <button onclick="window.location = '/UI/article.html?id=${blogs.data[i]._id}'"><a>Read</a></button>
+        <button onclick="window.location = '/article.html?id=${blogs.data[i]._id}'"><a>Read</a></button>
     </div>
         `
     }
@@ -140,46 +149,6 @@ async function loadSkills() {
 let projects_popup = document.getElementById("popupContainer")
 let likes = document.getElementById('project_likes')
 
-async function likefn(project_id) {
-    if (user === null) {
-        projects_popup.style.visibility = 'visible'
-    } else {
-        const res = await fetch(`http://localhost:3000/projects/${project_id}`)
-        let project = await res.json()
-
-        if (project.like_emails.includes(user_parsed.email) === false) {
-            project.likes += 1
-            project.like_emails.push(user_parsed.email)
-
-            await fetch(`http://localhost:3000/projects/${project_id}`, {
-                method: 'PATCH',
-                body: JSON.stringify({ "likes": project.likes, "like_emails": project.like_emails }),
-                headers: { 'Content-Type': 'application/json' }
-            }).then(
-                response => response.json()
-            ).then(
-                json => likes.innerText = project.likes
-            )
-        } else {
-            project.likes -= 1
-            let index = project.like_emails.indexOf(user_parsed.email)
-            if (index > -1) {
-                project.like_emails.splice(index, 1)
-            }
-            await fetch(`http://localhost:3000/projects/${project_id}`, {
-                method: 'PATCH',
-                body: JSON.stringify({ "likes": project.likes, "like_emails": project.like_emails }),
-                headers: { 'Content-Type': 'application/json' }
-            }).then(
-                response => response.json()
-            ).then(
-                json => likes.innerText = project.likes
-            )
-        }
-
-    }
-}
-
 async function loadProjects() {
     const res = await fetch("https://evelyneportfolioapi.up.railway.app/projects")
     projects = await res.json()
@@ -187,15 +156,14 @@ async function loadProjects() {
 
     const projects_list = projects.data
     for (let i = 0; i < projects_list.length; i++) {
-        if (user_parsed && projects_list[i].like_emails.includes(user_parsed.email)) {
-            console.log('here')
+        if (token_parsed && projects_list[i].like_emails.includes(user_details.email)) {
             template +=
                 `
             <div class="card work_card" id="work_category_card">
                         <img src=${projects_list[i].image} alt="project_image">
                         <div class="links">
                             <div class="likes">
-                                <i class="fa-solid fa-heart" style="font-weight:700" onclick="likefn('${projects_list[i].id}')"></i>
+                                <i class="fa-solid fa-heart" style="font-weight:700" onclick="likefn('${projects_list[i]._id}')"></i>
                                 <p id="project_likes">${projects_list[i].likes}</p>
                             </div>
                             <a href=${projects_list[i].link} target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
@@ -203,15 +171,14 @@ async function loadProjects() {
                         <p class="project_name">${projects_list[i].title}</p>
                     </div>
             `
-        } else if (!user_parsed || !projects_list[i].like_emails.includes(user_parsed.email)) {
-            console.log('here 2')
+        } else if (!token_parsed || !projects_list[i].like_emails.includes(user_details.email)) {
             template +=
                 `
             <div class="card work_card" id="work_category_card">
                         <img src=${projects_list[i].image} alt="project_image">
                         <div class="links">
                             <div class="likes">
-                                <i class="fa-regular fa-heart" onclick="likefn('${projects_list[i].id}')"></i>
+                                <i class="fa-regular fa-heart" onclick="likefn('${projects_list[i]._id}')"></i>
                                 <p id="project_likes">${projects_list[i].likes}</p>
                             </div>
                             <a href=${projects_list[i].link} target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
@@ -223,12 +190,24 @@ async function loadProjects() {
     }
 
     let container = document.getElementById('projects_cards_container')
-    container.innerHTML += template
+    container.innerHTML = template
 }
 
+async function likefn(project_id) {
+    if (token_parsed === null) {
+        projects_popup.style.visibility = 'visible'
+    } else {
+        const res = await fetch(`https://evelyneportfolioapi.up.railway.app/projects/${project_id}/likes`, {
+            method: 'PATCH',
+            body: JSON.stringify({ "id": user_details.id }),
+            headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
+        })
+        loadProjects()
+    }
+}
 
 window.addEventListener('DOMContentLoaded', () => {
-    if (user_parsed !== null) {
+    if (token_parsed !== null) {
         for (let i = 0; i < login_text.length; i++) {
             login_text[i].innerText = "Log out"
             login_text[i].addEventListener('click', () => {
@@ -258,7 +237,7 @@ form.addEventListener('submit', async (e) => {
             phone_number: form.phone.value,
             message: form.message.value,
         }
-        
+
         const query = await fetch('https://evelyneportfolioapi.up.railway.app/queries', {
             method: 'POST',
             body: JSON.stringify(doc),
