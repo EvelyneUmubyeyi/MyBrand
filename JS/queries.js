@@ -36,7 +36,7 @@ for (let i = 0; i < resNavMenuItem.length; i++) {
     resNavMenuItem[i].addEventListener('click', toggleNavBar);
 }
 async function renderQueries() {
-    const res = await fetch('https://evelyneportfolioapi.up.railway.app/queries', {
+    const res = await fetch('https://evelynemybrandbackend.up.railway.app/queries', {
         method: 'GET',
         headers: { Authorization: `Bearer ${token_parsed}` }
     })

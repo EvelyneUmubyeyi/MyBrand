@@ -28,14 +28,14 @@ function decodeJWT(token) {
 let user_details = decodeJWT(token_parsed)
 
 async function renderComments() {
-    const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/comments`)
+    const res = await fetch(`https://evelynemybrandbackend.up.railway.app/blogs/${article_id}/comments`)
     let comment_list = await res.json()
     let comments = comment_list.data
     template = ''
 
     if (comments.length > 0) {
         for (let i = 0; i < comments.length; i++) {
-            let res = await fetch(`https://evelyneportfolioapi.up.railway.app/users/${comments[i].userId}`)
+            let res = await fetch(`https://evelynemybrandbackend.up.railway.app/users/${comments[i].userId}`)
             let response = await res.json()
 
             let date_array = comments[i].createdAt.split('-')
@@ -64,11 +64,11 @@ async function renderComments() {
 
 
 async function renderArticle() {
-    let res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`)
+    let res = await fetch(`https://evelynemybrandbackend.up.railway.app/blogs/${article_id}`)
     let article_res = await res.json()
     article = article_res.data
 
-    let commentsRes = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/comments`)
+    let commentsRes = await fetch(`https://evelynemybrandbackend.up.railway.app/blogs/${article_id}/comments`)
     let commentsResponse = await commentsRes.json()
     comments_Array = commentsResponse.data
 
@@ -100,7 +100,7 @@ async function renderArticle() {
 
         if (comments_Array.length > 0) {
             for (let i = 0; i < comments_Array.length; i++) {
-                let res = await fetch(`https://evelyneportfolioapi.up.railway.app/users/${comments_Array[i].userId}`)
+                let res = await fetch(`https://evelynemybrandbackend.up.railway.app/users/${comments_Array[i].userId}`)
                 let response = await res.json()
 
                 let date_array = comments_Array[i].createdAt.split('-')
@@ -169,7 +169,7 @@ async function likefn() {
             article.likes += 1
             article.like_emails.push(user_details.email)
 
-            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/likes`, {
+            const res = await fetch(`https://evelynemybrandbackend.up.railway.app/blogs/${article_id}/likes`, {
                 method: 'PATCH',
                 body: JSON.stringify({ "id": user_details.id }),
                 headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
@@ -183,7 +183,7 @@ async function likefn() {
             if (index > -1) {
                 article.like_emails.splice(index, 1)
             }
-            const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/likes`, {
+            const res = await fetch(`https://evelynemybrandbackend.up.railway.app/blogs/${article_id}/likes`, {
                 method: 'PATCH',
                 body: JSON.stringify({ "id": user_details.id }),
                 headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
@@ -246,7 +246,7 @@ comment_form.addEventListener('submit', async (e) => {
         // article.comments_list.push(comment)
         article.comments += 1
 
-        const res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}/comments`, {
+        const res = await fetch(`https://evelynemybrandbackend.up.railway.app/blogs/${article_id}/comments`, {
             method: 'POST',
             body: JSON.stringify(comment),
             headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }

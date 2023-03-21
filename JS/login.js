@@ -52,7 +52,7 @@ const loginUser = async (e) => {
         password: form.password.value,
     }
 
-    let user = await fetch('https://evelyneportfolioapi.up.railway.app/users/auth', {
+    let user = await fetch('https://evelynemybrandbackend.up.railway.app/users/auth', {
         method: 'POST',
         headers: { Accept: "application/json", "Content-Type": "application/json", },
         body: JSON.stringify(doc)

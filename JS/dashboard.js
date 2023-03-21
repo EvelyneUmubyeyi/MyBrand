@@ -53,12 +53,12 @@ let queries_p = document.getElementById('queries_nbr')
 let blogs_p = document.getElementById('blogs_nbr')
 
 async function getStats(){
-    const blogs = await fetch('https://evelyneportfolioapi.up.railway.app/blogs')
+    const blogs = await fetch('https://evelynemybrandbackend.up.railway.app/blogs')
     let blogs_res = await blogs.json()
     console.log(blogs_res)
     let blogs_nbr = JSON.parse(JSON.stringify(blogs_res.data)).length
 
-    let queries = await fetch('https://evelyneportfolioapi.up.railway.app/queries', {
+    let queries = await fetch('https://evelynemybrandbackend.up.railway.app/queries', {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token_parsed}`,
