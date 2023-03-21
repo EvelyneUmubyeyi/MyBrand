@@ -121,7 +121,7 @@ async function loadBlogs() {
             <p class="blog_title">${blogs.data[i].title}</p>
             <p class="shrt_description">${blogs.data[i].hook}</p>
         </div>
-        <button onclick="window.location = '/UI/article.html?id=${blogs.data[i]._id}'"><a>Read</a></button>
+        <button onclick="window.location = '/article.html?id=${blogs.data[i]._id}'"><a>Read</a></button>
     </div>
         `
     }

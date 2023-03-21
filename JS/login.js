@@ -65,7 +65,7 @@ const loginUser = async (e) => {
         if (loggedUser.data.role === 'user') {
             window.history.back()
         } else {
-            window.location.replace('/UI/dashboard.html');
+            window.location.replace('/dashboard.html');
         }
     }
 

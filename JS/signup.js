@@ -80,7 +80,7 @@ const createUser = async (e) => {
                 background: "#1dd882",
             },
         }).showToast(); 
-        setTimeout(()=>window.location.replace('/UI/login.html'), 3000)
+        setTimeout(()=>window.location.replace('/login.html'), 3000)
         
     }
 

@@ -79,12 +79,12 @@ let renderBlogs = async () => {
             template += `
             <tr class="article_row" id="article_row">
                     <td class="col_first" data-label="No">${i + 1}</td>
-                    <td data-label="Name" class="blog_title_cell"><span class="blog_name" onclick="window.location = '/UI/article.html?id=${blogs_list[i]._id}'">${blogs_list[i].title}</span></td>
+                    <td data-label="Name" class="blog_title_cell"><span class="blog_name" onclick="window.location = '/article.html?id=${blogs_list[i]._id}'">${blogs_list[i].title}</span></td>
                     <td data-label="Date published">${publish_date}</td>
                     <td data-label="Likes" class="likes">${blogs_list[i].likes}</td>
                     <td data-label="Comments" class="comments">${blogs_list[i].comments}</td>
                     <td data-label="Action" class="icons last_colmn">
-                        <div class="edit" onclick="window.location = '/UI/blogForm.html?id=${blogs_list[i]._id}'">
+                        <div class="edit" onclick="window.location = '/blogForm.html?id=${blogs_list[i]._id}'">
                             <i class="fa-solid fa-pencil"></i>
                         </div>
                         <div class="delete" onclick = deleteBlog('${blogs_list[i]._id}')>
