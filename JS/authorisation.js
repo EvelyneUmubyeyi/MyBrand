@@ -1,7 +1,7 @@
 let token = localStorage.getItem('token')
 let token_parsed = JSON.parse(token)
 async function validateUser(token_parsed) {
-    let user = await fetch('https://evelyneportfolioapi.up.railway.app/users/verify', {
+    let user = await fetch('https://evelynemybrandbackend.up.railway.app/users/verify', {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`,

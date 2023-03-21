@@ -38,7 +38,7 @@ function toggleNavBar() {
 
 async function deleteBlog(blogId) {
     console.log('In delete function', blogId)
-    await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${blogId}`, {
+    await fetch(`https://evelynemybrandbackend.up.railway.app/blogs/${blogId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token_parsed}`}
     })
@@ -58,7 +58,7 @@ for (let i = 0; i < resNavMenuItem.length; i++) {
 
 let renderBlogs = async () => {
     console.log('loaded')
-    let uri = 'https://evelyneportfolioapi.up.railway.app/blogs'
+    let uri = 'https://evelynemybrandbackend.up.railway.app/blogs'
     let res = await fetch(uri)
     let blogs = await res.json()
     let blogs_list = blogs.data

@@ -34,7 +34,7 @@ for (let i = 0; i < resNavMenuItem.length; i++) {
 
 let renderBlogs = async () => {
     console.log('loaded')
-    let uri = 'https://evelyneportfolioapi.up.railway.app/blogs'
+    let uri = 'https://evelynemybrandbackend.up.railway.app/blogs'
     let res = await fetch(uri)
     let blogs_res = await res.json()
     let blogs = blogs_res.data

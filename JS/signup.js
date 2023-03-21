@@ -59,7 +59,7 @@ const createUser = async (e) => {
         role: "user",
     }
 
-    let user = await fetch('https://evelyneportfolioapi.up.railway.app/users', {
+    let user = await fetch('https://evelynemybrandbackend.up.railway.app/users', {
         method: 'POST',
         headers: { Accept: "application/json", "Content-Type": "application/json", },
         body: JSON.stringify(doc)

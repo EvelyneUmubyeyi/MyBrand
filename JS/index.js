@@ -18,7 +18,7 @@ let popup = document.getElementById("popup_container")
 let closePopup = document.getElementById("close_popup")
 
 async function openSkillsPopup(skill_id) {
-    const res = await fetch(`https://evelyneportfolioapi.up.railway.app/skills/${skill_id}`)
+    const res = await fetch(`https://evelynemybrandbackend.up.railway.app/skills/${skill_id}`)
     let skill = await res.json()
     template_skills = ""
 
@@ -109,7 +109,7 @@ window.onscroll = () => {
 
 let blogs_container = document.getElementById('blogs_cards_container')
 async function loadBlogs() {
-    const res = await fetch('https://evelyneportfolioapi.up.railway.app/blogs')
+    const res = await fetch('https://evelynemybrandbackend.up.railway.app/blogs')
     let blogs = await res.json()
     let template = ''
 
@@ -130,7 +130,7 @@ async function loadBlogs() {
 }
 
 async function loadSkills() {
-    const res = await fetch('https://evelyneportfolioapi.up.railway.app/Skills/')
+    const res = await fetch('https://evelynemybrandbackend.up.railway.app/Skills/')
     let skills = await res.json()
     const skill_set = skills.data
     template = ""
@@ -150,7 +150,7 @@ let projects_popup = document.getElementById("popupContainer")
 let likes = document.getElementById('project_likes')
 
 async function loadProjects() {
-    const res = await fetch("https://evelyneportfolioapi.up.railway.app/projects")
+    const res = await fetch("https://evelynemybrandbackend.up.railway.app/projects")
     projects = await res.json()
     let template = ""
 
@@ -197,7 +197,7 @@ async function likefn(project_id) {
     if (token_parsed === null) {
         projects_popup.style.visibility = 'visible'
     } else {
-        const res = await fetch(`https://evelyneportfolioapi.up.railway.app/projects/${project_id}/likes`, {
+        const res = await fetch(`https://evelynemybrandbackend.up.railway.app/projects/${project_id}/likes`, {
             method: 'PATCH',
             body: JSON.stringify({ "id": user_details.id }),
             headers: { Authorization: `Bearer ${token_parsed}`, 'Content-Type': 'application/json' }
@@ -238,7 +238,7 @@ form.addEventListener('submit', async (e) => {
             message: form.message.value,
         }
 
-        const query = await fetch('https://evelyneportfolioapi.up.railway.app/queries', {
+        const query = await fetch('https://evelynemybrandbackend.up.railway.app/queries', {
             method: 'POST',
             body: JSON.stringify(doc),
             headers: { 'Content-Type': 'application/json' }

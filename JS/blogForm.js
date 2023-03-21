@@ -30,7 +30,7 @@ let article;
 let imageStored;
 
 async function renderArticle() {
-    let res = await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`)
+    let res = await fetch(`https://evelynemybrandbackend.up.railway.app/blogs/${article_id}`)
     let article_res = await res.json()
     article = article_res.data
 
@@ -150,7 +150,7 @@ form.addEventListener('submit', async (e) => {
                 comments_list: article.comments_list,
                 like_emails:article.like_emails
             }
-            await fetch(`https://evelyneportfolioapi.up.railway.app/blogs/${article_id}`, {
+            await fetch(`https://evelynemybrandbackend.up.railway.app/blogs/${article_id}`, {
                 method: 'PATCH',
                 body: JSON.stringify(doc),
                 headers: { Authorization: `Bearer ${token_parsed}`,'Content-Type': 'application/json' }
@@ -170,7 +170,7 @@ form.addEventListener('submit', async (e) => {
                 comments_list: [],
                 like_emails:[]
             }
-            await fetch(`https://evelyneportfolioapi.up.railway.app/blogs`, {
+            await fetch(`https://evelynemybrandbackend.up.railway.app/blogs`, {
                 method: 'POST',
                 body: JSON.stringify(doc),
                 headers: { Authorization: `Bearer ${token_parsed}`,'Content-Type': 'application/json' }
